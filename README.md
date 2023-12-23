@@ -1,9 +1,9 @@
 # cub3d project at 42Perpignan
 
 ## file system:
-assets - ehere images live
-srcs - .c files
-mlx - there be giants, do not go
+- assets - ehere images live
+- srcs - .c files
+- mlx - there be giants, do not go
 
 # objective
 - develop a basic raycasting engine
