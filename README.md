@@ -6,12 +6,17 @@
 - mlx - there be giants, do not go
 
 # objective
-- develop a basic raycasting engine
-- parse map
+make raycasting engine. input .cub map and parse it. errmsg if error (invalid format or not surrounded by walls)
 
 # digested pdf
 ### objective
 You must create a “realistic” 3D graphical representation of the inside of a maze from a first-person perspective. You have to create this representation using the Ray-Casting principles mentioned earlier.
+### bonus
+Wall collisions.
+A minimap system.
+Doors which can open and close.
+animated sprite.
+Rotate the point of view with the mouse.
 ### authorized functions:
 - open, close, read, write, printf, malloc, free, perror, strerror, exit
 - All functions of the math library (-lm man man 3 math)

@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_perror.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 16:15:07 by mjochum          ###   ########.fr       */
+/*   Created: 2023/12/26 13:29:35 by mjochum           #+#    #+#             */
+/*   Updated: 2023/12/26 13:33:52 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-//	init vars
-//	parse map
-//	starts loop
-int		main(int ac, char *av[])
+int	ft_perror(char *error, int retval)
 {
-	t_vars	*vars;
-
-	vars = ft_init_vars(ac, av);
-	vars->mapdata = ft_parse_map(vars);
-	printf("all ok i guess\n");
+	printf("cub3d: ");
+	perror(error);
+	return (retval);
 }

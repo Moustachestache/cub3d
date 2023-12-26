@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 16:15:07 by mjochum          ###   ########.fr       */
+/*   Created: 2023/12/26 11:57:54 by mjochum           #+#    #+#             */
+/*   Updated: 2023/12/26 11:58:17 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-//	init vars
-//	parse map
-//	starts loop
-int		main(int ac, char *av[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_vars	*vars;
+	void	*tab;
 
-	vars = ft_init_vars(ac, av);
-	vars->mapdata = ft_parse_map(vars);
-	printf("all ok i guess\n");
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if (!(size == (nmemb * size / nmemb)))
+		return (NULL);
+	tab = (void *) malloc((nmemb) * size);
+	if (!tab)
+		return (NULL);
+	ft_bzero(tab, nmemb * size);
+	return (tab);
 }
