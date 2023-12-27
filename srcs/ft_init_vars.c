@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 16:07:22 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/27 09:28:07 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int ft_isposixfile(char c)
 //	ac, chars in path, checks extension .cub
 //	returns working fd
 //	otherwise exits program
-static int	ft_validate(ac, av)
+static int	ft_validate(int ac, char *av[], t_vars *vars)
 {
 	static int	i = 0;
 	static int	fd = 0;
@@ -37,7 +37,7 @@ static int	ft_validate(ac, av)
 		ft_exit(ft_perror("unexpected argument count", EXIT_FAILURE), vars);
 	while (av[1][i])
 	{
-		if (ft_isposixfile(c) == 0)
+		if (ft_isposixfile(av[1][i]) == 0)
 			ft_exit(ft_perror("invalid characters in file path", EXIT_FAILURE), vars);
 		i++;
 	}
@@ -52,11 +52,11 @@ static int	ft_validate(ac, av)
 
 //	validates input (ac & av being correct and openable)
 //	and initialise variables etc.
-t_vars	ft_init_vars(ac, av)
+t_vars	*ft_init_vars(int ac, char *av[])
 {
 		t_vars	*vars;
 
 		vars = ft_calloc(1, sizeof(t_vars));
-		vars->fd_map = ft_validate(ac, av);
+		vars->fd_map = ft_validate(ac, av, vars);
 		return (vars);
 }

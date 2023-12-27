@@ -6,11 +6,11 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 16:07:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/27 07:19:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:29:35 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 13:33:52 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/27 09:51:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	ft_perror(char *error, int retval)
 {
-	printf("cub3d: ");
-	perror(error);
+	write(1, "cub3d: ", 7);
+	if (errno > 0)
+		perror(error);
+	else if (error)
+		printf("error: %s\n", error);
 	return (retval);
 }

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/26 16:45:43 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/27 09:28:54 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ map **char
 // must exit properly and return "Error\n" followed by an explicit error message
 // of your choice.
 
-void	ft_fetch_mapdata(t_map *mapdata, t_vars *vars)
+static void	ft_fetch_mapdata(t_map *mapdata, t_vars *vars)
 {
-
+	(void) mapdata;
+	(void) vars;
 }
 
-t_map	*ft_parse_map(t_vars *vars)
+t_map		*ft_parse_map(t_vars *vars)
 {
 	t_map	*mapdata;
+	(void) vars;
 
 	mapdata = ft_calloc(1, sizeof(t_map));
 	ft_fetch_mapdata(mapdata, vars);
