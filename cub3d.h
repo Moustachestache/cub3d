@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/27 09:49:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:09:13 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,28 @@
 # include <fcntl.h>
 # include <string.h>
 # include <math.h>
+# include <limits.h>
 # include "mlx/mlx.h"
 # include "structures.h"
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+size_t	ft_strlen(char *str);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_get_line(char *save);
+char	*ft_save(char *save);
+char	*ft_read_and_save(int fd, char *save);
+char	*get_next_line(int fd);
 t_vars	*ft_init_vars(int ac, char *av[]);
+char	*get_next_line(int fd);
 void	ft_exit(int exit_value, t_vars *vars);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_perror(char *error, int retval);
 t_map	*ft_parse_map(t_vars *vars);
+int		ft_isposixfile(char c);
 
 #endif

@@ -6,29 +6,12 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/27 09:28:07 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/27 13:19:35 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-//	checks if the str conforms to the POSIX path character norm & file character norm
-//	https://www.ibm.com/docs/en/zos/2.1.0?topic=locales-posix-portable-file-name-character-set
-static int ft_isposixfile(char c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-			|| (c == '_') || (c == '-') || (c == '.')
-			|| (c == '/') || (c == ' ')
-			|| (c >= '0' && c <= '9'))
-			return (1);
-	else
-		return (0);
-}
-
-//	validates ac & av
-//	ac, chars in path, checks extension .cub
-//	returns working fd
-//	otherwise exits program
 static int	ft_validate(int ac, char *av[], t_vars *vars)
 {
 	static int	i = 0;
@@ -50,13 +33,12 @@ static int	ft_validate(int ac, char *av[], t_vars *vars)
 	return (fd);
 }
 
-//	validates input (ac & av being correct and openable)
-//	and initialise variables etc.
 t_vars	*ft_init_vars(int ac, char *av[])
 {
 		t_vars	*vars;
 
 		vars = ft_calloc(1, sizeof(t_vars));
+		vars->player = ft_calloc(1, sizeof(t_player));
 		vars->fd_map = ft_validate(ac, av, vars);
 		return (vars);
 }
