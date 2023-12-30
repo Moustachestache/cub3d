@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 13:15:13 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 14:42:26 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	ft_validatecolour(char *str, int *target, t_map *mapdata, t_vars *var
 	char	**temp;
 
 	(void) mapdata;
-	(void) vars;
 	i = 0;
 	temp = NULL;
 	while (str[i] && (str[i] == ' ' || str[i] == '	'))
@@ -47,7 +46,12 @@ static int	ft_validatecolour(char *str, int *target, t_map *mapdata, t_vars *var
 	temp = ft_split(str + i, ',');
 	j = -1;
 	while (temp[++j])
-		*target += ft_atoi(temp[j]) << (16 - (j * 8));
+	{
+		i = ft_atoi(temp[j]);
+			if (i > 255)
+				ft_exit(ft_perror("Color Value Superior To 255", 1), vars);
+		*target += i << (16 - (j * 8));
+	}
 	ft_free_split(temp);
 	return (1);
 }
@@ -81,38 +85,30 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 	return (count);
 }
 
-static void	ft_fetch_mapdata(t_map *mapdata, t_vars *vars)
+static void	ft_fetch_map(t_map *mapdata, t_vars *vars)
 {
-	char	*buffer;
-	int		i;
+	//	here map is taked
 
-	(void) mapdata;
-	buffer = get_next_line(vars->fd_map);
-	while (buffer && ft_read_line(buffer, mapdata, vars) < 6)
-	{
-			free(buffer);
-			buffer = get_next_line(vars->fd_map);
-	}
-	printf("found all textures, map is:\n");
-	i = 0;
-	while (buffer)
-	{
-		printf("[%i][%s]\n", i++, buffer);
-		free(buffer);
-		buffer = get_next_line(vars->fd_map);
-	}
 }
 
 t_map		*ft_parse_map(t_vars *vars)
 {
 	t_map	*mapdata;
-	(void) vars;
+	char	*buffer;
 
 	mapdata = ft_calloc(1, sizeof(t_map));
 	mapdata->no = ft_calloc(1, _POSIX_PATH_MAX);
 	mapdata->so = ft_calloc(1, _POSIX_PATH_MAX);
 	mapdata->ea = ft_calloc(1, _POSIX_PATH_MAX);
 	mapdata->we = ft_calloc(1, _POSIX_PATH_MAX);
-	ft_fetch_mapdata(mapdata, vars);
+//	here gets map info (textures, colours)
+	buffer = get_next_line(vars->fd_map);
+	while (buffer && ft_read_line(buffer, mapdata, vars) < 6)
+	{
+			free(buffer);
+			buffer = get_next_line(vars->fd_map);
+	}
+//	here get map and save into mapdata
+	ft_fetch_map()
 	return (mapdata);
 }

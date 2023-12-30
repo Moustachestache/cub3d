@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 13:40:22 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 14:28:17 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		main(int ac, char *av[])
 
 	vars = ft_init_vars(ac, av);
 	vars->mapdata = ft_parse_map(vars);
-//	ft_validate_mapdata(vars->mapdata);
 
 	//	debug
 	printf("map info:\n[no: %s] [so: %s] [we: %s] [ea: %s] [c: %i] [f: %i]\n", vars->mapdata->no, vars->mapdata->so, vars->mapdata->we, vars->mapdata->ea, vars->mapdata->ceiling, vars->mapdata->floor);
