@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 14:42:26 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 23:00:01 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,33 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 static void	ft_fetch_map(t_map *mapdata, t_vars *vars)
 {
 	//	here map is taked
+	char	*buffer;
+	int		temp;
+	int		i;
 
+	buffer = get_next_line(vars->fd_map);
+	//	skip shit lines
+	while (buffer && buffer[0] == '\n')
+	{
+		free(buffer);
+		buffer = get_next_line(vars->fd_map);
+	}
+	if (!buffer)
+		ft_exit(ft_perror("No Map Information Found", 1), vars);
+	//	probably later make the map a bunch of t_nodes but i cant see why thatd be needed right now
+	//	a proble; for future me:
+	mapdata->map = ft_calloc(4096, sizeof(char));
+	i = -1;
+	while (buffer)
+	{
+		temp = ft_strlen(buffer);
+		if (mapdata->width < temp)
+			mapdata->width = temp;
+		buffer[temp - 1] = '\0';
+		mapdata->map[++i] = buffer;
+		buffer = get_next_line(vars->fd_map);
+	}
+	mapdata->height = i;
 }
 
 t_map		*ft_parse_map(t_vars *vars)
@@ -108,7 +134,8 @@ t_map		*ft_parse_map(t_vars *vars)
 			free(buffer);
 			buffer = get_next_line(vars->fd_map);
 	}
+	free(buffer);
 //	here get map and save into mapdata
-	ft_fetch_map()
+	ft_fetch_map(mapdata, vars);
 	return (mapdata);
 }

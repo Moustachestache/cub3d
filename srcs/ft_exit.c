@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 12:45:33 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 23:17:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	ft_free_map(t_map *mapdata)
 {
-	static int	i = 0;
-
 	if (mapdata->no)
 		free(mapdata->no);
 	if (mapdata->so)
@@ -24,11 +22,7 @@ static void	ft_free_map(t_map *mapdata)
 		free(mapdata->ea);
 	if (mapdata->we)
 		free(mapdata->we);
-	while (mapdata->map[i])
-	{
-		free(mapdata->map[i]);
-		i++;
-	}
+	ft_free_split(mapdata->map);
 	free(mapdata);
 }
 
@@ -38,7 +32,7 @@ void	ft_exit(int exit_value, t_vars *vars)
 	if (vars && vars->mapdata)
 		ft_free_map(vars->mapdata);
 	if (vars->fd_map > 0 && close(vars->fd_map < 0))
-		ft_perror("error", -1);
+		ft_perror("no idea how we got here but hey, looks like we are clearing up before an emergency exit and the fd of the map doesnt exist", -1);
 	if (vars->player)
 		free(vars->player);
 	if (vars)
