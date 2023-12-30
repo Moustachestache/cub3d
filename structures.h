@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/27 15:12:23 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 10:58:21 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_vars {
 }				t_vars;
 
 typedef struct s_map {
-	char	*floor;
-	char	*ceiling;
+	int		floor;
+	int		ceiling;
 	char	*no;
 	char	*so;
 	char	*ea;

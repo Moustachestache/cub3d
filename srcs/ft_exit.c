@@ -6,13 +6,11 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/27 13:17:17 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 12:45:33 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-//	cleans memory and exits
 
 static void	ft_free_map(t_map *mapdata)
 {
@@ -34,6 +32,7 @@ static void	ft_free_map(t_map *mapdata)
 	free(mapdata);
 }
 
+//	cleans memory and exits
 void	ft_exit(int exit_value, t_vars *vars)
 {
 	if (vars && vars->mapdata)

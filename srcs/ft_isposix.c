@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:18:37 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/28 17:29:00 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 10:56:42 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	ft_isposixfile(char c)
 		previous = c;
 		return (1);
 	}
-//	there is a rogue comma in the logic. a problem for later, surely
-	else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_') || (c == ',') || (c == '-') || (c == '.') || (c == '/') || (c >= '0' && c <= '9'))
+	else if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c == '_') || (c == '-') || (c == '.') || (c == '/') || (c >= '0' && c <= '9'))
 	{
 		previous = c;
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/28 13:09:13 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 13:14:14 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	ft_bzero(void *s, size_t n);
 int		ft_perror(char *error, int retval);
 t_map	*ft_parse_map(t_vars *vars);
 int		ft_isposixfile(char c);
+int		ft_atoi(const char *nptr);
+char	**ft_split(char const *s, char c);
+void	ft_free_split(char **split);
 
 #endif

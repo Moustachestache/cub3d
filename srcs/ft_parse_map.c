@@ -6,22 +6,11 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/28 17:24:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/30 13:15:13 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/*	strict order & definition: 
-no ./path
-so ./path
-we ./path
-ea ./path
-f rgb
-c rgb
-
-map **char
-*/
 
 static int	ft_validatepath(char *str, char *target, t_map *mapdata, t_vars *vars)
 {
@@ -38,6 +27,28 @@ static int	ft_validatepath(char *str, char *target, t_map *mapdata, t_vars *vars
 	j = -1;
 	while (str[i] && str[i] != '\n' && (ft_isposixfile(str[i])))
 		target[++j] = str[i++];
+	return (1);
+}
+
+static int	ft_validatecolour(char *str, int *target, t_map *mapdata, t_vars *vars)
+{
+	int		i;
+	int		j;
+	char	**temp;
+
+	(void) mapdata;
+	(void) vars;
+	i = 0;
+	temp = NULL;
+	while (str[i] && (str[i] == ' ' || str[i] == '	'))
+		i++;
+	if (str[i] == '\0' || str[i] == '\n')
+		return (0);
+	temp = ft_split(str + i, ',');
+	j = -1;
+	while (temp[++j])
+		*target += ft_atoi(temp[j]) << (16 - (j * 8));
+	ft_free_split(temp);
 	return (1);
 }
 
@@ -61,9 +72,9 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 					 printf("[%i]we texture\n", count++);
 		else if ((line[i] == 'E') && (line[i + 1] && line[i + 1] == 'A') && ft_validatepath(line + i + 2, mapdata->ea, mapdata, vars))
 					 printf("[%i]ea texture\n", count++);
-		else if ((line[i] == 'C') && line[i + 1] && ft_validatepath(line + i + 1, mapdata->ceiling, mapdata, vars))
+		else if ((line[i] == 'C') && line[i + 1] && ft_validatecolour(line + i + 1, &mapdata->ceiling, mapdata, vars))
 					 printf("[%i]c colour\n", count++);
-		else if ((line[i] == 'F') && line[i + 1] && ft_validatepath(line + i + 1, mapdata->floor, mapdata, vars))
+		else if ((line[i] == 'F') && line[i + 1] && ft_validatecolour(line + i + 1, &mapdata->floor, mapdata, vars))
 					 printf("[%i]f colour\n", count++);
 		i++;
 	}
@@ -102,8 +113,6 @@ t_map		*ft_parse_map(t_vars *vars)
 	mapdata->so = ft_calloc(1, _POSIX_PATH_MAX);
 	mapdata->ea = ft_calloc(1, _POSIX_PATH_MAX);
 	mapdata->we = ft_calloc(1, _POSIX_PATH_MAX);
-	mapdata->floor = ft_calloc(1, _POSIX_PATH_MAX);
-	mapdata->ceiling = ft_calloc(1, _POSIX_PATH_MAX);
 	ft_fetch_mapdata(mapdata, vars);
 	return (mapdata);
 }
