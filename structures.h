@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 23:10:25 by mjochum          ###   ########.fr       */
+/*   Updated: 2023/12/31 13:30:49 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_player t_player;
 
 typedef struct s_vars {
 	int			fd_map;
+	void		*mlx;
+	void		*mlx_win;
 	t_map		*mapdata;
 	t_player	*player;
 }				t_vars;
