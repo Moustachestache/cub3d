@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/31 14:23:53 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/01 15:13:52 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		main(int ac, char *av[])
 	//	mlx
 	vars->mlx = mlx_init();
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
+	mlx_key_hook(vars->mlx_win, ft_keyhook, vars);
+//	mlx_hook(vars->mlx_win, 2, 1L<<0, close, &vars);
 	mlx_loop(vars->mlx);
 	//	ok bye
 	ft_exit(1, vars);

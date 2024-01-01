@@ -6,11 +6,19 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 23:17:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/01 15:23:06 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static void	ft_free_mlx(t_vars *vars)
+{
+	if (vars->mlx_win)
+		mlx_destroy_window(vars->mlx, vars->mlx_win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+}
 
 static void	ft_free_map(t_map *mapdata)
 {
@@ -35,6 +43,8 @@ void	ft_exit(int exit_value, t_vars *vars)
 		ft_perror("no idea how we got here but hey, looks like we are clearing up before an emergency exit and the fd of the map doesnt exist", -1);
 	if (vars->player)
 		free(vars->player);
+	if (vars->mlx)
+		ft_free_mlx(vars);
 	if (vars)
 		free(vars);
 	exit(exit_value);
