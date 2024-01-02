@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/02 12:36:56 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:46:17 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
 void	ft_free_split(char **split);
 int		ft_keyhook(int keycode, t_vars *vars);
+int		ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
 
 #endif

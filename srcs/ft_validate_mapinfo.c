@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 12:00:03 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/02 14:44:33 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:11:01 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 static int	ft_ismapchar(char c)
 {
-	if (c == '0' || c == '1' || c =='N' || c == 'S' ||
-			c == 'E' || c == 'W' || c == 'D')
+	if (c == '0' || c == '1' || c =='D' || c == '\n' || c == ' ')
 		return (1);
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (2);
 	return (0);
 }
 
-static int	ft_validate_characters(t_map *mapdata, t_vars *vars);
+static int	ft_validate_characters(t_map *mapdata, t_vars *vars)
 {
-	static char start = 0;
 	int			i;
 	int			j;
+	int			temp;
 
 	i = 0;
 	j = 0;
@@ -32,14 +33,17 @@ static int	ft_validate_characters(t_map *mapdata, t_vars *vars);
 	{
 		while (mapdata->map[i][j])
 		{
-			if (ft_ismapchar(mapdata->map[i][j]) && vars->player->start == 0)
+			temp = ft_ismapchar(mapdata->map[i][j]);
+			if (temp == 2 && vars->player->start == 0)
 				vars->player->start = mapdata->map[i][j];
-			else 
+			else if (temp != 1)
 				return (0);
 			j++;
 		}
+		j = 0;
 		i++;
 	}
+	return (1);
 }
 //	rules
 //	- 1 everywhere around
@@ -50,4 +54,5 @@ int	ft_validate_mapinfo(t_map *mapdata, t_vars *vars)
 	if (!ft_validate_characters(mapdata, vars))
 		ft_exit(ft_perror("Map Has Invalid Characters", 1), vars);
 	//	start from player
+	return (1);
 }
