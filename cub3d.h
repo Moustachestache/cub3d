@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/01 15:11:35 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:36:56 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define BUFFER_SIZE 1000
 # define W_HEIGHT 900
 # define W_WIDTH 1600
+# define CELL_SIZE 50
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);

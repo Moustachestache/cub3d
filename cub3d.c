@@ -6,11 +6,17 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/01 15:13:52 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/01 18:41:44 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	ft_click_exit(void *param)
+{
+	ft_exit(EXIT_SUCCESS, param);
+	return (EXIT_SUCCESS);
+}
 
 //	init vars
 //	parse map
@@ -33,7 +39,7 @@ int		main(int ac, char *av[])
 	vars->mlx = mlx_init();
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	mlx_key_hook(vars->mlx_win, ft_keyhook, vars);
-//	mlx_hook(vars->mlx_win, 2, 1L<<0, close, &vars);
+	mlx_hook(vars->mlx_win, 17, 0L, ft_click_exit, vars);
 	mlx_loop(vars->mlx);
 	//	ok bye
 	ft_exit(1, vars);

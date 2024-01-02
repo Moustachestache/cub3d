@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/31 13:30:49 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/02 12:36:26 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_map {
 ;
 typedef struct s_player {
 	char	start;
-	int		xstart;
-	int		ystart;
+	int		xpos;
+	int		ypos;
 }		t_player;
 
 #endif
