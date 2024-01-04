@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/02 14:46:17 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/04 13:18:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_perror(char *error, int retval);
 t_map	*ft_parse_map(t_vars *vars);
+t_image	*ft_init_image(t_vars *vars);
 int		ft_isposixfile(char c);
 int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
 void	ft_free_split(char **split);
 int		ft_keyhook(int keycode, t_vars *vars);
 int		ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
+void	ft_img_pix_put(t_pixel pixel, t_image *image);
+int		ft_render(t_vars *vars);
+void	ft_img_flush(t_vars *vars);
+void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
 
 #endif

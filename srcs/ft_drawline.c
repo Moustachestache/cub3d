@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keyhooks.c                                      :+:      :+:    :+:   */
+/*   ft_drawline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/04 10:10:48 by mjochum          ###   ########.fr       */
+/*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
+/*   Updated: 2024/01/04 13:30:53 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	ft_keyhook(int keycode, t_vars *vars)
+//	ft_img_pix_put(t_pixel, t_image))
+
+static void	ft_octan_0(t_pixel start, t_pixel dest, t_vars *vars)
 {
-//debug
-printf("[%p] keycode: %i\n", vars, keycode);
-	if (keycode == 65307)
-		ft_exit(EXIT_SUCCESS, vars);
-	ft_render(vars);
-	return (0);
+//		error, slope, etc
+}
+
+void		ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
+{
+	// swap
+	t_pixel	swap;
+
+	swap = (t_pixel){0, 0, 0};
+	if (start.x < dest.x)
+	{
+		swap = start;
+		start = dest;
+		dest = swap;
+	}
+	ft_octan_0(start, dest, vars);
 }

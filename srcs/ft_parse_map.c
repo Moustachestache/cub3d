@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/02 12:03:05 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/04 13:29:25 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_validatepath(char *str, char *target, t_map *mapdata, t_vars *vars
 	return (1);
 }
 
-static int	ft_validatecolour(char *str, int *target, t_map *mapdata, t_vars *vars)
+static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_vars *vars)
 {
 	int		i;
 	int		j;
@@ -137,7 +137,5 @@ t_map		*ft_parse_map(t_vars *vars)
 	free(buffer);
 //	here get map and save into mapdata
 	ft_fetch_map(mapdata, vars);
-//	validate map (correct characters, starting position and walls all around)
-	ft_validate_mapinfo(mapdata, vars);
 	return (mapdata);
 }

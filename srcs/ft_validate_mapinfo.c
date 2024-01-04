@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 12:00:03 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/02 15:11:01 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/04 07:21:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ static int	ft_validate_characters(t_map *mapdata, t_vars *vars)
 		{
 			temp = ft_ismapchar(mapdata->map[i][j]);
 			if (temp == 2 && vars->player->start == 0)
+			{
 				vars->player->start = mapdata->map[i][j];
+				vars->player->xpos = j;
+				vars->player->ypos = i;
+			}
 			else if (temp != 1)
-				return (0);
+				ft_exit(ft_perror("Map Has Too Many Starting Points", EXIT_FAILURE), vars);
 			j++;
 		}
 		j = 0;
@@ -52,7 +56,7 @@ static int	ft_validate_characters(t_map *mapdata, t_vars *vars)
 int	ft_validate_mapinfo(t_map *mapdata, t_vars *vars)
 {
 	if (!ft_validate_characters(mapdata, vars))
-		ft_exit(ft_perror("Map Has Invalid Characters", 1), vars);
+		ft_exit(ft_perror("Map Has Invalid Characters", EXIT_FAILURE), vars);
 	//	start from player
 	return (1);
 }
