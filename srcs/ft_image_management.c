@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/04 13:30:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/05 18:55:32 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	ft_img_pix_put(t_pixel pixel, t_image *image)
 {
     char    *ptr;
 
+	if (pixel.y < 0 || pixel.x < 0 || pixel.x > W_WIDTH || pixel.y > W_HEIGHT)
+		return ;
     ptr = image->addr + (pixel.y * image->len + pixel.x * (image->bpp / 8));
     *(unsigned int *)ptr = pixel.colour;
 }
@@ -69,8 +71,6 @@ int	ft_render(t_vars *vars)
 	ft_img_flush(vars);
 	//background
 	ft_render_background(vars->buffer, vars);
-	//rendered raycasting
-	ft_drawline((t_pixel){500,500,16711937},(t_pixel){800,800,16711937},vars);
 	//interface: mapname,
 
 	//minimap
