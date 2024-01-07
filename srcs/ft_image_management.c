@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/05 20:09:23 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/07 12:08:33 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 	(void) vars;
 	x = 0;
 	y = W_HEIGHT - (W_HEIGHT / 5);
-	colour = 4539717;
+	colour = 0x00ff00;
 	while (y <= W_HEIGHT)
 	{
 		while (x < W_WIDTH)
@@ -75,6 +75,7 @@ int	ft_render(t_vars *vars)
 	//interface: mapname,
 	ft_render_interface(vars->buffer, vars);
 	//minimap
+	ft_render_minimap(vars->buffer, vars);
 
 	//display
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->buffer->image, 0, 0);

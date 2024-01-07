@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/05 10:46:57 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/06 13:06:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define BUFFER_SIZE 1000
 # define W_HEIGHT 900
 # define W_WIDTH 1600
-# define CELL_SIZE 50
+# define CELL_SIZE 10
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
@@ -55,5 +55,6 @@ void	ft_img_pix_put(t_pixel pixel, t_image *image);
 int		ft_render(t_vars *vars);
 void	ft_img_flush(t_vars *vars);
 void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
+void	ft_render_minimap(t_image *image, t_vars *vars);
 
 #endif

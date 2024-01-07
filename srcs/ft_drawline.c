@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/05 18:55:19 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/07 12:17:03 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	ft_octan_0(t_pixel start, t_pixel dest, t_vars *vars)
 
 	error = 0;
 	slope = (float)(dest.x - start.x) / (float)(dest.y - start.y);
-	printf("[0 - slope: %f]\n", slope);
 	while (start.y >= dest.y)
 	{
 		ft_img_pix_put(start, vars->buffer);
@@ -40,7 +39,6 @@ static void	ft_octan_1(t_pixel start, t_pixel dest, t_vars *vars)
 
 	error = 0;
 	slope = (float)(dest.y - start.y) / (float)(dest.x - start.x);
-	printf("[1 - slope: %f]\n", slope);
 	while (start.x <= dest.x)
 	{
 		ft_img_pix_put(start, vars->buffer);
@@ -61,7 +59,6 @@ static void	ft_octan_2(t_pixel start, t_pixel dest, t_vars *vars)
 
 	error = 0;
 	slope = (float)(dest.y - start.y) / (float)(dest.x - start.x);
-	printf("[2 - slope: %f]\n", slope);
 	while (start.x <= dest.x)
 	{
 		ft_img_pix_put(start, vars->buffer);
@@ -82,7 +79,6 @@ static void	ft_octan_3(t_pixel start, t_pixel dest, t_vars *vars)
 
 	error = 0;
 	slope = (float)(dest.x - start.x) / (float)(dest.y - start.y);
-	printf("[3 - slope: %f]\n", slope);
 	while (start.y <= dest.y)
 	{
 		ft_img_pix_put(start, vars->buffer);
