@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 12:08:33 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/08 13:41:34 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,14 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 //	refreshes and displays all, including image
 int	ft_render(t_vars *vars)
 {
-	// flush
+	// 	flush
 	ft_img_flush(vars);
-	//background
+	//	background
 	ft_render_background(vars->buffer, vars);
-	//interface: mapname,
+	//	calculate  raycasting.
+	//	interface: mapname,
 	ft_render_interface(vars->buffer, vars);
-	//minimap
+	//	minimap
 	ft_render_minimap(vars->buffer, vars);
 
 	//display

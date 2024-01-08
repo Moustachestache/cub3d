@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 18:05:25 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/08 22:17:37 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ static void	ft_drawplayer(int y_offset, t_vars *vars)
 		i++;
 	}
 	//	pipou
+	ft_drawline(\
+		(t_pixel){x, y + 2, 0xff0000},\
+		ft_transform_pixel((t_pixel){x, y, 0}, 10, vars->player->vector),\
+		vars);
 }
 
 void	ft_render_minimap(t_image *image, t_vars *vars)

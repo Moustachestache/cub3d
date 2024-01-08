@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/06 13:06:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/08 22:09:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include "structures.h"
 
 # define BUFFER_SIZE 1000
-# define W_HEIGHT 900
-# define W_WIDTH 1600
-# define CELL_SIZE 10
+# define W_HEIGHT 600
+# define W_WIDTH 800
+# define CELL_SIZE 5
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
@@ -56,5 +56,9 @@ int		ft_render(t_vars *vars);
 void	ft_img_flush(t_vars *vars);
 void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
 void	ft_render_minimap(t_image *image, t_vars *vars);
+void	ft_update_vector(float add, t_vars *vars);
+t_pixel	ft_transform_pixel(t_pixel pixel, int increase, float vector);
+float	ft_deg_to_rad(float a);
+void	ft_transform_player(int *x, int *y, int increase, float vector);
 
 #endif

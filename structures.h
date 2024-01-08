@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 11:01:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:37:47 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_map {
 
 typedef struct s_player {
 	char				start;
-	int					vector;
+	float				vector;
 	int					xpos;
 	int					ypos;
 }						t_player;

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 12:00:03 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 11:29:04 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/08 21:59:42 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static int	ft_ismapchar(char c)
 static int	ft_get_playervector(char c)
 {
 	if (c == 'N')
-		return (0);
-	if (c == 'E')
-		return (90);
-	if (c == 'S')
-		return (180);
-	if (c == 'W')
 		return (270);
+	if (c == 'E')
+		return (0);
+	if (c == 'S')
+		return (90);
+	if (c == 'W')
+		return (180);
 	return (0);
 }
 
