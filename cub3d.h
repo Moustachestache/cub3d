@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/08 22:09:40 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/14 12:25:47 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ int		ft_render(t_vars *vars);
 void	ft_img_flush(t_vars *vars);
 void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
 void	ft_render_minimap(t_image *image, t_vars *vars);
-void	ft_update_vector(float add, t_vars *vars);
-t_pixel	ft_transform_pixel(t_pixel pixel, int increase, float vector);
+void	ft_update_vector(int add, t_vars *vars);
+t_pixel	ft_transform_pixel(t_pixel pixel, float increase, float vector);
 float	ft_deg_to_rad(float a);
-void	ft_transform_player(int *x, int *y, int increase, float vector);
+void	ft_transform_player(float *x, float *y, float increase, float vector);
+void	ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 
 #endif

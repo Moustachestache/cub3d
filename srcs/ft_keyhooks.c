@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/08 22:21:18 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/14 12:26:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	ft_keyhook(int keycode, t_vars *vars)
 	if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
 	else if (keycode == 119)	//up
-		ft_transform_player(&vars->player->xpos, &vars->player->ypos, +5, vars->player->vector);
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, vars->player->step, vars->player->angle);
 	else if (keycode == 115)	//down
-		ft_transform_player(&vars->player->xpos, &vars->player->ypos, -5, vars->player->vector);
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, vars->player->step, vars->player->angle);
 	else if (keycode == 97)		//left
 		ft_update_vector(+5, vars);
 	else if (keycode == 100)	//right
 		ft_update_vector(-5, vars);
-	printf("playerdata:\n[vector: %f][x: %i][y: %i]\n", vars->player->vector, vars->player->xpos, vars->player->ypos);
+	printf("playerdata:\n[vector: %i][x: %f][y: %f]\n", vars->player->angle, vars->player->xpos, vars->player->ypos);
 	ft_render(vars);
 	return (0);
 }
