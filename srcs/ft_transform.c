@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:42:12 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/14 12:43:05 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:54:59 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static float		ft_transform_x(float x, float increase, float vector)
 	float		dx;
 
 	vector = ft_deg_to_rad(vector);
-	dx = x + -cosf(vector) * increase;
+	dx = x + cosf(vector) * increase;
 	return (dx);
 }
 
@@ -26,7 +26,7 @@ static float		ft_transform_y(float y, float increase, float vector)
 	float		dy;
 
 	vector = ft_deg_to_rad(vector);
-	dy = y + sinf(vector) * increase;
+	dy = y + -sinf(vector) * increase;
 	return (dy);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/14 12:26:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/16 11:53:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_keyhook(int keycode, t_vars *vars)
 	else if (keycode == 119)	//up
 		ft_transform_player(&vars->player->xpos, &vars->player->ypos, vars->player->step, vars->player->angle);
 	else if (keycode == 115)	//down
-		ft_transform_player(&vars->player->xpos, &vars->player->ypos, vars->player->step, vars->player->angle);
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, -(vars->player->step), vars->player->angle);
 	else if (keycode == 97)		//left
 		ft_update_vector(+5, vars);
 	else if (keycode == 100)	//right
