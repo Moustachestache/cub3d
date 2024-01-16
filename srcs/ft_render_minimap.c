@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/14 12:23:00 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/16 13:47:52 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,16 @@ static int	ft_get_mapcolour(char c)
 
 static void	ft_drawplayer(t_player *player, t_vars *vars)
 {
-	/*
-	int	x_abs;
-	int	y_abs;
-	int	x_pos;
-	int	y_pox;
+	t_pixel		a;
+	t_pixel		b;
+	int		colour;
 
-	x_abs = abs(player.xpos);
-	y_abs = abs(player.ypos);
-	*/
-	t_pixel	a;
-	t_pixel	b;
-	a = (t_pixel){player->xpos - 2, player->ypos - 2, 0xff0000};
+	colour = 0xff0000;
+	a = (t_pixel){player->xpos - 2, player->ypos - 2, colour};
 	b = (t_pixel){player->xpos + 2, player->ypos + 2, 0};
 	ft_map_square(a, b, vars);
+	a = (t_pixel){player->xpos, player->ypos, colour};
+	ft_drawline(a, ft_transform_pixel(a, 30, vars->player->angle), vars);
 }
 
 void	ft_render_minimap(t_image *image, t_vars *vars)

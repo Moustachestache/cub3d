@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/16 11:53:40 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/16 13:48:47 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_keyhook(int keycode, t_vars *vars)
 		ft_update_vector(+5, vars);
 	else if (keycode == 100)	//right
 		ft_update_vector(-5, vars);
-	printf("playerdata:\n[vector: %i][x: %f][y: %f]\n", vars->player->angle, vars->player->xpos, vars->player->ypos);
 	ft_render(vars);
 	return (0);
 }
