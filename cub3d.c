@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/05 20:09:12 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:00:00 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		main(int ac, char *av[])
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	//		note: buffer is the image render. We put pixels to it, then refresh the window
 	vars->buffer = ft_calloc(1, sizeof(t_image));
+	//		set font info for mlx
+	mlx_set_font(vars->mlx, vars->mlx_win, "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1");
 	mlx_key_hook(vars->mlx_win, ft_keyhook, vars);
 	mlx_hook(vars->mlx_win, 17, 0L, ft_click_exit, vars);
 	mlx_loop(vars->mlx);

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:42:12 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/16 11:54:59 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:45:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ static float		ft_transform_y(float y, float increase, float vector)
 
 void		ft_transform_player(float *x, float *y, float increase, float vector)
 {
-	printf("transform_player: [x: %f y: %f increase: %f vector: %f]\n", *x, *y, increase, vector);
 	*x = ft_transform_x(*x, increase, vector);
 	*y = ft_transform_y(*y, increase, vector);
-	printf("transform_player: [x: %f y: %f increase: %f vector: %f]\n", *x, *y, increase, vector);
 }
 
 t_pixel		ft_transform_pixel(t_pixel pixel, float increase, float vector)

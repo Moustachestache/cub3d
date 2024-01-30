@@ -6,14 +6,24 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/16 13:48:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:29:19 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+static void	ft_key_toggle(int *keyval)
+{
+	if (*keyval == 0)	
+		*keyval = 1;
+	else
+		*keyval = 0;
+}
+
 int	ft_keyhook(int keycode, t_vars *vars)
 {
+	if (keycode == 105)
+		ft_key_toggle(&vars->interface_toggle);
 	if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
 	else if (keycode == 119)	//up

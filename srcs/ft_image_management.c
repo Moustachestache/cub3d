@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/08 13:41:34 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:08:47 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,18 @@ static void	ft_render_background(t_image *image, t_vars *vars)
 
 static void	ft_render_interface(t_image *image, t_vars *vars)
 {
-	int		x;
-	int		y;
-	int		colour;
+	//	write mapname, keys, framerate?
+	int		offset;
 
-	(void) vars;
-	x = 0;
-	y = W_HEIGHT - (W_HEIGHT / 5);
-	colour = 0x00ff00;
-	while (y <= W_HEIGHT)
+	(void) image;
+	offset = CELL_SIZE * (vars->mapdata->height + 4);
+	if (vars->interface_toggle == 0)
+		ft_write_toscreen(10, 20, "toggle interface: [i]", 0x0, vars);
+	else
 	{
-		while (x < W_WIDTH)
-		{
-			ft_img_pix_put((t_pixel){x, y, colour}, image);
-			x++;
-		}
-		x = 0;
-		y++;
+		ft_write_toscreen(10, offset,\
+			"toggle interface: [i]\nturn: [mouse] + [a] & [d]\nmove: [w] & [s]\ninteract: [space]",\
+			0x0, vars);
 	}
 }
 
@@ -73,12 +68,13 @@ int	ft_render(t_vars *vars)
 	//	background
 	ft_render_background(vars->buffer, vars);
 	//	calculate  raycasting.
-	//	interface: mapname,
-	ft_render_interface(vars->buffer, vars);
+	ft_raycast(vars);
 	//	minimap
-	ft_render_minimap(vars->buffer, vars);
-
-	//display
+	if (vars->interface_toggle != 0)
+		ft_render_minimap(vars->buffer, vars);
+	//	display
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->buffer->image, 0, 0);
+	//	do writing now so it isnt flushed by put_image_to_window
+	ft_render_interface(vars->buffer, vars);
 	return (0);
 }

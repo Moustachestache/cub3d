@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/14 12:31:59 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/28 17:15:46 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ typedef struct s_texture {
 	void		*image;
 	int			width;
 	int			height;
-} t_texture;
+}				t_texture;
 
 typedef struct s_vars {
 	int					fd_map;
+	int					interface_toggle;
 	void				*mlx;
 	void				*mlx_win;
 	t_image				*buffer;
@@ -62,7 +63,7 @@ typedef struct s_map {
 typedef struct s_player {
 	char				start;
 	float				step;
-	int		angle;
+	int					angle;
 	float				xpos;
 	float				ypos;
 }						t_player;

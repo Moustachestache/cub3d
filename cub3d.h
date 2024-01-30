@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/14 12:25:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/28 18:16:42 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define BUFFER_SIZE 1000
 # define W_HEIGHT 600
 # define W_WIDTH 800
+# define FOV 60
 # define CELL_SIZE 5
+# define T_SIZE 128
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
@@ -56,10 +58,14 @@ int		ft_render(t_vars *vars);
 void	ft_img_flush(t_vars *vars);
 void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
 void	ft_render_minimap(t_image *image, t_vars *vars);
-void	ft_update_vector(int add, t_vars *vars);
+//	old
+//	void	ft_update_vector(int add, t_vars *vars);
+//	new
+	void	ft_update_angle(float *angle, float add, t_vars *vars);
 t_pixel	ft_transform_pixel(t_pixel pixel, float increase, float vector);
 float	ft_deg_to_rad(float a);
 void	ft_transform_player(float *x, float *y, float increase, float vector);
 void	ft_player_init(int x, int y, char mapinfo, t_vars *vars);
+void	ft_write_toscreen(int x, int y, char *str, int colour, t_vars *vars);
 
 #endif

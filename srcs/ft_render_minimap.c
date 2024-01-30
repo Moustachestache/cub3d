@@ -6,13 +6,13 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/16 13:47:52 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:46:34 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_map_square(t_pixel start, t_pixel dest, t_vars *vars)
+static void		ft_map_square(t_pixel start, t_pixel dest, t_vars *vars)
 {
 	if (start.colour == 0x00ff00)
 		return ;
@@ -25,7 +25,7 @@ static void	ft_map_square(t_pixel start, t_pixel dest, t_vars *vars)
 	ft_drawline((t_pixel){start.x, dest.y - 1, start.colour & 0xc8c8c8}, dest, vars);
 }
 
-static int	ft_get_mapcolour(char c)
+static int		ft_get_mapcolour(char c)
 {
 	if (c == '0' || c== 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (0xffffff);
@@ -37,13 +37,14 @@ static int	ft_get_mapcolour(char c)
 		return (0x000000);
 }
 
-static void	ft_drawplayer(t_player *player, t_vars *vars)
+static void		ft_drawplayer(t_player *player, t_vars *vars)
 {
 	t_pixel		a;
 	t_pixel		b;
 	int		colour;
 
 	colour = 0xff0000;
+	printf("player - x: %i \ y: %i\n", player->xpos, player->ypos);
 	a = (t_pixel){player->xpos - 2, player->ypos - 2, colour};
 	b = (t_pixel){player->xpos + 2, player->ypos + 2, 0};
 	ft_map_square(a, b, vars);
@@ -51,7 +52,7 @@ static void	ft_drawplayer(t_player *player, t_vars *vars)
 	ft_drawline(a, ft_transform_pixel(a, 30, vars->player->angle), vars);
 }
 
-void	ft_render_minimap(t_image *image, t_vars *vars)
+void		ft_render_minimap(t_image *image, t_vars *vars)
 {
 	int	x;
 	int	y;
