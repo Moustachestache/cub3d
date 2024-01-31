@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 12:17:03 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/09 14:29:55 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,18 @@ static void	ft_octan_3(t_pixel start, t_pixel dest, t_vars *vars)
 void		ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
 {
 	t_pixel		swap;
+	int			colour;
 	int			x;
 	int			y;
 
 	swap = (t_pixel){0, 0, 0};
 	if (start.x > dest.x)
 	{
+		colour = start.colour;
 		swap = start;
 		start = dest;
 		dest = swap;
+		start.colour = colour;
 	}
 	x = dest.x - start.x;
 	y = dest.y - start.y;

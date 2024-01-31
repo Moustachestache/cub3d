@@ -6,27 +6,34 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 12:19:39 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:29:19 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+static void	ft_key_toggle(int *keyval)
+{
+	if (*keyval == 0)	
+		*keyval = 1;
+	else
+		*keyval = 0;
+}
+
 int	ft_keyhook(int keycode, t_vars *vars)
 {
-//debug
-printf("[%p] keycode: %i\n", vars, keycode);
+	if (keycode == 105)
+		ft_key_toggle(&vars->interface_toggle);
 	if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
-	else if (keycode == 119)
-		vars->player->ypos--;
-	else if (keycode == 115)
-		vars->player->ypos++;
-	else if (keycode == 97)
-		vars->player->xpos--;
-	else if (keycode == 100)
-		vars->player->xpos++;
-
+	else if (keycode == 119)	//up
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, vars->player->step, vars->player->angle);
+	else if (keycode == 115)	//down
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, -(vars->player->step), vars->player->angle);
+	else if (keycode == 97)		//left
+		ft_update_vector(+5, vars);
+	else if (keycode == 100)	//right
+		ft_update_vector(-5, vars);
 	ft_render(vars);
 	return (0);
 }
