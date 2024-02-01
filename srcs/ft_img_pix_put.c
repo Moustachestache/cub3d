@@ -6,12 +6,17 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 19:06:36 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/07 10:21:34 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:46:32 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
+/*
+void	ft_put_img(t_image *image, int x, int y, t_image *target)
+{
+i
+}
+*/
 void	ft_img_pix_put(t_pixel pixel, t_image *image)
 {
 	char	*ptr;

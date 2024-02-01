@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/28 17:15:46 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:02:39 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ typedef struct s_image {
 	int					endian;
 }						t_image;
 
-typedef struct s_texture {
-	void		*image;
-	int			width;
-	int			height;
-}				t_texture;
-
 typedef struct s_vars {
 	int					fd_map;
 	int					interface_toggle;
@@ -44,8 +38,7 @@ typedef struct s_vars {
 	t_image				*buffer;
 	t_map				*mapdata;
 	t_player			*player;
-	void			*logo;
-
+	t_image				logo;
 }						t_vars;
 
 typedef struct s_map {
@@ -57,7 +50,10 @@ typedef struct s_map {
 	char				*so;
 	char				*ea;
 	char				*we;
+	char				*door;
+	char				*sprite;
 	char				**map;
+	t_image				*texture;
 }						t_map;
 
 typedef struct s_player {

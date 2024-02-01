@@ -6,10 +6,10 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/30 11:26:55 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 12:26:22 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "../cub3d.h"
 int		ft_iswall(int x, int y, t_map *map)
 {
@@ -54,4 +54,4 @@ void	ft_raycast(t_vars *vars)
 			ft_draw_slice(camera, vars);
 			camera.angle -= angleincrement;
 	}
-}
+}*/

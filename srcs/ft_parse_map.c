@@ -6,28 +6,30 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/04 13:29:25 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 21:20:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	ft_validatepath(char *str, char *target, t_map *mapdata, t_vars *vars)
+static char	*ft_validatepath(char *str, t_map *mapdata, t_vars *vars)
 {
 	int		i;
 	int		j;
+	char	*target;
 
 	(void) mapdata;
 	(void) vars;
 	i = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '	'))
+	while (str[i] && (ft_isspace(str[i])))
 		i++;
 	if (str[i] == '\0' || str[i] == '\n')
-		return (0);
+		return (NULL);
 	j = -1;
+	target = ft_calloc(1, _POSIX_PATH_MAX);
 	while (str[i] && str[i] != '\n' && (ft_isposixfile(str[i])))
 		target[++j] = str[i++];
-	return (1);
+	return (target);
 }
 
 static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_vars *vars)
@@ -58,51 +60,42 @@ static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_
 
 static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 {
-	static int	count = 0;
 	int			i;
 
-	if (count == 6)
-		return (6);
 	i = 0;
-	while (line[i])
-	{
-		if (line[0] && line[0] == '/' && line[1] && line[1] == '/')
-			return (count);
-		else if ((line[i] == 'N') && (line[i + 1] && line[i + 1] == 'O') && ft_validatepath(line + i + 2, mapdata->no, mapdata, vars))
-					 printf("[%i]no texture\n", count++);
-		else if ((line[i] == 'S') && (line[i + 1] && line[i + 1] == 'O') && ft_validatepath(line + i + 2, mapdata->so, mapdata, vars))
-					 printf("[%i]so texture\n", count++);
-		else if ((line[i] == 'W') && (line[i + 1] && line[i + 1] == 'E') && ft_validatepath(line + i + 2, mapdata->we, mapdata, vars))
-					 printf("[%i]we texture\n", count++);
-		else if ((line[i] == 'E') && (line[i + 1] && line[i + 1] == 'A') && ft_validatepath(line + i + 2, mapdata->ea, mapdata, vars))
-					 printf("[%i]ea texture\n", count++);
-		else if ((line[i] == 'C') && line[i + 1] && ft_validatecolour(line + i + 1, &mapdata->ceiling, mapdata, vars))
-					 printf("[%i]c colour\n", count++);
-		else if ((line[i] == 'F') && line[i + 1] && ft_validatecolour(line + i + 1, &mapdata->floor, mapdata, vars))
-					 printf("[%i]f colour\n", count++);
+//	static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_vars *vars)
+	while (ft_isspace(line[i]))
 		i++;
-	}
-	return (count);
+	if (line[i] == '1' || line[i] == '0')
+		return (0);
+	if (!ft_strncmp(line + i, "NO", 2))
+		mapdata->no = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (!ft_strncmp(line + i, "WE", 2))
+		mapdata->we = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (!ft_strncmp(line + i, "SO", 2))
+		mapdata->so = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (!ft_strncmp(line + i, "EA", 2))
+		mapdata->ea = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (!ft_strncmp(line + i, "DO", 2))
+		mapdata->door = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (!ft_strncmp(line + i, "XO", 2))
+		mapdata->sprite = ft_validatepath(line + i + 2, mapdata, vars);
+	else if (line[i] == 'C')
+		ft_validatecolour(line + i + 2, &mapdata->ceiling, mapdata, vars);
+	else if (line[i] == 'F')
+		ft_validatecolour(line + i + 2, &mapdata->floor, mapdata, vars);
+	free(line);
+	return (1);
 }
 
-static void	ft_fetch_map(t_map *mapdata, t_vars *vars)
+static void	ft_fetch_map(char *buffer, t_map *mapdata, t_vars *vars)
 {
 	//	here map is taked
-	char	*buffer;
 	int		temp;
 	int		i;
 
-	buffer = get_next_line(vars->fd_map);
-	//	skip shit lines
-	while (buffer && buffer[0] == '\n')
-	{
-		free(buffer);
-		buffer = get_next_line(vars->fd_map);
-	}
 	if (!buffer)
 		ft_exit(ft_perror("No Map Information Found", 1), vars);
-	//	probably later make the map a bunch of t_nodes but i cant see why thatd be needed right now
-	//	a proble; for future me:
 	mapdata->map = ft_calloc(4096, sizeof(char));
 	i = -1;
 	while (buffer)
@@ -123,19 +116,14 @@ t_map		*ft_parse_map(t_vars *vars)
 	char	*buffer;
 
 	mapdata = ft_calloc(1, sizeof(t_map));
-	mapdata->no = ft_calloc(1, _POSIX_PATH_MAX);
-	mapdata->so = ft_calloc(1, _POSIX_PATH_MAX);
-	mapdata->ea = ft_calloc(1, _POSIX_PATH_MAX);
-	mapdata->we = ft_calloc(1, _POSIX_PATH_MAX);
 //	here gets map info (textures, colours)
 	buffer = get_next_line(vars->fd_map);
-	while (buffer && ft_read_line(buffer, mapdata, vars) < 6)
+	while (buffer && ft_read_line(buffer, mapdata, vars))
 	{
-			free(buffer);
-			buffer = get_next_line(vars->fd_map);
+//		free(buffer);
+		buffer = get_next_line(vars->fd_map);
 	}
-	free(buffer);
 //	here get map and save into mapdata
-	ft_fetch_map(mapdata, vars);
+	ft_fetch_map(buffer, mapdata, vars);
 	return (mapdata);
 }

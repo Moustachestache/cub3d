@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_update_vector.c                                 :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:52:51 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 12:30:02 by mjochum          ###   ########.fr       */
+/*   Created: 2024/02/01 17:11:41 by mjochum           #+#    #+#             */
+/*   Updated: 2024/02/01 18:27:06 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_update_angle(int *angle, int add, t_vars *vars)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	(void) vars;
-	*angle = (*angle + add) % 359;
-	if (angle < 0)
-		*angle = 359 - abs(*angle);
+	size_t	l;
+
+	l = 0;
+	if (n == 0)
+		return (0);
+	while (s1[l] && s2[l] && l < n)
+	{
+		if (s1[l] != s2[l])
+			return ((unsigned char) s1[l] - s2[l]);
+		l++;
+	}
+	if ((s1[l] != '\0' || s2[l] != '\0') && l < n)
+		return ((unsigned char) s1[l] - s2[l]);
+	return (0);
 }

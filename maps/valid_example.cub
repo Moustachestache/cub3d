@@ -1,11 +1,20 @@
-//	this is to be ignored but allow for comments
 
-NO		../assets/north.xpm
-SO ../assets/south.xpm
+
+  NO		./assets/north.xpm
+SO ./assets/south.xpm
 F 139,69,19
-  WE	../assets/west.xpm
-	 	EA ../assets/east.xpm
+
+  WE	./assets/west.xpm
+
+EA ./assets/east.xpm
+
 C		 30,144,255
+  DO	./assets/door.xpm
+  XO	./assets/sprite.xpm
+
+
+
+
 
 1111111111111111111111111111111111111111111111111111111111111111111111
 1000000000000000000000000000000000000000000000000000000000000000000001

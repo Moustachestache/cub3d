@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/28 18:16:42 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 17:40:35 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,15 @@ void	ft_render_minimap(t_image *image, t_vars *vars);
 //	old
 //	void	ft_update_vector(int add, t_vars *vars);
 //	new
-	void	ft_update_angle(float *angle, float add, t_vars *vars);
+	void	ft_update_angle(int *angle, int add, t_vars *vars);
 t_pixel	ft_transform_pixel(t_pixel pixel, float increase, float vector);
 float	ft_deg_to_rad(float a);
 void	ft_transform_player(float *x, float *y, float increase, float vector);
 void	ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 void	ft_write_toscreen(int x, int y, char *str, int colour, t_vars *vars);
+void	ft_init_textures(t_map *mapdata, t_vars *vars);
+void	ft_put_img(t_image *image, int x, int y, t_image *target);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_isspace(char c);
 
 #endif

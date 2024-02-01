@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/27 18:46:34 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 12:28:55 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void		ft_drawplayer(t_player *player, t_vars *vars)
 	int		colour;
 
 	colour = 0xff0000;
-	printf("player - x: %i \ y: %i\n", player->xpos, player->ypos);
+	printf("player - x: %f / y: %f\n", player->xpos, player->ypos);
 	a = (t_pixel){player->xpos - 2, player->ypos - 2, colour};
 	b = (t_pixel){player->xpos + 2, player->ypos + 2, 0};
 	ft_map_square(a, b, vars);

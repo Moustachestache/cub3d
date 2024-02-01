@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:47:36 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/23 13:00:46 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 20:58:07 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	ft_write_toscreen(int x, int y, char *str, int colour, t_vars *vars)
 		mlx_string_put(vars->mlx, vars->mlx_win, x, y + (i * 15), colour, split[i]);
 		i++;
 	}
-	free(split);
+	ft_free_split(split);
 }

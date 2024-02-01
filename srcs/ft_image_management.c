@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/27 16:08:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:46:48 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_render(t_vars *vars)
 	//	background
 	ft_render_background(vars->buffer, vars);
 	//	calculate  raycasting.
-	ft_raycast(vars);
+	//ft_raycast(vars);
 	//	minimap
 	if (vars->interface_toggle != 0)
 		ft_render_minimap(vars->buffer, vars);
@@ -76,5 +76,11 @@ int	ft_render(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->buffer->image, 0, 0);
 	//	do writing now so it isnt flushed by put_image_to_window
 	ft_render_interface(vars->buffer, vars);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[0].image, 100, 100);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[1].image, 250, 100);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[2].image, 100, 250);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[3].image, 250, 250);
+	//mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[4].image, 100, 100);
+	//mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[5].image, 100, 100);
 	return (0);
 }
