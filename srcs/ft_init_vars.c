@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/23 12:40:13 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 14:52:11 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static int	ft_validate(int ac, char *av[], t_vars *vars)
 	while (av[1][i])
 	{
 		if (ft_isposixfile(av[1][i]) == 0)
-			ft_exit(ft_perror("Invalid Characters In File Path", EXIT_FAILURE), vars);
+			ft_exit(ft_perror("Invalid Characters In File Path", \
+				EXIT_FAILURE), vars);
 		i++;
 	}
-	if ((av[1][i - 4]  != '.') || (av[1][i - 3] != 'c')
+	if ((av[1][i - 4] != '.') || (av[1][i - 3] != 'c')
 		|| (av[1][i - 2] != 'u') || (av[1][i - 1] != 'b'))
 		ft_exit(ft_perror("Invalid Filename Extension", EXIT_FAILURE), vars);
 	fd = open(av[1], O_RDONLY);

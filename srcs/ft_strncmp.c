@@ -6,13 +6,13 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:11:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 18:27:06 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 14:45:38 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	l;
 

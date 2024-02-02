@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 21:20:51 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 13:58:20 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static char	*ft_validatepath(char *str, t_map *mapdata, t_vars *vars)
 	return (target);
 }
 
-static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_vars *vars)
+static int	ft_validatecolour(char *str, unsigned int *target, \
+	t_map *mapdata, t_vars *vars)
 {
 	int		i;
 	int		j;
@@ -50,8 +51,8 @@ static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_
 	while (temp[++j])
 	{
 		i = ft_atoi(temp[j]);
-			if (i > 255)
-				ft_exit(ft_perror("Color Value Superior To 255", 1), vars);
+		if (i > 255)
+			ft_exit(ft_perror("Color Value Superior To 255", 1), vars);
 		*target += i << (16 - (j * 8));
 	}
 	ft_free_split(temp);
@@ -63,7 +64,6 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 	int			i;
 
 	i = 0;
-//	static int	ft_validatecolour(char *str, unsigned int *target, t_map *mapdata, t_vars *vars)
 	while (ft_isspace(line[i]))
 		i++;
 	if (line[i] == '1' || line[i] == '0')
@@ -90,7 +90,6 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 
 static void	ft_fetch_map(char *buffer, t_map *mapdata, t_vars *vars)
 {
-	//	here map is taked
 	int		temp;
 	int		i;
 
@@ -110,20 +109,15 @@ static void	ft_fetch_map(char *buffer, t_map *mapdata, t_vars *vars)
 	mapdata->height = i;
 }
 
-t_map		*ft_parse_map(t_vars *vars)
+t_map	*ft_parse_map(t_vars *vars)
 {
 	t_map	*mapdata;
 	char	*buffer;
 
 	mapdata = ft_calloc(1, sizeof(t_map));
-//	here gets map info (textures, colours)
 	buffer = get_next_line(vars->fd_map);
 	while (buffer && ft_read_line(buffer, mapdata, vars))
-	{
-//		free(buffer);
 		buffer = get_next_line(vars->fd_map);
-	}
-//	here get map and save into mapdata
 	ft_fetch_map(buffer, mapdata, vars);
 	return (mapdata);
 }

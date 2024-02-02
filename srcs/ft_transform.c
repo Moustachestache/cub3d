@@ -6,13 +6,13 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:42:12 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/27 18:45:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:22:59 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static float		ft_transform_x(float x, float increase, float vector)
+static float	ft_transform_x(float x, float increase, float vector)
 {
 	float		dx;
 
@@ -21,7 +21,7 @@ static float		ft_transform_x(float x, float increase, float vector)
 	return (dx);
 }
 
-static float		ft_transform_y(float y, float increase, float vector)
+static float	ft_transform_y(float y, float increase, float vector)
 {
 	float		dy;
 
@@ -30,18 +30,19 @@ static float		ft_transform_y(float y, float increase, float vector)
 	return (dy);
 }
 
-void		ft_transform_player(float *x, float *y, float increase, float vector)
+void	ft_transform_player(float *x, float *y, \
+	float increase, float vector)
 {
 	*x = ft_transform_x(*x, increase, vector);
 	*y = ft_transform_y(*y, increase, vector);
 }
 
-t_pixel		ft_transform_pixel(t_pixel pixel, float increase, float vector)
+t_pixel	ft_transform_pixel(t_pixel pixel, float increase, float vector)
 {
 	t_pixel		temp;
 
 	temp.x = ft_transform_x(pixel.x, increase, vector);
 	temp.y = ft_transform_y(pixel.y, increase, vector);
 	temp.colour = pixel.colour;
-	return(temp);
+	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/01/09 14:29:55 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:23:38 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	ft_octan_3(t_pixel start, t_pixel dest, t_vars *vars)
 	}
 }
 
-void		ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
+void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
 {
 	t_pixel		swap;
 	int			colour;

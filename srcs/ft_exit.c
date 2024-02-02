@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 23:08:26 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 13:59:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_free_mlx(t_vars *vars)
 
 static void	ft_free_map(t_map *mapdata, t_vars *vars)
 {
-	static int i = -1;
+	static int	i = -1;
 
 	if (mapdata->no)
 		free(mapdata->no);

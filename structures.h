@@ -6,23 +6,24 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 14:02:39 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/02 13:56:17 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "cub3d.h"
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct s_vars	t_vars;
-typedef struct s_map	t_map;
-typedef struct s_player t_player;
-typedef struct s_pixel	t_pixel;
-typedef struct s_image	t_image;
-typedef struct s_texture t_texture;
+# include "cub3d.h"
 
-typedef struct s_image {
+typedef struct s_vars		t_vars;
+typedef struct s_map		t_map;
+typedef struct s_player		t_player;
+typedef struct s_pixel		t_pixel;
+typedef struct s_image		t_image;
+typedef struct s_texture	t_texture;
+
+typedef struct s_image
+{
 	void				*image;
 	char				*addr;
 	int					bpp;
@@ -30,7 +31,8 @@ typedef struct s_image {
 	int					endian;
 }						t_image;
 
-typedef struct s_vars {
+typedef struct s_vars
+{
 	int					fd_map;
 	int					interface_toggle;
 	void				*mlx;
@@ -41,7 +43,8 @@ typedef struct s_vars {
 	t_image				logo;
 }						t_vars;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	int					height;
 	int					width;
 	unsigned int		floor;
@@ -56,7 +59,8 @@ typedef struct s_map {
 	t_image				*texture;
 }						t_map;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	char				start;
 	float				step;
 	int					angle;
@@ -64,7 +68,8 @@ typedef struct s_player {
 	float				ypos;
 }						t_player;
 
-typedef struct s_pixel {
+typedef struct s_pixel
+{
 	int					x;
 	int					y;
 	unsigned int		colour;
