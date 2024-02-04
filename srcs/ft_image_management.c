@@ -6,47 +6,36 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 14:33:24 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/04 20:06:30 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_render_background(t_image *image, t_vars *vars)
+static void	ft_interface_text(t_vars *vars)
 {
-	int	half;
-	int	y;
-	int	x;
-
-	y = -1;
-	x = -1;
-	half = W_HEIGHT / 2;
-	while (++y <= half)
+	if (vars->interface_toggle != 0)
 	{
-		while (++x < W_WIDTH)
-			ft_img_pix_put((t_pixel){x, y, vars->mapdata->ceiling}, image);
-		x = -1;
+		ft_write_toscreen(\
+			(t_pixel){10, 5 + CELL_SIZE * (vars->mapdata->height + 4), 0x0},\
+			"move: [w] [s].turn: [mouse] & [a] [d].interact: [space]", \
+			 vars);
 	}
-	while (++y <= W_HEIGHT)
+	else
 	{
-		while (++x < W_WIDTH)
-			ft_img_pix_put((t_pixel){x, y, vars->mapdata->floor}, image);
-		x = -1;
+		ft_write_toscreen(\
+			(t_pixel){10, 20, 0x0}, "interface: [i]", vars);
 	}
 }
 
 static void	ft_render_interface(t_image *image, t_vars *vars)
 {
 	(void) image;
-	if (vars->interface_toggle == 0)
-		ft_write_toscreen(\
-			(t_pixel){10, 20, 0x0}, "toggle interface: [i]", vars);
-	else
+	if (vars->interface_toggle != 0)
 	{
-		ft_write_toscreen(\
-			(t_pixel){10, CELL_SIZE * (vars->mapdata->height + 4), 0x0}, \
-			"toggle interface: [i]\nturn: [mouse] + [a] & [d]\nmove: \
-			[w] & [s]\ninteract: [space]", vars);
+		ft_put_img((t_pixel){5, 5, 0x0}, &vars->minimap, vars->buffer);
+		ft_drawplayer(vars->player, vars);
+		ft_put_img((t_pixel){vars->minimap.width + 5, -20, 0x0}, &vars->logo, vars->buffer);
 	}
 }
 
@@ -54,18 +43,22 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 int	ft_render(t_vars *vars)
 {
 	ft_img_flush(vars);
-	ft_render_background(vars->buffer, vars);
-	if (vars->interface_toggle != 0)
-		ft_render_minimap(vars->buffer, vars);
+	//	background
+	ft_put_img((t_pixel){0, 0, 0}, &vars->background, vars->buffer);
+	//	raycast
+//	dogshit raycast stand-in :D
+	int	i = 0;
+	while (i < W_WIDTH)
+	{
+		ft_drawslice(i, (3.43 - i * 0.001) * 128, 0.5, &vars->mapdata->texture[1], vars);
+		i++;
+	}
+	//	interface
+	ft_render_interface(vars->buffer, vars);
+	//	push buffer to window
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, \
 		vars->buffer->image, 0, 0);
-	ft_render_interface(vars->buffer, vars);
-	//	test
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[0].image, 100, 100);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[1].image, 250, 100);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[2].image, 100, 250);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[3].image, 250, 250);
-	//mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[4].image, 100, 100);
-	//mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->mapdata->texture[5].image, 100, 100);
+	//	text last
+	ft_interface_text(vars);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 13:56:17 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/04 17:19:54 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_image
 	int					bpp;
 	int					len;
 	int					endian;
+	int					height;
+	int					width;
 }						t_image;
 
 typedef struct s_vars
@@ -40,7 +42,9 @@ typedef struct s_vars
 	t_image				*buffer;
 	t_map				*mapdata;
 	t_player			*player;
+	t_image				background;
 	t_image				logo;
+	t_image				minimap;
 }						t_vars;
 
 typedef struct s_map
@@ -70,8 +74,8 @@ typedef struct s_player
 
 typedef struct s_pixel
 {
-	int					x;
-	int					y;
+	int				x;
+	int				y;
 	unsigned int		colour;
 }						t_pixel;
 

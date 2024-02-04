@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 13:32:05 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/04 17:57:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define FOV 60
 # define CELL_SIZE 5
 # define T_SIZE 128
+# define A_COLOR 0x00ff00
 
 size_t	ft_strlen(char *str);
 char	*ft_strchr(char *s, int c);
@@ -56,7 +57,7 @@ int		ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
 void	ft_img_pix_put(t_pixel pixel, t_image *image);
 int		ft_render(t_vars *vars);
 void	ft_img_flush(t_vars *vars);
-void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars);
+void	ft_drawline(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars);
 void	ft_render_minimap(t_image *image, t_vars *vars);
 void	ft_update_angle(int *angle, int add, t_vars *vars);
 t_pixel	ft_transform_pixel(t_pixel pixel, float increase, float vector);
@@ -65,8 +66,12 @@ void	ft_transform_player(float *x, float *y, float increase, float vector);
 void	ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 void	ft_write_toscreen(t_pixel position, char *str, t_vars *vars);
 void	ft_init_textures(t_map *mapdata, t_vars *vars);
-void	ft_put_img(t_image *image, int x, int y, t_image *target);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_isspace(char c);
+void	ft_put_img(t_pixel pos, t_image *image, t_image *buffer);
+unsigned int	ft_darken(unsigned int colour, char id);
+unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
+void	ft_drawslice(int x, float distance, float intersect, t_image *texture, t_vars *vars);
+void	ft_drawplayer(t_player *player, t_vars *vars);
 
 #endif

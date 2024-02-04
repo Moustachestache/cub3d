@@ -6,22 +6,23 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 15:23:38 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/04 17:53:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_octan_0(t_pixel start, t_pixel dest, t_vars *vars)
+static void	ft_octan_0(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
 
+	(void) vars;
 	error = 0;
 	slope = (float)(dest.x - start.x) / (float)(dest.y - start.y);
 	while (start.y >= dest.y)
 	{
-		ft_img_pix_put(start, vars->buffer);
+		ft_img_pix_put(start, buffer);
 		error += slope;
 		if (error < 0)
 		{
@@ -32,16 +33,17 @@ static void	ft_octan_0(t_pixel start, t_pixel dest, t_vars *vars)
 	}
 }
 
-static void	ft_octan_1(t_pixel start, t_pixel dest, t_vars *vars)
+static void	ft_octan_1(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
 
+	(void) vars;
 	error = 0;
 	slope = (float)(dest.y - start.y) / (float)(dest.x - start.x);
 	while (start.x <= dest.x)
 	{
-		ft_img_pix_put(start, vars->buffer);
+		ft_img_pix_put(start, buffer);
 		error += slope;
 		if (error < 0)
 		{
@@ -52,16 +54,17 @@ static void	ft_octan_1(t_pixel start, t_pixel dest, t_vars *vars)
 	}
 }
 
-static void	ft_octan_2(t_pixel start, t_pixel dest, t_vars *vars)
+static void	ft_octan_2(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
 
+	(void) vars;
 	error = 0;
 	slope = (float)(dest.y - start.y) / (float)(dest.x - start.x);
 	while (start.x <= dest.x)
 	{
-		ft_img_pix_put(start, vars->buffer);
+		ft_img_pix_put(start, buffer);
 		error += slope;
 		if (error > 1)
 		{
@@ -72,16 +75,17 @@ static void	ft_octan_2(t_pixel start, t_pixel dest, t_vars *vars)
 	}
 }
 
-static void	ft_octan_3(t_pixel start, t_pixel dest, t_vars *vars)
+static void	ft_octan_3(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
 
+	(void) vars;
 	error = 0;
 	slope = (float)(dest.x - start.x) / (float)(dest.y - start.y);
 	while (start.y <= dest.y)
 	{
-		ft_img_pix_put(start, vars->buffer);
+		ft_img_pix_put(start, buffer);
 		error += slope;
 		if (error > 1)
 		{
@@ -92,7 +96,7 @@ static void	ft_octan_3(t_pixel start, t_pixel dest, t_vars *vars)
 	}
 }
 
-void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
+void	ft_drawline(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
 {
 	t_pixel		swap;
 	int			colour;
@@ -111,11 +115,11 @@ void	ft_drawline(t_pixel start, t_pixel dest, t_vars *vars)
 	x = dest.x - start.x;
 	y = dest.y - start.y;
 	if (y <= 0 && x + y <= 0)
-		ft_octan_0(start, dest, vars);
+		ft_octan_0(start, dest, buffer, vars);
 	else if (y <= 0 && x + y >= 0)
-		ft_octan_1(start, dest, vars);
+		ft_octan_1(start, dest, buffer, vars);
 	else if (y >= 0 && x - y >= 0)
-		ft_octan_2(start, dest, vars);
+		ft_octan_2(start, dest, buffer, vars);
 	else if (y >= 0 && x - y <= 0)
-		ft_octan_3(start, dest, vars);
+		ft_octan_3(start, dest, buffer, vars);
 }
