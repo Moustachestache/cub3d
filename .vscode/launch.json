@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [maps/funcky.cub],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/olga/Documents/cub3d/max_implementation",
+      "program": "/home/olga/Documents/cub3d/max_implementation/cub3d",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

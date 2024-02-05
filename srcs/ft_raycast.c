@@ -14,11 +14,15 @@
 
 static void	ft_init_dir(t_camera *camera, int angle)
 {
-	float radian_angle;
+	float	radian_angle;
+	float	vector_len;
 
 	radian_angle = angle * (M_PI / 180.0);
 	camera->dirX = cos(radian_angle);
 	camera->dirY = sin(radian_angle);
+	vector_len = sqrt(camera->dirX * camera->dirX + camera->dirY * camera->dirY);
+	camera->dirX /= vector_len;
+	camera->dirY /= vector_len;
 }
 
 static void	ft_set_stepX(t_player *player, t_camera *camera)
@@ -54,22 +58,14 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 	int		i;
 
 	ft_init_dir(camera, vars->player->angle);
-	if (camera->dirX == 0)
-	{
-		camera->planeX = 0.6;
-		camera->planeY = 0;
-	}
-	if (camera->dirY == 0)
-	{
-		camera->planeX = 0;
-		camera->planeY = 0.6;
-	}
+	camera->planeX = -camera->dirY * 0.6;
+	camera->planeY = camera->dirX * 0.6;
 	i = 0;
 	while (i++ < W_WIDTH)
 	{
 		camera->cameraX = 2 * i / W_WIDTH - 1;
 		camera->ray_dirX = camera->dirX + camera->planeX * camera->cameraX;
-		camera->ray_dirY = camera->dirY + camera->dirY * camera->cameraX;
+		camera->ray_dirY = camera->dirY + camera->planeY * camera->cameraX;
 		camera->mapX = (int)vars->player->xpos;
 		camera->mapY = (int)vars->player->ypos;
 		if (camera->ray_dirX == 0)
