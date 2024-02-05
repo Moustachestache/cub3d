@@ -88,6 +88,7 @@ typedef struct s_camera {
 	float				side_distY;
 	float				delta_distX;
 	float				delta_distY;
+	float				intersect;
 }						t_camera;
 
 typedef struct s_pixel {
