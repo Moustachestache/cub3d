@@ -12,23 +12,16 @@
 
 #include "../cub3d.h"
 
-float	ft_init_dirX(int angle)
+static void	ft_init_dir(t_camera *camera, int angle)
 {
 	float radian_angle;
 
 	radian_angle = angle * (M_PI / 180.0);
-	return (cos(radian_angle));
+	camera->dirX = cos(radian_angle);
+	camera->dirY = sin(radian_angle);
 }
 
-float ft_init_dirY(int angle)
-{
-	float radian_angle;
-
-	radian_angle = angle * (M_PI / 180.0);
-	return (sin(radian_angle));
-}
-
-void	ft_set_stepX(t_player *player, t_camera *camera)
+static int	ft_set_stepX(t_player *player, t_camera *camera)
 {
 	if (camera->ray_dirX < 0)
 	{
@@ -42,7 +35,7 @@ void	ft_set_stepX(t_player *player, t_camera *camera)
 	}
 }
 
-void	ft_set_stepY(t_player *player, t_camera *camera)
+static int	ft_set_stepY(t_player *player, t_camera *camera)
 {
 	if (camera->ray_dirY < 0)
 	{
@@ -60,8 +53,7 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 {
 	int		i;
 
-	camera->dirX = ft_init_dirX(vars->player->angle);
-	camera->dirY = ft_init_dirY(vars->player->angle);
+	ft_init_dir(camera, vars->player->angle);
 	if (camera->dirX == 0)
 	{
 		camera->planeX = 0.6;
@@ -104,13 +96,22 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 				camera->mapY += camera->stepY;
 				camera->side = 1;
 			}
-			if (vars->mapdata[camera->mapX][camera->mapY] > 0)
+			if (vars->mapdata->map[camera->mapX][camera->mapY] > 0)
 				camera->hit = 1;
 		}
 		if (camera->side == 0)
+		{
 			camera->wall_dist = camera->side_distX - camera->delta_distX;
+			camera->intersect = fmod(vars->player->xpos + camera->wall_dist * camera->ray_dirX, 1.0);
+			camera->intersect = floorf(camera->intersect * 128.0);
+		}
+
 		else
+		{
 			camera->wall_dist = camera->side_distY - camera->delta_distY;
+			camera->intersect = fmod(vars->player->ypos + camera->wall_dist * camera->ray_dirY, 1.0);
+			camera->intersect = floorf(camera->intersect * 128.0);
+		}
 		printf("%f", camera->wall_dist);
 		// here
 		ft_drawslice(i, camera, NULL, vars);
