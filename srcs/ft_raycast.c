@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/05 14:28:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:39:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_init_dir(t_camera *camera, int angle)
 	camera->dirY = sin(radian_angle);
 }
 
-static int	ft_set_stepX(t_player *player, t_camera *camera)
+static void	ft_set_stepX(t_player *player, t_camera *camera)
 {
 	if (camera->ray_dirX < 0)
 	{
@@ -35,7 +35,7 @@ static int	ft_set_stepX(t_player *player, t_camera *camera)
 	}
 }
 
-static int	ft_set_stepY(t_player *player, t_camera *camera)
+static void	ft_set_stepY(t_player *player, t_camera *camera)
 {
 	if (camera->ray_dirY < 0)
 	{
@@ -80,8 +80,8 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 			camera->delta_distY = 1e30;
 		else
 			camera->delta_distY = fabs(1 / camera->ray_dirY);
-		camera->stepX = ft_set_stepX(vars->player, camera);
-		camera->stepY = ft_set_stepY(vars->player, camera);
+		ft_set_stepX(vars->player, camera);
+		ft_set_stepY(vars->player, camera);
 		while (camera->hit == 0)
 		{
 			if (camera->side_distX < camera->side_distY)
@@ -96,7 +96,7 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 				camera->mapY += camera->stepY;
 				camera->side = 1;
 			}
-			if (vars->mapdata->map[camera->mapX][camera->mapY] > 0)
+			if (vars->mapdata->map[camera->mapY][camera->mapX] > 0)
 				camera->hit = 1;
 		}
 		if (camera->side == 0)
