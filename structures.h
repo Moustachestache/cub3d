@@ -44,6 +44,7 @@ typedef struct s_vars {
 	t_image				*buffer;
 	t_map				*mapdata;
 	t_player			*player;
+	t_camera			*camera;
 	void			*logo;
 
 }						t_vars;
@@ -67,6 +68,27 @@ typedef struct s_player {
 	float				xpos;
 	float				ypos;
 }						t_player;
+
+typedef struct s_camera {
+	int					hit;
+	int					side;
+	int					stepX;
+	int					stepY;
+	int					mapX;
+	int					mapY;
+	float				dirX;
+	float				dirY;
+	float				planeX;
+	float				planeY;
+	float				cameraX;
+	float				ray_dirX;
+	float				ray_dirY;
+	float				wall_dist;
+	float				side_distX;
+	float				side_distY;
+	float				delta_distX;
+	float				delta_distY;
+}						t_camera;
 
 typedef struct s_pixel {
 	int					x;

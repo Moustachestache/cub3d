@@ -16,6 +16,6 @@ void	ft_update_angle(float *angle, float add, t_vars *vars)
 {
 	(void) vars;
 	angle = (angle + add) % 359;
-	if (angle < 0)
-		angle = 359 - abs(angle);
+	/*if (angle > 359)
+		angle = 359 - abs(angle);*/
 }

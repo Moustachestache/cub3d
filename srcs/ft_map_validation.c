@@ -35,6 +35,8 @@ int ft_copy_map(t_vars *vars)
         free (map_copy[i++]);
     free (map_copy);
     if (error == 1)
+        return (1);
+    return (0);
 }
 
 int ft_map_validation(t_map *mapdata, char **map, int x, int y)
@@ -45,8 +47,19 @@ int ft_map_validation(t_map *mapdata, char **map, int x, int y)
     {
         if (map[x][y] == '0' || map[x][y] == 'N' || map[x][y] == 'E'
             || map[x][y] == 'S' || map[x][y] == 'W')
-            {
-                
-            }
+                return (1);
+        return;
     }
+    if (map[x][y] == ' ')
+    {
+        map[x][y] = '1';
+        return (1);
+    }
+    if (map[x][y] == '0' || map[x][y] == 'N' || map[x][y] == 'E'
+            || map[x][y] == 'S' || map[x][y] == 'W')
+                map[x][y] = '1';
+    ft_map_validation(mapdata, map, x, y - 1);
+    ft_map_validation(mapdata, map, x - 1, y);
+    ft_map_validation(mapdata, map, x, y + 1);
+    ft_map_validation(mapdata, map, x + 1, y);
 } 
