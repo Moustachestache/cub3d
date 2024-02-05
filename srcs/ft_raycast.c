@@ -11,47 +11,107 @@
 /* ************************************************************************** */
 /*
 #include "../cub3d.h"
-int		ft_iswall(int x, int y, t_map *map)
+
+float	ft_init_dirX(int angle)
 {
-	return (0);
+	float radian_angle;
+
+	radian_angle = angle * (M_PI / 180.0);
+	return (cos(radian_angle));
 }
 
-float	ft_hdist(t_player camera, t_vars *vars)
+float ft_init_dirY(int angle)
 {
-	float	hdist;
-	float	x;
-	float	y;
-	float	retval;
+	float radian_angle;
 
-	hdist = 0;
-	while (ft_iswall(x, y, vars->mapdata) == 0)
+	radian_angle = angle * (M_PI / 180.0);
+	return (sin(radian_angle));
+}
+
+void	ft_set_stepX(t_player *player, t_camera *camera)
+{
+	if (camera->ray_dirX < 0)
 	{
-		retval += hdist;
+		camera->stepX = -1;
+		camera->side_distX = (player->xpos - camera->mapX) * camera->delta_distX;
 	}
-	return (retval);
-}
-
-void	ft_draw_slice(t_player camera, t_vars *vars)
-{
-	float	hdist;
-	float	vdist;
-
-	hdist = ft_hdist(t_player, vars);
-}
-
-void	ft_raycast(t_vars *vars)
-{
-	t_player	camera;
-	float		angleincrement;
-	int			i;
-	i = 0;
-
-	camera = (t_player){0, 0, vars->player->angle, vars->player->xpos, vars->player->ypos};
-	ft_update_angle(&camera.angle, FOV / 2, vars);
-	angleincrement = FOV / W_WIDTH;
-	while (i < W_WIDTH)
+	else
 	{
-			ft_draw_slice(camera, vars);
-			camera.angle -= angleincrement;
+		camera->stepX = 1;
+		camera->side_distX = (camera->mapX + 1.0 - player->xpos) * camera->delta_distX;
+	}
+}
+
+void	ft_set_stepY(t_player *player, t_camera *camera)
+{
+	if (camera->ray_dirY < 0)
+	{
+		camera->stepY = -1;
+		camera->side_distY = (player->ypos - camera->mapY) * camera->delta_distY;
+	}
+	else
+	{
+		camera->stepY = 1;
+		camera->side_distY = (camera->mapY + 1.0 - player->ypos) * camera->delta_distY;
+	}
+}
+
+void	ft_raycast(t_vars *vars, t_camera *camera)
+{
+	int		i;
+
+	camera->dirX = ft_init_dirX(vars->player->angle);
+	camera->dirY = ft_init_dirY(vars->player->angle);
+	if (camera->dirX == 0)
+	{
+		camera->planeX = 0.6;
+		camera->planeY = 0;
+	}
+	if (camera->dirY == 0)
+	{
+		camera->planeX = 0;
+		camera->planeY = 0.6;
+	}
+	i = 0;
+	while (i++ < W_WIDTH)
+	{
+		camera->cameraX = 2 * i / W_WIDTH - 1;
+		camera->ray_dirX = camera->dirX + camera->planeX * camera->cameraX;
+		camera->ray_dirY = camera->dirY + camera->dirY * camera->cameraX;
+		camera->mapX = (int)vars->player->xpos;
+		camera->mapY = (int)vars->player->ypos;
+		if (camera->ray_dirX == 0)
+			camera->delta_distX = 1e30;
+		else
+			camera->delta_distX = fabs(1 / camera->ray_dirX);
+		if (camera->ray_dirY == 0)
+			camera->delta_distY = 1e30;
+		else
+			camera->delta_distY = fabs(1 / camera->ray_dirY);
+		camera->stepX = ft_set_stepX(vars->player, camera);
+		camera->stepY = ft_set_stepY(vars->player, camera);
+		while (camera->hit == 0)
+		{
+			if (camera->side_distX < camera->side_distY)
+			{
+				camera->side_distX += camera->delta_distX;
+				camera->mapX += camera->stepX;
+				camera->side = 0;
+			}
+			else
+			{
+				camera->side_distY += camera->delta_distY;
+				camera->mapY += camera->stepY;
+				camera->side = 1;
+			}
+			if (vars->mapdata[camera->mapX][camera->mapY] > 0)
+				camera->hit = 1;
+		}
+		if (camera->side == 0)
+			camera->wall_dist = camera->side_distX - camera->delta_distX;
+		else
+			camera->wall_dist = camera->side_distY - camera->delta_distY;
+		printf("%f", camera->wall_dist);
+
 	}
 }*/

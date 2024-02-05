@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 17:19:54 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:16:04 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_vars
 	t_image				background;
 	t_image				logo;
 	t_image				minimap;
+	t_camera			*camera;
+	void				*logo;
 }						t_vars;
 
 typedef struct s_map
@@ -72,10 +74,30 @@ typedef struct s_player
 	float				ypos;
 }						t_player;
 
-typedef struct s_pixel
-{
-	int				x;
-	int				y;
+typedef struct s_camera {
+	int					hit;
+	int					side;
+	int					stepX;
+	int					stepY;
+	int					mapX;
+	int					mapY;
+	float				dirX;
+	float				dirY;
+	float				planeX;
+	float				planeY;
+	float				cameraX;
+	float				ray_dirX;
+	float				ray_dirY;
+	float				wall_dist;
+	float				side_distX;
+	float				side_distY;
+	float				delta_distX;
+	float				delta_distY;
+}						t_camera;
+
+typedef struct s_pixel {
+	int					x;
+	int					y;
 	unsigned int		colour;
 }						t_pixel;
 
