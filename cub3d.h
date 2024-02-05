@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 17:57:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:30:17 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int		ft_isspace(char c);
 void	ft_put_img(t_pixel pos, t_image *image, t_image *buffer);
 unsigned int	ft_darken(unsigned int colour, char id);
 unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
-void	ft_drawslice(int x, float distance, float intersect, t_image *texture, t_vars *vars);
+void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars);
 void	ft_drawplayer(t_player *player, t_vars *vars);
+void	ft_raycast(t_vars *vars, t_camera *camera);
 
 #endif

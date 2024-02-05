@@ -6,10 +6,10 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/01 12:26:22 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:28:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
+
 #include "../cub3d.h"
 
 float	ft_init_dirX(int angle)
@@ -112,6 +112,7 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 		else
 			camera->wall_dist = camera->side_distY - camera->delta_distY;
 		printf("%f", camera->wall_dist);
-
+		// here
+		ft_drawslice(i, camera, NULL, vars);
 	}
-}*/
+}

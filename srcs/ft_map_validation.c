@@ -6,10 +6,12 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/01/08 14:10:39 by odiachen         ###   ########.fr       */
+/*   Updated: 2024/02/05 14:31:39 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../cub3d.h"
+/*
 int ft_copy_map(t_vars *vars)
 {
     char **map_copy;
@@ -62,4 +64,4 @@ int ft_map_validation(t_map *mapdata, char **map, int x, int y)
     ft_map_validation(mapdata, map, x - 1, y);
     ft_map_validation(mapdata, map, x, y + 1);
     ft_map_validation(mapdata, map, x + 1, y);
-} 
+} */

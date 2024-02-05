@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 20:06:30 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:24:00 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,7 @@ int	ft_render(t_vars *vars)
 	//	background
 	ft_put_img((t_pixel){0, 0, 0}, &vars->background, vars->buffer);
 	//	raycast
-//	dogshit raycast stand-in :D
-	int	i = 0;
-	while (i < W_WIDTH)
-	{
-		ft_drawslice(i, (3.43 - i * 0.001) * 128, 0.5, &vars->mapdata->texture[1], vars);
-		i++;
-	}
+	ft_raycast(vars, vars->camera);
 	//	interface
 	ft_render_interface(vars->buffer, vars);
 	//	push buffer to window
