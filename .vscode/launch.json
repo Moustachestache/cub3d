@@ -3,13 +3,13 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
+      "type": "cppdbg",
       "request": "launch",
-      "args": [maps/funcky.cub],
+      "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/olga/Documents/cub3d/max_implementation",
-      "program": "/home/olga/Documents/cub3d/max_implementation/cub3d",
+      "program": "/home/olga/Documents/cub3d/max_implementation/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
