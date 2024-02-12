@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 13:29:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:09:55 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int ac, char *av[])
 	vars = ft_init_vars(ac, av);
 	vars->mapdata = ft_parse_map(vars);
 	ft_validate_mapinfo(vars->mapdata, vars);
+	if (ft_map_validation(vars) == 1)
+		ft_exit(ft_perror("Map Is Invalid", EXIT_FAILURE), vars);
 	vars->mlx = mlx_init();
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	vars->buffer = ft_calloc(1, sizeof(t_image));
