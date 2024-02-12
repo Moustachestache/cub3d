@@ -6,7 +6,7 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/02/12 14:48:12 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:52:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int		ft_map_validation(t_vars *vars)
 }*/
 int	ft_map_validation(t_vars *vars)
 {
+	(void) vars;
 	return 0;
 }
