@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 13:12:24 by mjochum           #+#    #+#             */
-/*   Updated: 2023/12/30 13:13:37 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:19:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	ft_free_split(char **split)
 	int	i;
 
 	i = 0;
-	while (split[i])
-		free(split[i++]);
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
 	free(split);
 }

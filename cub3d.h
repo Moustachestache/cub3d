@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/12 14:52:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/12 16:26:59 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
 void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars);
 void	ft_drawplayer(t_player *player, t_vars *vars);
 void	ft_raycast(t_vars *vars, t_camera *camera);
-int		ft_copy_map(t_vars *vars);
 int		ft_map_validation(t_vars *vars);
 char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
