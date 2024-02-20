@@ -107,6 +107,7 @@ void ft_draw_rays(t_vars *vars)
 	float	cameraX;
 	float	ray[2];
 
+	printf("got to draw rays");
 	i = 0;
 	ft_rotate(vars->camera, vars->player->angle);
 	while (i < W_WIDTH)

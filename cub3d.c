@@ -31,6 +31,7 @@ int	main(int ac, char *av[])
 	vars->mlx = mlx_init();
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	vars->buffer = ft_calloc(1, sizeof(t_image));
+	printf("in main before init textures");
 	ft_init_textures(vars->mapdata, vars);
 	if (ft_map_validation(vars) > 0)
 		ft_exit(ft_perror("Map Is Invalid", EXIT_FAILURE), vars);
