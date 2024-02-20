@@ -77,22 +77,15 @@ typedef struct s_player
 typedef struct s_camera {
 	int					hit;
 	int					side;
-	int					stepX;
-	int					stepY;
 	int					mapX;
 	int					mapY;
-	float				dirX;
-	float				dirY;
-	float				planeX;
-	float				planeY;
-	float				cameraX;
-	float				ray_dirX;
-	float				ray_dirY;
+	float					stepX;
+	float					stepY;
+	float				dir[2];
+	float				plane[2];
+	float				side_dist[2];
+	float				delta_dist[2];
 	float				wall_dist;
-	float				side_distX;
-	float				side_distY;
-	float				delta_distX;
-	float				delta_distY;
 	float				intersect;
 }						t_camera;
 

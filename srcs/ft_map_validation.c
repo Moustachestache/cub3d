@@ -12,38 +12,58 @@
 
 #include "../cub3d.h"
 
-/*
-t_map	*ft_copy_map(t_map *mapdata)
+int ft_copy_map(t_vars *vars)
 {
-	char	**mapcopy;
-	int		i;
+    char **map_copy;
+    int i;
+    int error;
 
-	mapcopy = ft_calloc(mapdata->height, sizeof(char *));
-	while (i < mapdata->height)
-	{
-		mapcopy[i] = ft_calloc(mapdata->width + 1, sizeof(char));
-		// caca
-		//	replace with ft memcpy
-		memset(mapcopy[i], ' ', mapdata->width);
-		ft_memcpy(mapcopy[i], mapdata->map[i], mapdata->width);
-		i++;
-	}
-	return (mapcopy);
+    i = 0;
+    while (vars->mapdata->map[i])
+    {
+        ++i;
+    }
+    map_copy = ft_calloc(sizeof(char *), i + 1);
+    i = 0;
+    while (vars->mapdata->map[i])
+    {
+        map_copy[i] = ft_strdup(vars->mapdata->map[i]);
+        i++;
+    }
+    map_copy[i] = NULL;
+    error = ft_map_validation(vars->mapdata, vars->mapdata->map, vars->player->xpos, vars->player->ypos);
+    i = 0;
+    while (map_copy[i])
+        free (map_copy[i++]);
+    free (map_copy);
+    if (error == 1)
+        return (1);
+    return (0);
 }
 
-int		ft_map_validation(t_vars *vars)
+int ft_map_validation(t_map *mapdata, char **map, int x, int y)
 {
-	char	**map;
-	int		retval;
+	if (map[y][x] == '1')
+		return (0);
+	if (x >= 0 || y <= 0 || x >= mapdata->width || y >= mapdata->height)
+   	 {
+        	if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'E'
+            		|| map[y][x] == 'S' || map[y][x] == 'W')
+                	return (1);
+        	return (0);
+    	}
+	if (map[y][x] == ' ')
+	{
+	       	map[y][x] = '1';
+		return (1);
+	}
+       	if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'E'
+			|| map[y][x] == 'S' || map[y][x] == 'W')
+		map[y][x] = '1';
+	ft_map_validation(mapdata, map, x, y - 1);
+	ft_map_validation(mapdata, map, x - 1, y);
+	ft_map_validation(mapdata, map, x, y + 1);
+	ft_map_validation(mapdata, map, x + 1, y);
 
-	mapdata = ft_copy_map(vars->mapdata);
-	ft_retval = ft_
-	//	end
-	ft_free_split(map);
-	return (retval);
-}*/
-int	ft_map_validation(t_vars *vars)
-{
-	(void) vars;
-	return 0;
+	return (0);
 }

@@ -46,7 +46,7 @@ int	ft_render(t_vars *vars)
 	//	background
 	ft_put_img((t_pixel){0, 0, 0}, &vars->background, vars->buffer);
 	//	raycast
-	ft_raycast(vars, vars->camera);
+	ft_draw_rays(vars);
 	//	interface
 	ft_render_interface(vars->buffer, vars);
 	//	push buffer to window

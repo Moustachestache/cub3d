@@ -28,12 +28,14 @@ int	main(int ac, char *av[])
 	vars = ft_init_vars(ac, av);
 	vars->mapdata = ft_parse_map(vars);
 	ft_validate_mapinfo(vars->mapdata, vars);
-	if (ft_map_validation(vars) == 1)
-		ft_exit(ft_perror("Map Is Invalid", EXIT_FAILURE), vars);
 	vars->mlx = mlx_init();
 	vars->mlx_win = mlx_new_window(vars->mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	vars->buffer = ft_calloc(1, sizeof(t_image));
 	ft_init_textures(vars->mapdata, vars);
+	/*if (ft_map_validation(vars->mapdata, vars->mapdata->map, 
+				vars->player->xpos/CELL_SIZE, 
+				vars->player->ypos/CELL_SIZE) == 1)
+		ft_exit(ft_perror("Map Is Invalid", EXIT_FAILURE), vars);*/
 	mlx_set_font(vars->mlx, vars->mlx_win, \
 		"-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1");
 	mlx_key_hook(vars->mlx_win, ft_keyhook, vars);

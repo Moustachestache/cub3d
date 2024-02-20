@@ -73,10 +73,10 @@ unsigned int	ft_darken(unsigned int colour, char id);
 unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
 void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars);
 void	ft_drawplayer(t_player *player, t_vars *vars);
-void	ft_raycast(t_vars *vars, t_camera *camera);
-int		ft_copy_map(t_vars *vars);
-int		ft_map_validation(t_vars *vars);
+int     ft_copy_map(t_vars *vars);
+int		ft_map_validation(t_map*mapdata, char **map, int x, int y);
 char	*ft_strdup(const char *s);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+void ft_draw_rays(t_vars *vars);
 
 #endif

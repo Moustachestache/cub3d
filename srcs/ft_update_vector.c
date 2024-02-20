@@ -18,7 +18,6 @@ void	ft_update_angle(int *angle, int add, t_vars *vars)
 	*angle = (*angle + add) % 359;
 	if (angle < 0)
 		*angle = 359 - abs(*angle);
-	*angle = (*angle + add) % 359;
 }
 /*
 void	ft_update_angle(int *angle, int add, t_vars *vars)
