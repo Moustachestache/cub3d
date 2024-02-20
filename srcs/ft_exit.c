@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 13:59:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/12 19:42:05 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	ft_exit(int exit_value, t_vars *vars)
 		ft_perror("huh, that\'s weird", -1);
 	if (vars->player)
 		free(vars->player);
+	if (vars->background.image)
+		mlx_destroy_image(vars->mlx, vars->background.image);
+	if (vars->minimap.image)
+		mlx_destroy_image(vars->mlx, vars->minimap.image);
 	if (vars->buffer->image)
 		mlx_destroy_image(vars->mlx, vars->buffer->image);
 	if (vars->logo.image)
@@ -65,7 +69,7 @@ void	ft_exit(int exit_value, t_vars *vars)
 	if (vars->buffer)
 		free(vars->buffer);
 	if (vars->camera)
-	        free(vars->camera);
+		free(vars->camera);
 	if (vars->mlx)
 		ft_free_mlx(vars);
 	if (vars)

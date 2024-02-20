@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/11 21:08:19 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/17 21:07:19 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static void ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 {
 	(void) vars;
 	camera->hit = 0;
-
-	ft_init_camera(vars, camera, ray);
+        ft_init_camera(vars, camera, ray);
 	while (!camera->hit)
 	{
 		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata);

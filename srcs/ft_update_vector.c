@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:52:51 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/05 20:21:33 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/17 21:05:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_update_angle(int *angle, int add, t_vars *vars)
 {
 	(void) vars;
-	*angle = (*angle + add) % 359;
+	*angle = (*angle + add) % 360;
 	if (angle < 0)
 		*angle = 359 - abs(*angle);
 }
