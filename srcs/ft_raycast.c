@@ -15,6 +15,7 @@
 static int ft_check_hit(t_vars *vars, t_camera *camera,  float ray[2], t_map *mapdata)
 {
 	(void) vars;
+	(void) mapdata;
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
@@ -33,7 +34,7 @@ static int ft_check_hit(t_vars *vars, t_camera *camera,  float ray[2], t_map *ma
 		else
 			camera->side = 'W';
 	}
-	return (mapdata->map[1][0] == 1);
+	return (1);
 }
 
 static void ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
