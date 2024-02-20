@@ -14,9 +14,9 @@
 
 static char	**ft_copy_map(t_map *mapdata)
 {
-    char **map_copy;
-    int i;
-    int error;
+	char	**mapcopy;
+	int		i;
+
 	i = -1;
 	mapcopy = ft_calloc(mapdata->height + 1, sizeof(char *));
 	while (++i <= mapdata->height)
@@ -27,14 +27,9 @@ static char	**ft_copy_map(t_map *mapdata)
 		memset(mapcopy[i], ' ', mapdata->width);
 		ft_memcpy(mapcopy[i], mapdata->map[i], mapdata->width);
 	}
-       	if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'E'
-			|| map[y][x] == 'S' || map[y][x] == 'W')
-		map[y][x] = '1';
-	ft_map_validation(mapdata, map, x, y - 1);
-	ft_map_validation(mapdata, map, x - 1, y);
-	ft_map_validation(mapdata, map, x, y + 1);
-	ft_map_validation(mapdata, map, x + 1, y);
+	return (mapcopy);
 }
+
 static int	ft_hasnull(int x, int y, char **map, t_vars *vars)
 {
 	//	wow i should

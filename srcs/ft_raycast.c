@@ -40,8 +40,8 @@ static void ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
 {
 	camera->delta_dist[0] = fabs(1.0 / ray[0]);
 	camera->delta_dist[1] = fabs(1.0 / ray[1]);
-	camera->mapX = floor(vars->player->xpos/CELL_SIZE);
-	camera->mapY = floor(vars->player->ypos/CELL_SIZE);
+	camera->mapX = floor(vars->player->xpos);
+	camera->mapY = floor(vars->player->ypos);
 	if (ray[0] < 0)
 		camera->stepX = -1;
 	else
