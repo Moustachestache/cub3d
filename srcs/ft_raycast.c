@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/17 21:07:19 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/20 20:31:33 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,21 @@ static void ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
 		camera->stepY = -1;
 	else
 		camera->stepY = 1;
-        if (ray[0] < 0)
-                camera->side_dist[0] = (vars->player->xpos - camera->mapX)
-			* camera->delta_dist[0];
+	if (ray[0] < 0)
+		camera->side_dist[0] = (vars->player->xpos - camera->mapX) * camera->delta_dist[0];
 	else
-	        camera->side_dist[0] = (camera->mapX + 1.0 - vars->player->xpos)
-			* camera->delta_dist[0];
+		camera->side_dist[0] = (camera->mapX + 1.0 - vars->player->xpos) * camera->delta_dist[0];
 	if (ray[1] < 0)
-		camera->side_dist[1] = (vars->player->ypos - camera->mapY)
-			* camera->delta_dist[1];
+		camera->side_dist[1] = (vars->player->ypos - camera->mapY) * camera->delta_dist[1];
 	else
-		camera->side_dist[1] = (camera->mapY + 1.0 - vars->player->ypos)
-		       * camera->delta_dist[1];
+		camera->side_dist[1] = (camera->mapY + 1.0 - vars->player->ypos) * camera->delta_dist[1];
 }
 
 static void ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 {
 	(void) vars;
 	camera->hit = 0;
-        ft_init_camera(vars, camera, ray);
+	ft_init_camera(vars, camera, ray);
 	while (!camera->hit)
 	{
 		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata);
@@ -84,7 +80,10 @@ static void ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 		else
 			camera->intersect = vars->player->xpos + camera->wall_dist * ray[0];
 		camera->intersect -= floor(camera->intersect);
-		ft_drawslice(i, camera, NULL, vars);
+		//ft_drawslice(i, camera, NULL, vars);
+		(void) ft_drawslice;
+		(void) i;
+		printf("drawslice\n");
 	}
 }
 
@@ -116,6 +115,7 @@ void ft_draw_rays(t_vars *vars)
 		cameraX = 2.0 * i / W_WIDTH - 1.0;
 		ray[0] = vars->camera->dir[0] + vars->camera->plane[0] * cameraX;
 		ray[1] = vars->camera->dir[1] + vars->camera->plane[1] * cameraX;
-		ft_raycast(vars, vars->camera, i++, ray);
+		ft_raycast(vars, vars->camera, i, ray);
+		i++;
 	}
 }
