@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/12 16:54:28 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/17 21:07:19 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	ft_raycast(t_vars *vars, t_camera *camera)
 	ft_init_dir(camera, vars->player->angle);
 	camera->planeX = -camera->dirY * 0.6;
 	camera->planeY = camera->dirX * 0.6;
+	camera->mapX = fabs(vars->player->xpos);
+	camera->mapY = fabs(vars->player->ypos);
 	i = -1;
 	while (++i < W_WIDTH)
 	{
 		camera->cameraX = 2 * i / W_WIDTH - 1;
 		camera->ray_dirX = camera->dirX + camera->planeX * camera->cameraX;
 		camera->ray_dirY = camera->dirY + camera->planeY * camera->cameraX;
-		camera->mapX = (int)vars->player->xpos / CELL_SIZE;
-		camera->mapY = (int)vars->player->ypos / CELL_SIZE;
 		if (camera->ray_dirX == 0)
 			camera->delta_distX = 1e30;
 		else

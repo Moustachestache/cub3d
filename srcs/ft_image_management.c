@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/05 14:24:00 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/17 20:35:16 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_render(t_vars *vars)
 	ft_put_img((t_pixel){0, 0, 0}, &vars->background, vars->buffer);
 	//	raycast
 	ft_raycast(vars, vars->camera);
+//	ft_raycastv2(vars);
 	//	interface
 	ft_render_interface(vars->buffer, vars);
 	//	push buffer to window
