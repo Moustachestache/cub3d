@@ -19,7 +19,7 @@ static int ft_check_hit(t_vars *vars, t_camera *camera,  float ray[2], t_map *ma
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
-		camera->mapX += camera->stepX;
+		camera->mapY += camera->stepY;
 		if (ray[0] > 0)
 			camera->side = 'N';
 		else
@@ -28,13 +28,16 @@ static int ft_check_hit(t_vars *vars, t_camera *camera,  float ray[2], t_map *ma
 	else
 	{
 		camera->side_dist[1] += camera->delta_dist[1];
-		camera->mapY += camera->stepY;
+		camera->mapX += camera->stepX;
 		if (ray[1] > 0)
 			camera->side = 'E';
 		else
 			camera->side = 'W';
 	}
-	return (1);
+	if (mapdata->map[camera->mapY][camera->mapX] == '1')
+	        return (1);
+	else
+	        return (0);
 }
 
 static void ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
@@ -44,21 +47,21 @@ static void ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
 	camera->mapX = floor(vars->player->xpos);
 	camera->mapY = floor(vars->player->ypos);
 	if (ray[0] < 0)
-		camera->stepX = -1;
-	else
-		camera->stepX = 1;
-	if (ray[1] < 0)
 		camera->stepY = -1;
 	else
 		camera->stepY = 1;
-	if (ray[0] < 0)
-		camera->side_dist[0] = (vars->player->xpos - camera->mapX) * camera->delta_dist[0];
-	else
-		camera->side_dist[0] = (camera->mapX + 1.0 - vars->player->xpos) * camera->delta_dist[0];
 	if (ray[1] < 0)
-		camera->side_dist[1] = (vars->player->ypos - camera->mapY) * camera->delta_dist[1];
+		camera->stepX = -1;
 	else
-		camera->side_dist[1] = (camera->mapY + 1.0 - vars->player->ypos) * camera->delta_dist[1];
+		camera->stepX = 1;
+	if (ray[0] < 0)
+		camera->side_dist[0] = (vars->player->ypos - camera->mapY) * camera->delta_dist[0];
+	else
+		camera->side_dist[0] = (camera->mapY + 1.0 - vars->player->ypos) * camera->delta_dist[0];
+	if (ray[1] < 0)
+		camera->side_dist[1] = (vars->player->xpos - camera->mapX) * camera->delta_dist[1];
+	else
+		camera->side_dist[1] = (camera->mapX + 1.0 - vars->player->xpos) * camera->delta_dist[1];
 }
 
 static void ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
@@ -66,40 +69,26 @@ static void ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 	(void) vars;
 	camera->hit = 0;
 	ft_init_camera(vars, camera, ray);
-	while (!camera->hit)
+	while (camera->hit == 0)
 	{
 		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata);
-		if (camera->side == 'N' || camera->side == 'S')
-			camera->wall_dist = (camera->mapX - vars->player->xpos
-					+ (1 - camera->stepX) / 2) / ray[0];
-		else
-			camera->wall_dist = (camera->mapY - vars->player->ypos
-					+ (1 - camera->stepY) / 2) / ray[1];
-		if (camera->side == 'N' || camera->side == 'S')
-			camera->intersect = vars->player->ypos + camera->wall_dist * ray[1];
-		else
-			camera->intersect = vars->player->xpos + camera->wall_dist * ray[0];
-		camera->intersect -= floor(camera->intersect);
-		//ft_drawslice(i, camera, NULL, vars);
-		(void) ft_drawslice;
-		(void) i;
-		printf("drawslice\n");
 	}
+	if (camera->side == 'N' || camera->side == 'S')
+		camera->wall_dist = (camera->mapY - vars->player->ypos
+				+ (1 - camera->stepY) / 2) / ray[0];
+	else
+		camera->wall_dist = (camera->mapX - vars->player->xpos
+				+ (1 - camera->stepX) / 2) / ray[1];
+	if (camera->side == 'N' || camera->side == 'S')
+		camera->intersect = vars->player->xpos + camera->wall_dist * ray[1];
+	else
+		camera->intersect = vars->player->ypos + camera->wall_dist * ray[0];
+	camera->intersect -= floor(camera->intersect);
+	ft_drawslice(i, camera, NULL, vars);
+	(void) ft_drawslice;
+	(void) i;
+	printf("[%d]  %f\n",i , camera->wall_dist);
 }
-
-static void ft_rotate(t_camera *camera, int angle)
-{
-	float	rad_angle;
-	float	tmp;
-
-	rad_angle = angle * (M_PI / 180.0);
-	tmp = camera->dir[0];
-	camera->dir[0] = tmp * cos(rad_angle) - camera->dir[1] * sin(rad_angle);
-	camera->dir[1] = tmp * sin(rad_angle) + camera->dir[1] * cos(rad_angle);
-	tmp = camera->plane[0];
-	camera->plane[0] = tmp * cos(rad_angle) - camera->plane[1] * sin(rad_angle);
-	camera->plane[1] = tmp * sin(rad_angle) + camera->plane[1] * cos(rad_angle);
-}	
 
 void ft_draw_rays(t_vars *vars)
 {
@@ -107,9 +96,7 @@ void ft_draw_rays(t_vars *vars)
 	float	cameraX;
 	float	ray[2];
 
-	printf("got to draw rays");
 	i = 0;
-	ft_rotate(vars->camera, vars->player->angle);
 	while (i < W_WIDTH)
 	{
 		cameraX = 2.0 * i / W_WIDTH - 1.0;

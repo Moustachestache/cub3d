@@ -49,7 +49,7 @@ static void	ft_init_background(t_image *bg, t_vars *vars)
 	if (bg->image == NULL)
 		ft_exit(ft_perror("Could Not create Background", EXIT_FAILURE), vars);
 	bg->addr = mlx_get_data_addr(bg->image, &bg->bpp, &bg->len, &bg->endian);
-	printf("in init background");
+	//printf("in init background");
 	ft_render_background(bg, vars);
 }
 

@@ -45,8 +45,11 @@ void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars)
 
 	(void) texture;
 	i = 0;
-	height = (T_SIZE * W_HEIGHT) / camera->wall_dist;
-	pixel = (t_pixel){x, (W_HEIGHT - height) / 2, 0xff00ff};
+	height = W_HEIGHT / camera->wall_dist;
+	pixel.x = x;
+	pixel.y = (W_HEIGHT - height) / 2;
+	pixel.colour = 0xff00ff;
+	//pixel = (t_pixel){x, (W_HEIGHT - height) / 2, 0xff00ff};
 	while (i < height)
 	{
 //		pixel.colour = ft_fetch_imgcolour(texture, x, i * intersect);
