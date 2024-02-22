@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/17 20:35:16 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/22 13:35:37 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 	(void) image;
 	if (vars->interface_toggle != 0)
 	{
-		ft_put_img((t_pixel){5, 5, 0x0}, &vars->minimap, vars->buffer);
+		ft_put_img((t_pixel){0, 0, 0x0}, &vars->minimap, vars->buffer);
 		ft_drawplayer(vars->player, vars);
 		ft_put_img((t_pixel){vars->minimap.width + 5, -20, 0x0}, &vars->logo, vars->buffer);
 	}

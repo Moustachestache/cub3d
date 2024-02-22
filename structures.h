@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/05 14:28:56 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/22 12:19:55 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct s_camera {
 	int					side;
 	int					mapX;
 	int					mapY;
-	float					stepX;
-	float					stepY;
+	float				stepX;
+	float				stepY;
 	float				dir[2];
 	float				plane[2];
 	float				side_dist[2];

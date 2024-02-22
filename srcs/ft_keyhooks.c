@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/17 21:06:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/22 13:15:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	ft_keyhook(int keycode, t_vars *vars)
 	else if (keycode == 97)
 	{
 		ft_update_angle(&vars->player->angle, 5, vars);
-		ft_rotate(vars->camera, vars->player->angle);
+		ft_rotate(vars->camera, 5);
 	}
 	else if (keycode == 100)
 	{
 		ft_update_angle(&vars->player->angle, -5, vars);
-		ft_rotate(vars->camera, vars->player->angle);
+		ft_rotate(vars->camera, -5);
 	}
 	ft_render(vars);
 	return (0);
