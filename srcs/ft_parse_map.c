@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 13:58:20 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/23 10:42:57 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static int	ft_validatecolour(char *str, unsigned int *target, \
 	while (temp[++j])
 	{
 		i = ft_atoi(temp[j]);
-		if (i > 255)
-			ft_exit(ft_perror("Color Value Superior To 255", 1), vars);
+		if (i > 255 || i < 0)
+			ft_exit(ft_perror("Color Value Outside Of Range", 1), vars);
 		*target += i << (16 - (j * 8));
 	}
 	ft_free_split(temp);

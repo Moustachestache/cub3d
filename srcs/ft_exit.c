@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/12 19:42:05 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/23 10:48:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_exit(int exit_value, t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->background.image);
 	if (vars->minimap.image)
 		mlx_destroy_image(vars->mlx, vars->minimap.image);
-	if (vars->buffer->image)
+	if (vars->buffer && vars->buffer->image)
 		mlx_destroy_image(vars->mlx, vars->buffer->image);
 	if (vars->logo.image)
 		ft_destroy_image(&vars->logo, vars);

@@ -6,23 +6,17 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 21:17:33 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/11 21:50:01 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/23 10:39:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 static unsigned char	ft_getfactor(unsigned char r, unsigned char g, unsigned char b)
 {
-	char	smallest;
-
-	smallest = 1;
-	if (r > g)
-		smallest = g;
-	if (g > b)
-		smallest = b;
-	if (smallest == 0)
-		smallest++;
-	return (255 / smallest);
+	(void) r;
+	(void) g;
+	(void) b;
+	return (13);
 }
 
 static unsigned int	ft_darken_ceiling(unsigned int colour)
