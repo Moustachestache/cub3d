@@ -6,15 +6,16 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 18:51:36 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:00:30 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_map_square(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+static void	ft_map_square(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
-	if (start.colour == 0x00ff00)
+	if (start.colour == A_COLOR)
 		return ;
 	while (start.y <= dest.y)
 	{
@@ -41,17 +42,17 @@ static int	ft_get_mapcolour(char c)
 
 void	ft_render_minimap(t_image *minimap, t_vars *vars)
 {
-	int	x;
-	int	y;
+	static int	x;
+	static int	y;
 
-	x = 0;
-	y = 0;
 	minimap->width = CELL_SIZE * vars->mapdata->width - CELL_SIZE;
 	minimap->height = CELL_SIZE * vars->mapdata->height + CELL_SIZE;
 	minimap->image = mlx_new_image(vars->mlx, minimap->width, minimap->height);
 	if (minimap->image == NULL)
-		ft_exit(ft_perror("Error Initialising Minimap Image", EXIT_FAILURE), vars);
-	minimap->addr = mlx_get_data_addr(minimap->image, &minimap->bpp, &minimap->len, &minimap->endian);
+		ft_exit(ft_perror("Error Initialising Minimap Image", \
+			EXIT_FAILURE), vars);
+	minimap->addr = mlx_get_data_addr(minimap->image, &minimap->bpp, \
+			&minimap->len, &minimap->endian);
 	while (vars->mapdata->map[y])
 	{
 		while (vars->mapdata->map[y][x])

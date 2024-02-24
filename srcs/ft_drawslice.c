@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/23 10:40:54 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 13:32:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ t_image	*ft_set_texture(t_vars *vars, t_camera *camera)
 	return (texture);
 }
 
-//				pixel.colour = ft_fetch_imgcolour(texture, (int) (T_SIZE * camera->intersect), i++);
-void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars)
+void	ft_drawslice(int x, t_camera *camera, \
+	t_image *texture, t_vars *vars)
 {
 	t_pixel		pixel;
 	int			height;
@@ -67,7 +67,8 @@ void	ft_drawslice(int x, t_camera *camera, t_image *texture, t_vars *vars)
 	error[1] = 0;
 	while (height > 0)
 	{
-		pixel.colour = ft_fetch_imgcolour(texture, (int)(T_SIZE * camera->intersect), error[1]);
+		pixel.colour = ft_fetch_imgcolour(texture, \
+			(int)(T_SIZE * camera->intersect), error[1]);
 		ft_img_pix_put(pixel, vars->buffer);
 		height--;
 		pixel.y++;

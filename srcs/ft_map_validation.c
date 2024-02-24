@@ -6,7 +6,7 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/02/12 19:44:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:12:24 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,17 @@ static char	**ft_copy_map(t_map *mapdata)
 	while (++i <= mapdata->height)
 	{
 		mapcopy[i] = ft_calloc(mapdata->width, sizeof(char));
-		//	caca
-		//	replace with ft memcpy
-		memset(mapcopy[i], ' ', mapdata->width);
+		ft_memset(mapcopy[i], ' ', mapdata->width);
 		ft_memcpy(mapcopy[i], mapdata->map[i], mapdata->width);
 	}
 	return (mapcopy);
 }
 
+//	wow i should
+//	give up on programming
+//	and open a vomit factory
 static int	ft_hasnull(int x, int y, char **map, t_vars *vars)
 {
-	//	wow i should
-	//	give up on programming
-	//	and open a vomit factory
 	if (x + 1 > vars->mapdata->width || y > vars->mapdata->height)
 		return (1);
 	else if (map[y][x + 1] != '1')
@@ -59,14 +57,14 @@ static int	ft_validate(int x, int y, char **map, t_vars *vars)
 	int	retval;
 
 	retval = 0;
-	if ((x < 0) || (y < 0) || (x > vars->mapdata->width) || (y > vars->mapdata->height))
+	if ((x < 0) || (y < 0) || (x > vars->mapdata->width) \
+				|| (y > vars->mapdata->height))
 		return (1);
 	if (map[y][x] == ' ')
 		retval = ft_hasnull(x, y, map, vars);
 	if (map[y][x] == '1' || map[y][x] == '2')
 		return (0);
 	map[y][x] = '2';
-	//	propagate if we are not on a wall
 	retval += ft_validate(x + 1, y, map, vars);
 	retval += ft_validate(x - 1, y, map, vars);
 	retval += ft_validate(x, y + 1, map, vars);
@@ -74,7 +72,7 @@ static int	ft_validate(int x, int y, char **map, t_vars *vars)
 	return (retval);
 }
 
-int		ft_map_validation(t_vars *vars)
+int	ft_map_validation(t_vars *vars)
 {
 	char	**map;
 	int		retval;
@@ -82,7 +80,8 @@ int		ft_map_validation(t_vars *vars)
 
 	i = -1;
 	map = ft_copy_map(vars->mapdata);
-	retval = ft_validate(vars->player->xpos / CELL_SIZE, vars->player->ypos / CELL_SIZE, map, vars);
+	retval = ft_validate(vars->player->xpos / CELL_SIZE, \
+		vars->player->ypos / CELL_SIZE, map, vars);
 	while (++i <= vars->mapdata->height)
 		free(map[i]);
 	free(map);

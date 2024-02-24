@@ -6,13 +6,14 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 07:23:09 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 17:53:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:03:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_octan_0(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+static void	ft_octan_0(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
@@ -33,7 +34,8 @@ static void	ft_octan_0(t_pixel start, t_pixel dest, t_image *buffer, t_vars *var
 	}
 }
 
-static void	ft_octan_1(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+static void	ft_octan_1(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
@@ -54,7 +56,8 @@ static void	ft_octan_1(t_pixel start, t_pixel dest, t_image *buffer, t_vars *var
 	}
 }
 
-static void	ft_octan_2(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+static void	ft_octan_2(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
@@ -75,7 +78,8 @@ static void	ft_octan_2(t_pixel start, t_pixel dest, t_image *buffer, t_vars *var
 	}
 }
 
-static void	ft_octan_3(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+static void	ft_octan_3(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
 	float	slope;
 	float	error;
@@ -96,7 +100,8 @@ static void	ft_octan_3(t_pixel start, t_pixel dest, t_image *buffer, t_vars *var
 	}
 }
 
-void	ft_drawline(t_pixel start, t_pixel dest, t_image *buffer, t_vars *vars)
+void	ft_drawline(t_pixel start, t_pixel dest, \
+	t_image *buffer, t_vars *vars)
 {
 	t_pixel		swap;
 	int			colour;

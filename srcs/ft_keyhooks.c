@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/22 13:15:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:03:11 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_key_toggle(int *keyval)
 		*keyval = 0;
 }
 
-static void ft_rotate(t_camera *camera, int angle)
+static void	ft_rotate(t_camera *camera, int angle)
 {
 	float	rad_angle;
 	float	tmp;

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:28:47 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/20 20:27:37 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:15:01 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ static int	ft_get_player_vector(char c)
 	return (0);
 }
 
-static void ft_init_dir(t_vars *vars, char c)
+static void	ft_init_dir(t_vars *vars, char c)
 {
 	if (c == 'E' || c == 'W')
 	{
 		vars->camera->dir[0] = 0;
 		if (c == 'E')
-		        vars->camera->dir[1] = 1;
+			vars->camera->dir[1] = 1;
 		else
 			vars->camera->dir[1] = -1;
 		if (c == 'E')
-		        vars->camera->plane[0] = 0.66;
+			vars->camera->plane[0] = 0.66;
 		else
-		        vars->camera->plane[0] = -0.66;
+			vars->camera->plane[0] = -0.66;
 		vars->camera->plane[1] = 0;
 	}
 	else
@@ -47,9 +47,9 @@ static void ft_init_dir(t_vars *vars, char c)
 		else
 			vars->camera->dir[0] = -1;
 		if (c == 'S')
-		        vars->camera->plane[1] = -0.66;
+			vars->camera->plane[1] = -0.66;
 		else
-		        vars->camera->plane[1] = 0.66;
+			vars->camera->plane[1] = 0.66;
 		vars->camera->dir[1] = 0;
 		vars->camera->plane[0] = 0;
 	}

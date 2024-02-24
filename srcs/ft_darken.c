@@ -6,25 +6,26 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 21:17:33 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/23 10:39:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 13:32:10 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-static unsigned char	ft_getfactor(unsigned char r, unsigned char g, unsigned char b)
+/*static unsigned char	ft_getfactor(unsigned char r, \
+	unsigned char g, unsigned char b)
 {
 	(void) r;
 	(void) g;
 	(void) b;
 	return (13);
-}
+}*/
 
 static unsigned int	ft_darken_ceiling(unsigned int colour)
 {
 	static unsigned char	red;
 	static unsigned char	green;
 	static unsigned char	blue;
-	static unsigned char	factor;
+	static unsigned char	factor = 13;
 
 	if (colour == 0)
 		return (0);
@@ -33,14 +34,13 @@ static unsigned int	ft_darken_ceiling(unsigned int colour)
 		red = colour >> 16;
 		green = colour >> 8;
 		blue = colour >> 0;
-		factor = ft_getfactor(red, green, blue);
 	}
 	if (factor == 0)
 		return (0);
 	red -= red / factor;
 	green -= green / factor;
 	blue -= blue / factor;
-	return ((red  << 16) + (green  << 8) + blue);
+	return ((red << 16) + (green << 8) + blue);
 }
 
 static unsigned int	ft_darken_floor(unsigned int colour)
@@ -48,8 +48,7 @@ static unsigned int	ft_darken_floor(unsigned int colour)
 	static unsigned char	red;
 	static unsigned char	green;
 	static unsigned char	blue;
-	static unsigned char	factor;
-
+	static unsigned char	factor = 13;
 
 	if (colour == 0)
 		return (0);
@@ -58,16 +57,14 @@ static unsigned int	ft_darken_floor(unsigned int colour)
 		red = colour >> 16;
 		green = colour >> 8;
 		blue = colour >> 0;
-		factor = ft_getfactor(red, green, blue);
 	}
 	if (factor == 0)
 		return (0);
 	red -= red / factor;
 	green -= green / factor;
 	blue -= blue / factor;
-	return ((red  << 16) + (green  << 8) + blue);
+	return ((red << 16) + (green << 8) + blue);
 }
-
 
 unsigned int	ft_darken(unsigned int colour, char id)
 {

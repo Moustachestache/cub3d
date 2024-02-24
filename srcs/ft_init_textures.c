@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:24:06 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 18:01:33 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 13:24:02 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ static void	ft_render_background(t_image *image, t_vars *vars)
 
 static void	ft_init_background(t_image *bg, t_vars *vars)
 {
-
 	bg->width = W_WIDTH;
 	bg->height = W_HEIGHT;
 	bg->image = mlx_new_image(vars->mlx, bg->width, bg->height);
 	if (bg->image == NULL)
 		ft_exit(ft_perror("Could Not create Background", EXIT_FAILURE), vars);
 	bg->addr = mlx_get_data_addr(bg->image, &bg->bpp, &bg->len, &bg->endian);
-	//printf("in init background");
 	ft_render_background(bg, vars);
 }
 
@@ -68,7 +66,8 @@ static int	ft_create_texture(t_image *texture, char *path, t_vars *vars)
 {
 	if (!path || path[0] == '\0')
 		ft_exit(ft_perror("No Path To Texture", EXIT_FAILURE), vars);
-	texture->image = mlx_xpm_file_to_image(vars->mlx, path, &texture->height, &texture->width);
+	texture->image = mlx_xpm_file_to_image(vars->mlx, path, \
+		&texture->height, &texture->width);
 	if (!texture->image)
 	{
 		ft_perror("Error loading texture", 0);
