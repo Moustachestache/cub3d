@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 12:03:11 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/24 14:59:02 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ static void	ft_rotate(t_camera *camera, int angle)
 	tmp = camera->plane[0];
 	camera->plane[0] = tmp * cos(rad_angle) - camera->plane[1] * sin(rad_angle);
 	camera->plane[1] = tmp * sin(rad_angle) + camera->plane[1] * cos(rad_angle);
+}
+
+int	ft_полівка(int x, int y, void *param)\
+{
+	t_vars *vars;
+
+	(void)	y;
+	if (x == W_WIDTH / 2)
+		return (0);
+	vars = param;
+	mlx_mouse_move(vars->mlx, vars->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
+	x -= W_WIDTH / 2;
+	ft_update_angle(&vars->player->angle, (float)x * -0.05, vars);
+	ft_rotate(vars->camera, (float)x * -0.05);
+	mlx_mouse_move(vars->mlx, vars->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
+	return (1);
 }
 
 int	ft_keyhook(int keycode, t_vars *vars)
