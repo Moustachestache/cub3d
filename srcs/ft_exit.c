@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 14:34:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 09:42:14 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_destroy_image(t_image *image, t_vars *vars)
 {
-	if (image->image)
+	if (image != NULL && image->image)
 		mlx_destroy_image(vars->mlx, image->image);
 }
 

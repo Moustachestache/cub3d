@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 14:59:02 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 13:13:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_key_toggle(int *keyval)
 		*keyval = 0;
 }
 
-static void	ft_rotate(t_camera *camera, int angle)
+static void	ft_rotate(t_vars *vars, t_camera *camera, int angle)
 {
 	float	rad_angle;
 	float	tmp;
@@ -32,20 +32,24 @@ static void	ft_rotate(t_camera *camera, int angle)
 	tmp = camera->plane[0];
 	camera->plane[0] = tmp * cos(rad_angle) - camera->plane[1] * sin(rad_angle);
 	camera->plane[1] = tmp * sin(rad_angle) + camera->plane[1] * cos(rad_angle);
+	ft_update_angle(&vars->player->angle, angle, vars);
 }
 
-int	ft_полівка(int x, int y, void *param)\
+int	ft_полівка(int x, int y, void *param)
 {
-	t_vars *vars;
-
+	t_vars		*vars;
+	static int	oldx;
+	float		rotation;
 	(void)	y;
 	if (x == W_WIDTH / 2)
 		return (0);
 	vars = param;
-	mlx_mouse_move(vars->mlx, vars->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
-	x -= W_WIDTH / 2;
-	ft_update_angle(&vars->player->angle, (float)x * -0.05, vars);
-	ft_rotate(vars->camera, (float)x * -0.05);
+	if (oldx - x < 0)
+		rotation = 1;
+	else
+		rotation = -1;
+	oldx = x;
+	ft_rotate(vars, vars->camera, rotation);
 	mlx_mouse_move(vars->mlx, vars->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
 	return (1);
 }
@@ -63,15 +67,8 @@ int	ft_keyhook(int keycode, t_vars *vars)
 		ft_transform_player(&vars->player->xpos, &vars->player->ypos, \
 			-(vars->player->step), vars->player->angle);
 	else if (keycode == 97)
-	{
-		ft_update_angle(&vars->player->angle, 5, vars);
-		ft_rotate(vars->camera, 5);
-	}
+		ft_rotate(vars, vars->camera, 5);
 	else if (keycode == 100)
-	{
-		ft_update_angle(&vars->player->angle, -5, vars);
-		ft_rotate(vars->camera, -5);
-	}
-	ft_render(vars);
+		ft_rotate(vars, vars->camera, -5);
 	return (0);
 }

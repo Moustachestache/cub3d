@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:24:06 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 13:24:02 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 08:49:06 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ static void	ft_render_background(t_image *image, t_vars *vars)
 	y = -1;
 	x = -1;
 	half = W_HEIGHT / 2;
+	(void) ft_darken;
 	while (++y <= half)
 	{
-		if (y % 10 == 0)
-			vars->mapdata->ceiling = ft_darken(vars->mapdata->ceiling, 'c');
 		while (++x < W_WIDTH)
 			ft_img_pix_put((t_pixel){x, y, vars->mapdata->ceiling}, image);
 		x = -1;
@@ -32,8 +31,6 @@ static void	ft_render_background(t_image *image, t_vars *vars)
 	y = W_HEIGHT;
 	while (y-- >= half)
 	{
-		if (y % 10 == 0)
-			vars->mapdata->floor = ft_darken(vars->mapdata->floor, 'f');
 		while (++x < W_WIDTH)
 			ft_img_pix_put((t_pixel){x, y, vars->mapdata->floor}, image);
 		x = -1;
