@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/22 12:19:55 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:03:03 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_player		t_player;
 typedef struct s_pixel		t_pixel;
 typedef struct s_image		t_image;
 typedef struct s_texture	t_texture;
-typedef struct s_camera 	t_camera;
+typedef struct s_camera		t_camera;
 
 typedef struct s_image
 {
@@ -74,13 +74,14 @@ typedef struct s_player
 	float				ypos;
 }						t_player;
 
-typedef struct s_camera {
+typedef struct s_camera
+{
 	int					hit;
 	int					side;
-	int					mapX;
-	int					mapY;
-	float				stepX;
-	float				stepY;
+	int					mapx;
+	int					mapy;
+	float				stepx;
+	float				stepy;
 	float				dir[2];
 	float				plane[2];
 	float				side_dist[2];
@@ -89,7 +90,8 @@ typedef struct s_camera {
 	float				intersect;
 }						t_camera;
 
-typedef struct s_pixel {
+typedef struct s_pixel
+{
 	int					x;
 	int					y;
 	unsigned int		colour;

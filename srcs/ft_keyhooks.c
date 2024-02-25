@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 15:01:39 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:02:36 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static void	ft_moveplayer(float angle, float value, t_vars *vars)
 		angle);
 }
 
-int	ft_полівка(int x, int y, void *param)
+int	ft_mouse(int x, int y, void *param)
 {
 	t_vars		*vars;
 	static int	oldx;
 	float		rotation;
 
-	(void)	y;
+	(void) y;
 	if (x == W_WIDTH / 2)
 		return (0);
 	vars = param;

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 12:06:13 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:05:13 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
-		camera->mapY += camera->stepY;
+		camera->mapy += camera->stepy;
 		if (ray[0] > 0)
 			camera->side = 'N';
 		else
@@ -29,13 +29,13 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	else
 	{
 		camera->side_dist[1] += camera->delta_dist[1];
-		camera->mapX += camera->stepX;
+		camera->mapx += camera->stepx;
 		if (ray[1] > 0)
 			camera->side = 'E';
 		else
 			camera->side = 'W';
 	}
-	if (mapdata->map[camera->mapY][camera->mapX] == '1')
+	if (mapdata->map[camera->mapy][camera->mapx] == '1')
 		return (1);
 	else
 		return (0);
@@ -45,27 +45,27 @@ static void	ft_init_camera(t_vars *vars, t_camera *camera, float ray[2])
 {
 	camera->delta_dist[0] = fabs(1.0 / ray[0]);
 	camera->delta_dist[1] = fabs(1.0 / ray[1]);
-	camera->mapX = floor(vars->player->xpos);
-	camera->mapY = floor(vars->player->ypos);
+	camera->mapx = floor(vars->player->xpos);
+	camera->mapy = floor(vars->player->ypos);
 	if (ray[0] < 0)
-		camera->stepY = -1;
+		camera->stepy = -1;
 	else
-		camera->stepY = 1;
+		camera->stepy = 1;
 	if (ray[1] < 0)
-		camera->stepX = -1;
+		camera->stepx = -1;
 	else
-		camera->stepX = 1;
+		camera->stepx = 1;
 	if (ray[0] < 0)
-		camera->side_dist[0] = (vars->player->ypos - camera->mapY) \
+		camera->side_dist[0] = (vars->player->ypos - camera->mapy) \
 			* camera->delta_dist[0];
 	else
-		camera->side_dist[0] = (camera->mapY + 1.0 - vars->player->ypos) \
+		camera->side_dist[0] = (camera->mapy + 1.0 - vars->player->ypos) \
 			* camera->delta_dist[0];
 	if (ray[1] < 0)
-		camera->side_dist[1] = (vars->player->xpos - camera->mapX) \
+		camera->side_dist[1] = (vars->player->xpos - camera->mapx) \
 			* camera->delta_dist[1];
 	else
-		camera->side_dist[1] = (camera->mapX + 1.0 - vars->player->xpos) \
+		camera->side_dist[1] = (camera->mapx + 1.0 - vars->player->xpos) \
 			* camera->delta_dist[1];
 }
 
@@ -79,11 +79,11 @@ static void	ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata);
 	}
 	if (camera->side == 'N' || camera->side == 'S')
-		camera->wall_dist = (camera->mapY - vars->player->ypos
-				+ (1 - camera->stepY) / 2) / ray[0];
+		camera->wall_dist = (camera->mapy - vars->player->ypos
+				+ (1 - camera->stepy) / 2) / ray[0];
 	else
-		camera->wall_dist = (camera->mapX - vars->player->xpos
-				+ (1 - camera->stepX) / 2) / ray[1];
+		camera->wall_dist = (camera->mapx - vars->player->xpos
+				+ (1 - camera->stepx) / 2) / ray[1];
 	if (camera->side == 'N' || camera->side == 'S')
 		camera->intersect = vars->player->xpos + camera->wall_dist * ray[1];
 	else

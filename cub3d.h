@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 14:03:59 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 17:54:48 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ char			*ft_strdup(const char *s);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_draw_rays(t_vars *vars);
 void			*ft_memset(void *s, int c, size_t n);
-int				ft_полівка(int x, int y, void *vars);
+int				ft_mouse(int x, int y, void *vars);
 
 #endif
