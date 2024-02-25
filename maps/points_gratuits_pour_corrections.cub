@@ -1,14 +1,14 @@
 
 
-  NO		./assets/north.xpm
-SO ./assets/south.xpm
-F 139,69,19
+  NO		./assets/tex1.xpm
+SO ./assets/tex2.xpm
+F 252, 244, 3
 
-  WE	./assets/west.xpm
+  WE	./assets/tex3.xpm
 
-EA ./assets/east.xpm
+EA ./assets/tex4.xpm
 
-C		 30,144,255
+C		 3, 132, 252
   DO	./assets/door.xpm
   XO	./assets/sprite.xpm
 
