@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 09:03:03 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 14:59:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ static int	ft_click_exit(void *param)
 	return (EXIT_SUCCESS);
 }
 
-//	init vars
-//	parse map
-//	starts loop
+//	mlx related memory leaks
+//	https://github.com/42Paris/minilibx-linux/issues/48
 int	main(int ac, char *av[])
 {
 	t_vars	*vars;
@@ -40,6 +39,7 @@ int	main(int ac, char *av[])
 	mlx_hook(vars->mlx_win, 17, 0L, ft_click_exit, vars);
 	mlx_hook(vars->mlx_win, 2, 1L<<0, ft_keyhook, vars);
 	mlx_hook(vars->mlx_win, 6, 1L<<6, ft_полівка, vars);
+	mlx_mouse_hide(vars->mlx, vars->mlx_win);
 	mlx_loop(vars->mlx);
 	ft_exit(1, vars);
 }

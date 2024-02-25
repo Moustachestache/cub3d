@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 12:00:30 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 13:52:23 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	ft_map_square(t_pixel start, t_pixel dest, \
 		ft_drawline(start, (t_pixel){dest.x, start.y, 0}, buffer, vars);
 		start.y++;
 	}
-	ft_drawline((t_pixel){dest.x - 1, start.y - 1 - CELL_SIZE, \
-		start.colour & 0xc8c8c8}, dest, buffer, vars);
-	ft_drawline((t_pixel){start.x, dest.y - 1, \
-		start.colour & 0xc8c8c8}, dest, buffer, vars);
+//	ft_drawline((t_pixel){dest.x - 1, start.y - 1 - CELL_SIZE, \
+//		start.colour & 0xc8c8c8}, dest, buffer, vars);
+//	ft_drawline((t_pixel){start.x, dest.y - 1, \
+//		start.colour & 0xc8c8c8}, dest, buffer, vars);
 }
 
 static int	ft_get_mapcolour(char c)

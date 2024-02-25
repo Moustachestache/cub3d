@@ -6,7 +6,7 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/02/25 10:45:26 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 15:02:07 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,6 @@ int	ft_map_validation(t_vars *vars)
 	map = ft_copy_map(vars->mapdata);
 	retval = ft_validate(vars->player->xpos, \
 		vars->player->ypos, map, vars);
-int	y = -1;
-while (++y <= vars->mapdata->height)
-{
-	printf("[%5i - %s]\n", y, map[y]);
-}
 	while (++i <= vars->mapdata->height)
 		free(map[i]);
 	free(map);

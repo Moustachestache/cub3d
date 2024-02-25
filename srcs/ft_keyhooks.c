@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 13:13:40 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/25 15:01:39 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,21 @@ static void	ft_rotate(t_vars *vars, t_camera *camera, int angle)
 	ft_update_angle(&vars->player->angle, angle, vars);
 }
 
+//	check if moveable or no
+static void	ft_moveplayer(float angle, float value, t_vars *vars)
+{
+	ft_transform_player(&vars->player->xpos, \
+		&vars->player->ypos, \
+		value, \
+		angle);
+}
+
 int	ft_полівка(int x, int y, void *param)
 {
 	t_vars		*vars;
 	static int	oldx;
 	float		rotation;
+
 	(void)	y;
 	if (x == W_WIDTH / 2)
 		return (0);
@@ -58,17 +68,19 @@ int	ft_keyhook(int keycode, t_vars *vars)
 {
 	if (keycode == 105)
 		ft_key_toggle(&vars->interface_toggle);
-	if (keycode == 65307)
+	else if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
-	else if (keycode == 119)
-		ft_transform_player(&vars->player->xpos, &vars->player->ypos, \
-			vars->player->step, vars->player->angle);
-	else if (keycode == 115)
-		ft_transform_player(&vars->player->xpos, &vars->player->ypos, \
-			-(vars->player->step), vars->player->angle);
-	else if (keycode == 97)
-		ft_rotate(vars, vars->camera, 5);
+	else if (keycode == 119 || keycode == 65362)
+		ft_moveplayer(vars->player->angle, vars->player->step, vars);
+	else if (keycode == 115 || keycode == 65364)
+		ft_moveplayer(vars->player->angle, -vars->player->step, vars);
 	else if (keycode == 100)
+		ft_moveplayer(vars->player->angle + 90, -vars->player->step, vars);
+	else if (keycode == 97)
+		ft_moveplayer(vars->player->angle - 90, -vars->player->step, vars);
+	else if (keycode == 65361)
+		ft_rotate(vars, vars->camera, 5);
+	else if (keycode == 65363)
 		ft_rotate(vars, vars->camera, -5);
 	return (0);
 }
