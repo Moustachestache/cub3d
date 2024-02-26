@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 17:54:48 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/26 14:36:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define BUFFER_SIZE 1000
 # define W_HEIGHT 600
-# define W_WIDTH 800
+# define W_WIDTH 1000
 # define FOV 60
 # define CELL_SIZE 5
 # define T_SIZE 128

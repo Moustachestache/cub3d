@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 18:02:36 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:06:29 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,21 @@ int	ft_mouse(int x, int y, void *param)
 		return (0);
 	vars = param;
 	if (oldx - x < 0)
-		rotation = 1;
-	else
 		rotation = -1;
+	else
+		rotation = 1;
 	oldx = x;
 	ft_rotate(vars, vars->camera, rotation);
 	mlx_mouse_move(vars->mlx, vars->mlx_win, W_WIDTH / 2, W_HEIGHT / 2);
 	return (1);
+}
+
+static void	ft_opendoor(t_map *mapdata)
+{
+	if (mapdata->map[9][8] == '0')
+		mapdata->map[9][8] = '1';
+	else
+		mapdata->map[9][8] = '0';
 }
 
 int	ft_keyhook(int keycode, t_vars *vars)
@@ -82,5 +90,7 @@ int	ft_keyhook(int keycode, t_vars *vars)
 		ft_rotate(vars, vars->camera, 5);
 	else if (keycode == 65363)
 		ft_rotate(vars, vars->camera, -5);
+	else if (keycode == 32)
+		ft_opendoor(vars->mapdata);
 	return (0);
 }

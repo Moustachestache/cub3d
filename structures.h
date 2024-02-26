@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 18:03:03 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/26 14:24:52 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ typedef struct s_camera
 
 typedef struct s_pixel
 {
-	int					x;
-	int					y;
+	unsigned int		x;
+	unsigned int		y;
 	unsigned int		colour;
 }						t_pixel;
 

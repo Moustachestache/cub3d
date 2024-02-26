@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 21:17:33 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 13:32:10 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/26 14:18:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static unsigned int	ft_darken_floor(unsigned int colour)
 
 unsigned int	ft_darken(unsigned int colour, char id)
 {
+	return (1);
 	if (id == 'c')
 		return (ft_darken_ceiling(colour));
 	else
