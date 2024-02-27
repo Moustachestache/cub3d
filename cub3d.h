@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/26 14:36:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:43:22 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <math.h>
 # include <limits.h>
+# include <time.h>
 # include "mlx/mlx.h"
 # include "structures.h"
 
@@ -83,5 +84,8 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_draw_rays(t_vars *vars);
 void			*ft_memset(void *s, int c, size_t n);
 int				ft_mouse(int x, int y, void *vars);
+int				ft_frame(t_vars *vars);
+int				ft_getframe(t_vars *vars);
+void			ft_init_sprite(char *path, t_vars *vars);
 
 #endif

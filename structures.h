@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/26 14:24:52 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:44:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_vars
 {
 	int					fd_map;
 	int					interface_toggle;
+	int					frame;
+	time_t				time;
+	time_t				oldtime;
 	void				*mlx;
 	void				*mlx_win;
 	t_image				*buffer;
@@ -62,6 +65,7 @@ typedef struct s_map
 	char				*door;
 	char				*sprite;
 	char				**map;
+	t_image				*stexture;
 	t_image				*texture;
 }						t_map;
 

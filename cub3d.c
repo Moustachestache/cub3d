@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 17:59:17 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 15:37:57 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	main(int ac, char *av[])
 		ft_exit(ft_perror("Map Is Invalid", EXIT_FAILURE), vars);
 	mlx_set_font(vars->mlx, vars->mlx_win, \
 		"-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1");
+mlx_loop_hook(vars->mlx, ft_frame, vars);
 	mlx_loop_hook(vars->mlx, ft_render, vars);
+//	(void) ft_frame;
 	mlx_hook(vars->mlx_win, 17, 0L, ft_click_exit, vars);
 	mlx_hook(vars->mlx_win, 2, 1L << 0, ft_keyhook, vars);
 	mlx_hook(vars->mlx_win, 6, 1L << 6, ft_mouse, vars);

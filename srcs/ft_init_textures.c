@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:24:06 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 08:49:06 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:28:35 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_init_logo(t_vars *vars)
 static int	ft_create_texture(t_image *texture, char *path, t_vars *vars)
 {
 	if (!path || path[0] == '\0')
-		ft_exit(ft_perror("No Path To Texture", EXIT_FAILURE), vars);
+		ft_perror("No Path To Texture", 0);
 	texture->image = mlx_xpm_file_to_image(vars->mlx, path, \
 		&texture->height, &texture->width);
 	if (!texture->image)
@@ -94,6 +94,6 @@ void	ft_init_textures(t_map *map, t_vars *vars)
 	if (map->door)
 		ft_create_texture(&map->texture[4], map->door, vars);
 	if (map->sprite)
-		ft_create_texture(&map->texture[5], map->sprite, vars);
+		ft_init_sprite(map->sprite, vars);
 	ft_render_minimap(&vars->minimap, vars);
 }
