@@ -68,6 +68,8 @@ void	ft_exit(int exit_value, t_vars *vars)
 		ft_destroy_image(&vars->logo, vars);
 	if (vars->buffer)
 		free(vars->buffer);
+	if (vars->camera->depth)
+		free(vars->camera->depth);
 	if (vars->camera)
 		free(vars->camera);
 	if (vars->mlx)

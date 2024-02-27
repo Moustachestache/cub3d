@@ -42,6 +42,7 @@ t_vars	*ft_init_vars(int ac, char *av[])
 	vars = ft_calloc(1, sizeof(t_vars));
 	vars->player = ft_calloc(1, sizeof(t_player));
 	vars->camera = ft_calloc(1, sizeof(t_camera));
+	vars->camera->depth = ft_calloc(W_WIDTH, sizeof(float));
 	vars->fd_map = ft_validate(ac, av, vars);
 	return (vars);
 }
