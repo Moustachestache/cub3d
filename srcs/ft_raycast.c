@@ -13,10 +13,33 @@
 #include "../cub3d.h"
 
 static int	ft_check_hit(t_vars *vars, t_camera *camera, \
-	float ray[2], t_map *mapdata)
+			float ray[2], t_map *mapdata, int i);
+
+static void	ft_sprite_depth(t_vars *vars, t_camera *camera, float ray[2], int i)
+{
+	if (camera->side == 'N' || camera->side == 'S')
+	{
+		camera->depth[i] = (camera->mapy - vars->player->ypos
+				+ (1 - camera->stepy) / 2) / ray[0];
+		camera->sprite_intersect = vars->player->xpos + camera->depth[i]
+			* ray[1];
+	}
+	else
+	{
+		camera->depth[i] = (camera->mapx - vars->player->xpos
+				+ (1 - camera->stepx) / 2) / ray[1];
+		camera->sprite_intersect = vars->player->ypos + camera->depth[i]
+			* ray[0];
+	}
+	camera->sprite_intersect -= floor(camera->sprite_intersect);
+}
+
+static int	ft_check_hit(t_vars *vars, t_camera *camera, \
+	float ray[2], t_map *mapdata, int i)
 {
 	(void) vars;
 	(void) mapdata;
+	(void) i;
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
@@ -37,6 +60,12 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	}
 	if (mapdata->map[camera->mapy][camera->mapx] == '1')
 		return (1);
+	else if (mapdata->map[camera->mapy][camera->mapx] == 'D'
+			|| mapdata->map[camera->mapy][camera->mapx] == 's')
+	{
+		ft_sprite_depth(vars, camera, ray, i);
+		return (0);
+	}
 	else
 		return (0);
 }
@@ -76,7 +105,7 @@ static void	ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 	ft_init_camera(vars, camera, ray);
 	while (camera->hit == 0)
 	{
-		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata);
+		camera->hit = ft_check_hit(vars, camera, ray, vars->mapdata, i);
 	}
 	if (camera->side == 'N' || camera->side == 'S')
 		camera->wall_dist = (camera->mapy - vars->player->ypos

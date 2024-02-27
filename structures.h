@@ -84,6 +84,7 @@ typedef struct s_camera
 	int					side;
 	int					mapx;
 	int					mapy;
+	float				*depth;
 	float				stepx;
 	float				stepy;
 	float				dir[2];
@@ -92,6 +93,7 @@ typedef struct s_camera
 	float				delta_dist[2];
 	float				wall_dist;
 	float				intersect;
+	float				sprite_intersect;
 }						t_camera;
 
 typedef struct s_pixel
