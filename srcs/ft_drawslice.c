@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 17:26:01 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:09:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,20 @@ t_image	*ft_set_texture(t_vars *vars, t_camera *camera)
 		texture = &vars->mapdata->texture[2];
 	else if (camera->side == 'W')
 		texture = &vars->mapdata->texture[3];
-	else if (camera->side == 'd')
-		texture = &vars->mapdata->texture[4];
-	else if (camera->side == 'D')
-		texture = &vars->mapdata->texture[4];
-	else if (camera->side == 's')
+	return (texture);
+}
+
+t_image	*ft_set_texture_sprite(t_vars *vars, t_camera *camera)
+{
+	t_image	*texture;
+
+	texture = NULL;
+	if (camera->sprite == 's')
 		texture = &vars->mapdata->stexture[vars->frame];
+	else if (camera->sprite == 'd')
+		texture = &vars->mapdata->texture[4];
+	else if (camera->sprite == 'D')
+		texture = &vars->mapdata->texture[4];
 	return (texture);
 }
 
@@ -61,7 +69,6 @@ void	ft_drawslice(int x, t_camera *camera, \
 	}
 }
 
-
 void	ft_drawslice_sprite(int x, t_camera *camera, \
 	t_image *texture, t_vars *vars)
 {
@@ -69,23 +76,18 @@ void	ft_drawslice_sprite(int x, t_camera *camera, \
 	int			height;
 	float		error[2];
 
-
-	height = W_HEIGHT / camera->wall_dist;
-	texture = &vars->mapdata->stexture[vars->frame];
+	height = W_HEIGHT / camera->depth[x];
+	texture = ft_set_texture_sprite(vars, camera);
 	pixel = (t_pixel){x, (W_HEIGHT / 2) - (height / 2), 0xff00ff};
 	error[0] = (float)T_SIZE / (float)height;
 	error[1] = 0;
-	if (camera->sprite == 's')
-	{printf("hello\n");
-		texture = &vars->mapdata->stexture[vars->frame];
-		while (height > 0)
-		{
-			pixel.colour = ft_fetch_imgcolour(texture, \
-				(int)(T_SIZE * camera->sprite_intersect), error[1]);
-			ft_img_pix_put(pixel, vars->buffer);
-			height--;
-			pixel.y++;
-			error[1] += error[0];
-		}
+	while (height > 0)
+	{
+		pixel.colour = ft_fetch_imgcolour(texture, \
+			(int)(T_SIZE * camera->sprite_intersect), error[1]);
+		ft_img_pix_put(pixel, vars->buffer);
+		height--;
+		pixel.y++;
+		error[1] += error[0];
 	}
 }
