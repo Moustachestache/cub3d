@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 16:31:51 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 17:26:01 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,25 @@ void	ft_drawslice(int x, t_camera *camera, \
 		height--;
 		pixel.y++;
 		error[1] += error[0];
-	}/*
+	}
+}
+
+
+void	ft_drawslice_sprite(int x, t_camera *camera, \
+	t_image *texture, t_vars *vars)
+{
+	t_pixel		pixel;
+	int			height;
+	float		error[2];
+
+
 	height = W_HEIGHT / camera->wall_dist;
 	texture = &vars->mapdata->stexture[vars->frame];
 	pixel = (t_pixel){x, (W_HEIGHT / 2) - (height / 2), 0xff00ff};
 	error[0] = (float)T_SIZE / (float)height;
 	error[1] = 0;
-	if (camera->sprite_intersect > 0)
-	{
+	if (camera->sprite == 's')
+	{printf("hello\n");
 		texture = &vars->mapdata->stexture[vars->frame];
 		while (height > 0)
 		{
@@ -76,5 +87,5 @@ void	ft_drawslice(int x, t_camera *camera, \
 			pixel.y++;
 			error[1] += error[0];
 		}
-	}*/
+	}
 }

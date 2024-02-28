@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 15:28:53 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 17:26:45 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ static void	ft_raycast(t_vars *vars, t_camera *camera, int i, float ray[2])
 		camera->intersect = vars->player->ypos + camera->wall_dist * ray[0];
 	camera->intersect -= floor(camera->intersect);
 	ft_drawslice(i, camera, NULL, vars);
+	if (camera->sprite == 's')
+		ft_drawslice_sprite(i, camera, NULL, vars);
 }
 
 void	ft_draw_rays(t_vars *vars)
