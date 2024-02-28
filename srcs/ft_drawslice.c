@@ -58,13 +58,13 @@ void	ft_drawslice(int x, t_camera *camera, \
 		height--;
 		pixel.y++;
 		error[1] += error[0];
-	}/*
-	height = W_HEIGHT / camera->wall_dist;
+	}
+	height = (float)W_HEIGHT / camera->depth[x];
 	texture = &vars->mapdata->stexture[vars->frame];
 	pixel = (t_pixel){x, (W_HEIGHT / 2) - (height / 2), 0xff00ff};
 	error[0] = (float)T_SIZE / (float)height;
 	error[1] = 0;
-	if (camera->sprite_intersect > 0)
+	if (camera->sprite == 's')
 	{
 		texture = &vars->mapdata->stexture[vars->frame];
 		while (height > 0)
@@ -76,5 +76,5 @@ void	ft_drawslice(int x, t_camera *camera, \
 			pixel.y++;
 			error[1] += error[0];
 		}
-	}*/
+	}
 }

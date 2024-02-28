@@ -32,6 +32,7 @@ static void	ft_sprite_depth(t_vars *vars, t_camera *camera, float ray[2], int i)
 			* ray[0];
 	}
 	camera->sprite_intersect -= floor(camera->sprite_intersect);
+	//printf("[%i] sprite depth %f, sprite intersect %f\n", i, camera->depth[i], camera->sprite_intersect);
 }
 
 static int	ft_check_hit(t_vars *vars, t_camera *camera, \
@@ -41,7 +42,6 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	(void) mapdata;
 	(void) i;
 
-	camera->sprite = '0';
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
@@ -68,6 +68,7 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	{
 		ft_sprite_depth(vars, camera, ray, i);
 		camera->sprite = mapdata->map[camera->mapy][camera->mapx];
+		//printf("[%d] sprite char is %c\n",i, camera->sprite);
 		return (0);
 	}
 	else
