@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:31:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 15:22:01 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 22:36:39 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void		ft_init_sprite(char *path, t_vars *vars)
 	while (++i < 4)
 		ft_writetosprite(i, &map->stexture[i], temp, vars);
 	mlx_destroy_image(vars->mlx, temp->image);
+	free(temp);
 }

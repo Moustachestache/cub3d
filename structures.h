@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 17:44:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:52:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_vars
 	t_image				*buffer;
 	t_map				*mapdata;
 	t_player			*player;
+	t_image				tdefault;
 	t_image				background;
 	t_image				logo;
 	t_image				minimap;

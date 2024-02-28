@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 11:39:41 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 17:24:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 22:02:20 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static int	ft_get_mapcolour(char c)
 {
 	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (0xffffff);
-	if (c == '1')
+	if (c == '1' || c == 's')
 		return (0x000000);
+	if (c == 'd' || c == 'D')
+		return (0x20c800);
 	if (c == ' ')
 		return (0x00ff00);
 	else

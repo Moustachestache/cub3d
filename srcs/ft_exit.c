@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 09:42:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 22:52:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	ft_exit(int exit_value, t_vars *vars)
 		free(vars->player);
 	if (vars->background.image)
 		mlx_destroy_image(vars->mlx, vars->background.image);
+	if (vars->tdefault.image)
+		mlx_destroy_image(vars->mlx, vars->tdefault.image);
 	if (vars->minimap.image)
 		mlx_destroy_image(vars->mlx, vars->minimap.image);
 	if (vars->buffer && vars->buffer->image)

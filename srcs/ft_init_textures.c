@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:24:06 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 18:28:35 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 21:53:02 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	ft_init_textures(t_map *map, t_vars *vars)
 	ft_create_texture(&map->texture[3], map->we, vars);
 	if (map->door)
 		ft_create_texture(&map->texture[4], map->door, vars);
+	ft_create_texture(&vars->tdefault, "./assets/default.xpm", vars);
 	if (map->sprite)
 		ft_init_sprite(map->sprite, vars);
 	ft_render_minimap(&vars->minimap, vars);
