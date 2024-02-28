@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 17:43:22 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:01:45 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void			ft_free_split(char **split);
 int				ft_keyhook(int keycode, t_vars *vars);
 int				ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
 void			ft_img_pix_put(t_pixel pixel, t_image *image);
+void			ft_img_pix_put_alpha(t_pixel pixel, t_image *image);
 int				ft_render(t_vars *vars);
 void			ft_img_flush(t_vars *vars);
 void			ft_drawline(t_pixel start, t_pixel dest, \
