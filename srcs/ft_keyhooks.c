@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/26 16:06:29 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:21:47 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ int	ft_keyhook(int keycode, t_vars *vars)
 		ft_key_toggle(&vars->interface_toggle);
 	else if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
-	else if (keycode == 119 || keycode == 65362)
+	else if (keycode == 119 || keycode == 65362 || keycode == 122)
 		ft_moveplayer(vars->player->angle, vars->player->step, vars);
 	else if (keycode == 115 || keycode == 65364)
 		ft_moveplayer(vars->player->angle, -vars->player->step, vars);
 	else if (keycode == 100)
 		ft_moveplayer(vars->player->angle + 90, -vars->player->step, vars);
-	else if (keycode == 97)
+	else if (keycode == 97 || keycode ==  113)
 		ft_moveplayer(vars->player->angle - 90, -vars->player->step, vars);
 	else if (keycode == 65361)
 		ft_rotate(vars, vars->camera, 5);

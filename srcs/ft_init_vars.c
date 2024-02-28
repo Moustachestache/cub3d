@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 14:52:11 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 16:14:27 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ t_vars	*ft_init_vars(int ac, char *av[])
 	vars->camera = ft_calloc(1, sizeof(t_camera));
 	vars->camera->depth = ft_calloc(W_WIDTH, sizeof(float));
 	vars->fd_map = ft_validate(ac, av, vars);
+	time(&vars->time);
+	time(&vars->oldtime);
 	return (vars);
 }

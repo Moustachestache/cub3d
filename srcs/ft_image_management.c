@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/26 15:57:07 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:28:06 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 //	refreshes and displays all, including image
 int	ft_render(t_vars *vars)
 {
+	ft_frame(vars);
 	ft_img_flush(vars);
 	ft_put_img((t_pixel){0, 0, 0}, &vars->background, vars->buffer);
 	ft_draw_rays(vars);

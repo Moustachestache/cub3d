@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:27:29 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 18:05:13 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:28:53 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	}
 	if (mapdata->map[camera->mapy][camera->mapx] == '1')
 		return (1);
-	else if (mapdata->map[camera->mapy][camera->mapx] == 'D'
-			|| mapdata->map[camera->mapy][camera->mapx] == 'd'
+	else if (mapdata->map[camera->mapy][camera->mapx] == 'D'\
+			|| mapdata->map[camera->mapy][camera->mapx] == 'd'\
 			|| mapdata->map[camera->mapy][camera->mapx] == 's')
 	{
 		ft_sprite_depth(vars, camera, ray, i);

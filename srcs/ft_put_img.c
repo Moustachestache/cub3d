@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:53:27 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/24 12:01:36 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 14:27:40 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,6 @@ unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y)
 	(y * image->len) + (x * image->bpp / 8))));
 }
 
-/*
-void	put_img_to_img(t_img dst, t_img src, int x, int y) {
-	int i;
-	int j;
-
-	i = 0;
-	while(i < src.w) {
-		j = 0;
-		while (j < src.h) {
-			put_pixel_img(dst, x + i, y + j, get_pixel_img(src, i, j));
-			j++;
-		}
-		i++;
-	}
-}
-*/
 void	ft_put_img(t_pixel pos, t_image *image, t_image *buffer)
 {
 	int	i;

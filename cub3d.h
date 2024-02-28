@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/26 14:36:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:01:45 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <string.h>
 # include <math.h>
 # include <limits.h>
+# include <time.h>
 # include "mlx/mlx.h"
 # include "structures.h"
 
@@ -55,6 +56,7 @@ void			ft_free_split(char **split);
 int				ft_keyhook(int keycode, t_vars *vars);
 int				ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
 void			ft_img_pix_put(t_pixel pixel, t_image *image);
+void			ft_img_pix_put_alpha(t_pixel pixel, t_image *image);
 int				ft_render(t_vars *vars);
 void			ft_img_flush(t_vars *vars);
 void			ft_drawline(t_pixel start, t_pixel dest, \
@@ -83,5 +85,8 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_draw_rays(t_vars *vars);
 void			*ft_memset(void *s, int c, size_t n);
 int				ft_mouse(int x, int y, void *vars);
+int				ft_frame(t_vars *vars);
+int				ft_getframe(t_vars *vars);
+void			ft_init_sprite(char *path, t_vars *vars);
 
 #endif

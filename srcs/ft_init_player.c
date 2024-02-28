@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:28:47 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/25 18:02:17 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:41:08 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void	ft_player_init(int x, int y, char mapinfo, t_vars *vars)
 	vars->player->step = 0.2;
 	vars->player->xpos = (float)x + 0.5;
 	vars->player->ypos = (float)y + 0.5;
+	vars->mapdata->map[y][x] = '0';
 }
