@@ -40,6 +40,8 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	(void) vars;
 	(void) mapdata;
 	(void) i;
+
+	camera->sprite = '0';
 	if (camera->side_dist[0] < camera->side_dist[1])
 	{
 		camera->side_dist[0] += camera->delta_dist[0];
@@ -61,9 +63,11 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	if (mapdata->map[camera->mapy][camera->mapx] == '1')
 		return (1);
 	else if (mapdata->map[camera->mapy][camera->mapx] == 'D'
+			|| mapdata->map[camera->mapy][camera->mapx] == 'd'
 			|| mapdata->map[camera->mapy][camera->mapx] == 's')
 	{
 		ft_sprite_depth(vars, camera, ray, i);
+		camera->sprite = mapdata->map[camera->mapy][camera->mapx];
 		return (0);
 	}
 	else

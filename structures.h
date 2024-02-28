@@ -80,6 +80,7 @@ typedef struct s_camera
 	int					side;
 	int					mapx;
 	int					mapy;
+	char				sprite;
 	float				*depth;
 	float				stepx;
 	float				stepy;
