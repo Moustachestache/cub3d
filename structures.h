@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 21:52:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 11:24:16 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_vars
 	int					fd_map;
 	int					interface_toggle;
 	int					frame;
+	int					fps[2];
 	time_t				time;
 	time_t				oldtime;
 	void				*mlx;

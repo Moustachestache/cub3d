@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 21:30:05 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 12:10:43 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int				ft_mouse(int x, int y, void *vars);
 int				ft_frame(t_vars *vars);
 int				ft_getframe(t_vars *vars);
 void			ft_init_sprite(char *path, t_vars *vars);
+char			*ft_itoa(int n);
 
 #endif

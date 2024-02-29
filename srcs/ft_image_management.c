@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 18:28:06 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 12:24:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	ft_interface_text(t_vars *vars)
 {
+	char	*fps;
+
+	fps = NULL;
 	if (vars->interface_toggle != 0)
 	{
 		ft_write_toscreen(\
@@ -26,6 +29,10 @@ static void	ft_interface_text(t_vars *vars)
 		ft_write_toscreen(\
 			(t_pixel){10, 20, 0x0}, "interface: [i]", vars);
 	}
+	fps = ft_itoa(vars->fps[1]);
+	ft_write_toscreen((t_pixel){W_WIDTH - 60, 18, 0x0}, fps, vars);
+	ft_write_toscreen((t_pixel){W_WIDTH - 40, 18, 0x0}, "fps ", vars);
+	free(fps);
 }
 
 static void	ft_render_interface(t_image *image, t_vars *vars)
