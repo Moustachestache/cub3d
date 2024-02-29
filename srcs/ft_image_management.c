@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 08:34:54 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 12:24:15 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 15:29:05 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	ft_render_interface(t_image *image, t_vars *vars)
 		ft_drawplayer(vars->player, vars);
 		ft_put_img((t_pixel){vars->minimap.width + 5, -20, 0x0}, \
 			&vars->logo, vars->buffer);
+		ft_put_img((t_pixel){W_WIDTH - 200, 120, 0x0}, &vars->graphfps, vars->buffer);
 	}
 }
 

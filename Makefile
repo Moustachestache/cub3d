@@ -6,7 +6,7 @@
 #    By: mjochum <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 09:36:26 by mjochum           #+#    #+#              #
-#    Updated: 2024/02/29 12:11:44 by mjochum          ###   ########.fr        #
+#    Updated: 2024/02/29 14:47:47 by mjochum          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ srcs/ft_drawline.c srcs/ft_init_textures.c srcs/ft_perror.c srcs/ft_validate_map
 srcs/ft_drawplayer.c srcs/ft_init_vars.c srcs/ft_put_img.c srcs/ft_write_toscreen.c \
 srcs/ft_drawslice.c srcs/ft_isposix.c srcs/ft_raycast.c srcs/get_next_line.c \
 srcs/ft_exit.c srcs/ft_isspace.c srcs/ft_render_minimap.c srcs/get_next_line_utils.c \
-srcs/ft_frame.c srcs/ft_init_sprite.c srcs/ft_itoa.c
+srcs/ft_frame.c srcs/ft_init_sprite.c srcs/ft_itoa.c srcs/ft_render_graphfps.c
  
 
 OBJS		=	$(SRCS:.c=.o) $(shell ls mlx/obj/*.o)

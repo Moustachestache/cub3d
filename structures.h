@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 11:24:16 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 13:25:43 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_vars
 	t_image				tdefault;
 	t_image				background;
 	t_image				logo;
+	t_image				graphfps;
 	t_image				minimap;
 	t_camera			*camera;
 }						t_vars;

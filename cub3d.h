@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 12:10:43 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 14:47:19 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			ft_init_textures(t_map *mapdata, t_vars *vars);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isspace(char c);
 void			ft_put_img(t_pixel pos, t_image *image, t_image *buffer);
+void			ft_put_img_alpha(t_pixel pos, t_image *image, t_image *buffer);
 unsigned int	ft_darken(unsigned int colour, char id);
 unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
 void			ft_drawslice(int x, t_camera *camera, \
@@ -89,5 +90,7 @@ int				ft_frame(t_vars *vars);
 int				ft_getframe(t_vars *vars);
 void			ft_init_sprite(char *path, t_vars *vars);
 char			*ft_itoa(int n);
+void			ft_render_graphfps(t_vars *vars);
+void			ft_update_graphfps(t_vars *vars);
 
 #endif

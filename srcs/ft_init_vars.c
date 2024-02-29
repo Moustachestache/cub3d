@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 16:14:27 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 15:20:15 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ t_vars	*ft_init_vars(int ac, char *av[])
 	vars->fd_map = ft_validate(ac, av, vars);
 	time(&vars->time);
 	time(&vars->oldtime);
+	vars->fps[0] = 30;
 	return (vars);
 }
