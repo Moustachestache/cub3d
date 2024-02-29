@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:27:24 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 15:21:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 15:43:59 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ static void	ft_fill_graph(t_image *image)
 
 void	ft_update_graphfps(t_vars *vars)
 {
-		t_pixel pix;
+//		t_pixel pix;
 
-		pix = (t_pixel){200, 120, 0xffffff};
+//		pix = (t_pixel){200, 120, 0x00ff00};
 		ft_moveimage(&vars->graphfps);
-		ft_drawline(pix, (t_pixel){pix.x, pix.y - vars->fps[1], 0x0}, &vars->graphfps, vars);
-		ft_drawline((t_pixel){pix.x, pix.y - vars->fps[1], 0xff0000}, (t_pixel){pix.x, pix.y - vars->fps[1] - 1, 0x0}, &vars->graphfps, vars);
-		//ft_drawline((t_pixel){pix.x, pix.y - vars->fps[1] - 2, 0x0}, (t_pixel){pix.x, 0, 0x0}, &vars->graphfps, vars);
+//		while (pix.x >= 0)
+//		{
+//			ft_img_pix_put_alpha(pix, &vars->graphfps);
+//			pix.x -= 1;
+//		}
+		ft_img_pix_put_alpha((t_pixel){200, vars->fps[1], 0xff0000}, &vars->graphfps);
 }
 
 void	ft_render_graphfps(t_vars *vars)
