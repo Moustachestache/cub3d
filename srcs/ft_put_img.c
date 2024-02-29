@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:53:27 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 15:26:03 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/02/29 20:32:25 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,21 @@ void	ft_put_img(t_pixel pos, t_image *image, t_image *buffer)
 	}
 }
 
-
-void	ft_put_img_alpha(t_pixel pos, t_image *image, t_image *buffer)
+void	ft_put_img_offset(int offset, t_pixel pos, t_image *image, t_image *buffer)
 {
 	int	x;
 	int	y;
 
-	y = image->height;
-	while (y >= 0)
+	x = 0;
+	while (x < image->width)
 	{
-		x = image->width;
-		while (x >= 0)
+		y = 0;
+		while (y < image->height)
 		{
-			printf("x: %i, y: %i, x+: %i, y+: %i\n",pos.x, pos.y, pos.x + x, pos.y + y);
-			if (pos.x + x > 0 && pos.y + y > 0)
-				ft_img_pix_put_alpha((t_pixel){pos.x + x, pos.y + y, \
-					ft_fetch_imgcolour(image, x, y)}, buffer);
-			x--;
+			if (pos.x + x + offset > 0)
+				ft_img_pix_put_alpha((t_pixel){pos.x + x + offset, pos.y + y, ft_fetch_imgcolour(image, x, y)}, buffer);
+			y++;
 		}
-		y--;
+		x++;
 	}
 }

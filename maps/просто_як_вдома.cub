@@ -1,0 +1,15 @@
+SO ./assets/carpet.xpm
+EA ./assets/carpet.xpm
+WE ./assets/teacups.xpm
+NO ./assets/brick.xpm
+DO ./assets/door.xpm
+XO ./assets/medkit.xpm
+
+C 14,14,14
+F 30,10,30
+
+1111111111
+100000D001
+1000001001
+1000001111
+111S111111
