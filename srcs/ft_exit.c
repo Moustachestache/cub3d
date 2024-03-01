@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/01 11:29:00 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 12:37:38 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_destroy_images(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->background.image);
 	if (vars->minimap.image)
 		mlx_destroy_image(vars->mlx, vars->minimap.image);
-	if (vars->buffer->image)
+	if (vars->buffer && vars->buffer->image)
 		mlx_destroy_image(vars->mlx, vars->buffer->image);
 	if (vars->graphfps.image)
 		mlx_destroy_image(vars->mlx, vars->graphfps.image);
@@ -79,8 +79,10 @@ void	ft_exit(int exit_value, t_vars *vars)
 {
 	if (vars->fd_map > 0 && close(vars->fd_map < 0))
 		ft_perror("huh, that\'s weird", -1);
-	ft_free_map(vars->mapdata, vars);
-	ft_destroy_images(vars);
+	if (vars->mapdata)
+		ft_free_map(vars->mapdata, vars);
+	if (vars)
+		ft_destroy_images(vars);
 	if (vars->player)
 		free(vars->player);
 	if (vars->camera->depth)
