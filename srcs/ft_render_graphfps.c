@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:27:24 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 20:40:45 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:42:00 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,20 @@ void	ft_update_graphfps(t_vars *vars)
 	int		i;
 	int		fps;
 
-	i = 0;
+	i = -1;
 	graph = &vars->graphfps;
 	fps = graph->height - vars->fps[1];
-	//	move
-	ft_put_img_offset(-1, (t_pixel){0, 0, 0x0}, graph, graph);
-	while (i < fps)
+	ft_put_img_offset(-2, (t_pixel){0, 0, 0x0}, graph, graph);
+	while (++i < fps)
 	{
+		ft_img_pix_put_alpha((t_pixel){graph->width - 2, i, A_COLOR}, graph);
 		ft_img_pix_put_alpha((t_pixel){graph->width - 1, i, A_COLOR}, graph);
-		i++;
 	}
-	ft_drawline((t_pixel){graph->width - 1, fps, 0xffffff},\
+	ft_drawline((t_pixel){graph->width - 2, fps, 0xffffff}, \
+		(t_pixel){graph->width - 2, graph->height, 0x0}, graph, vars);
+	ft_drawline((t_pixel){graph->width - 1, fps, 0xffffff}, \
 		(t_pixel){graph->width - 1, graph->height, 0x0}, graph, vars);
+	ft_img_pix_put((t_pixel){graph->width - 2, fps, 0xff0000}, graph);
 	ft_img_pix_put((t_pixel){graph->width - 1, fps, 0xff0000}, graph);
 }
 

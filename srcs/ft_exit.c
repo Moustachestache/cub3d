@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:31:50 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/29 21:38:14 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 11:29:00 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@ static void	ft_free_mlx(t_vars *vars)
 	free(vars->mlx);
 }
 
+static void	ft_free_imagearray(int size, t_image *target, t_vars *vars)
+{
+	while (size >= 0)
+	{
+		if (target[size].image)
+			mlx_destroy_image(vars->mlx, target[size].image);
+		size--;
+	}
+}
+
 static void	ft_free_map(t_map *mapdata, t_vars *vars)
 {
-	static int	i = -1;
-
 	(void) vars;
 	if (mapdata->no)
 		free(mapdata->no);
@@ -35,17 +43,10 @@ static void	ft_free_map(t_map *mapdata, t_vars *vars)
 		free(mapdata->we);
 	if (mapdata->door)
 		free(mapdata->door);
-	while (++i < 6)
-	{
-		if (mapdata->texture[i].image != NULL)
-			mlx_destroy_image(vars->mlx, mapdata->texture[i].image);
-	}
+	ft_free_imagearray(4, mapdata->texture, vars);
 	if (mapdata->sprite)
 	{
-		mlx_destroy_image(vars->mlx, mapdata->stexture[0].image);
-		mlx_destroy_image(vars->mlx, mapdata->stexture[1].image);
-		mlx_destroy_image(vars->mlx, mapdata->stexture[2].image);
-		mlx_destroy_image(vars->mlx, mapdata->stexture[3].image);
+		ft_free_imagearray(3, mapdata->stexture, vars);
 		free(mapdata->stexture);
 		free(mapdata->sprite);
 	}

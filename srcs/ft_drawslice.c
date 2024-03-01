@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 21:43:07 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:14:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ void	ft_drawslice(int x, t_camera *camera, \
 		pixel.y++;
 		error[1] += error[0];
 	}
-//	printf("[%c]\n", vars->mapdata->);
 }

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 15:21:47 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:12:54 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,6 @@ int	ft_mouse(int x, int y, void *param)
 	return (1);
 }
 
-static void	ft_opendoor(t_map *mapdata)
-{
-	if (mapdata->map[9][8] == '0')
-		mapdata->map[9][8] = '1';
-	else
-		mapdata->map[9][8] = '0';
-}
-
 int	ft_keyhook(int keycode, t_vars *vars)
 {
 	if (keycode == 105)
@@ -84,13 +76,13 @@ int	ft_keyhook(int keycode, t_vars *vars)
 		ft_moveplayer(vars->player->angle, -vars->player->step, vars);
 	else if (keycode == 100)
 		ft_moveplayer(vars->player->angle + 90, -vars->player->step, vars);
-	else if (keycode == 97 || keycode ==  113)
+	else if (keycode == 97 || keycode == 113)
 		ft_moveplayer(vars->player->angle - 90, -vars->player->step, vars);
 	else if (keycode == 65361)
 		ft_rotate(vars, vars->camera, 5);
 	else if (keycode == 65363)
 		ft_rotate(vars, vars->camera, -5);
-	else if (keycode == 32)
-		ft_opendoor(vars->mapdata);
+//	else if (keycode == 32)
+//		ft_opendoor(vars->mapdata);
 	return (0);
 }
