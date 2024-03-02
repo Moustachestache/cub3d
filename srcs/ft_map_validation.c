@@ -6,7 +6,7 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/02/25 15:02:07 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/02 13:41:37 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	**ft_copy_map(t_map *mapdata)
 	while (++i <= mapdata->height)
 	{
 		mapcopy[i] = ft_calloc(mapdata->width, sizeof(char));
-		ft_memset(mapcopy[i], ' ', mapdata->width);
+		ft_memset(mapcopy[i], '\n', mapdata->width);
 		ft_memcpy(mapcopy[i], mapdata->map[i], mapdata->width);
 	}
 	return (mapcopy);
@@ -60,8 +60,13 @@ static int	ft_validate(int x, int y, char **map, t_vars *vars)
 	if ((x < 0) || (y < 0) || (x > vars->mapdata->width) \
 				|| (y > vars->mapdata->height))
 		return (1);
-	if (map[y][x] == ' ')
+	if (!map[y][x] || map[y][x] == '\0')
+	if (map[y][x] == ' ' || map[y][x] == '\n')
 		retval = ft_hasnull(x, y, map, vars);
+	if (map[y][x] == 's' && !vars->mapdata->stexture)
+		return (ft_perror("Calling Sprite With No Sprite Texture" , 1));
+	if ((map[y][x] == 'D' || map[y][x] == 'd') && !vars->mapdata->stexture)
+		return (ft_perror("Calling Door With No Door Texture", 1));
 	if (map[y][x] == '1' || map[y][x] == '2')
 		return (0);
 	map[y][x] = '2';
@@ -79,6 +84,8 @@ int	ft_map_validation(t_vars *vars)
 	int		i;
 
 	i = -1;
+	if (vars->mapdata->height < 3 || vars->mapdata->width < 3)
+		ft_exit(ft_perror("Invalid Map", 1), vars);
 	map = ft_copy_map(vars->mapdata);
 	retval = ft_validate(vars->player->xpos, \
 		vars->player->ypos, map, vars);

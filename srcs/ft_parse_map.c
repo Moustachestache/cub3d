@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/23 10:42:57 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/02 12:33:46 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	ft_validatecolour(char *str, unsigned int *target, \
 	char	**temp;
 
 	(void) mapdata;
+	(void) vars;
 	i = 0;
 	temp = NULL;
 	while (str[i] && (str[i] == ' ' || str[i] == '	'))
@@ -52,7 +53,7 @@ static int	ft_validatecolour(char *str, unsigned int *target, \
 	{
 		i = ft_atoi(temp[j]);
 		if (i > 255 || i < 0)
-			ft_exit(ft_perror("Color Value Outside Of Range", 1), vars);
+			vars->err = ft_perror("Color Value Outside Of Range", 1);
 		*target += i << (16 - (j * 8));
 	}
 	ft_free_split(temp);
@@ -68,21 +69,21 @@ static int	ft_read_line(char *line, t_map *mapdata, t_vars *vars)
 		i++;
 	if (line[i] == '1' || line[i] == '0')
 		return (0);
-	if (!ft_strncmp(line + i, "NO", 2))
+	if (!ft_strncmp(line + i, "NO", 2) && !mapdata->no)
 		mapdata->no = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (!ft_strncmp(line + i, "WE", 2))
+	else if (!ft_strncmp(line + i, "WE", 2) && !mapdata->we)
 		mapdata->we = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (!ft_strncmp(line + i, "SO", 2))
+	else if (!ft_strncmp(line + i, "SO", 2) && !mapdata->so)
 		mapdata->so = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (!ft_strncmp(line + i, "EA", 2))
+	else if (!ft_strncmp(line + i, "EA", 2) && !mapdata->ea)
 		mapdata->ea = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (!ft_strncmp(line + i, "DO", 2))
+	else if (!ft_strncmp(line + i, "DO", 2) && !mapdata->door)
 		mapdata->door = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (!ft_strncmp(line + i, "XO", 2))
+	else if (!ft_strncmp(line + i, "XO", 2) && !mapdata->sprite)
 		mapdata->sprite = ft_validatepath(line + i + 2, mapdata, vars);
-	else if (line[i] == 'C')
+	else if (line[i] == 'C' && mapdata->ceiling == 0)
 		ft_validatecolour(line + i + 2, &mapdata->ceiling, mapdata, vars);
-	else if (line[i] == 'F')
+	else if (line[i] == 'F' && mapdata->floor == 0)
 		ft_validatecolour(line + i + 2, &mapdata->floor, mapdata, vars);
 	free(line);
 	return (1);
@@ -114,6 +115,7 @@ t_map	*ft_parse_map(t_vars *vars)
 	t_map	*mapdata;
 	char	*buffer;
 
+	mapdata = vars->mapdata;
 	mapdata = ft_calloc(1, sizeof(t_map));
 	buffer = get_next_line(vars->fd_map);
 	while (buffer && ft_read_line(buffer, mapdata, vars))

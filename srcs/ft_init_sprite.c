@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:31:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/01 10:40:51 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/02 13:02:30 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,16 @@ void	ft_init_sprite(char *path, t_vars *vars)
 	temp = ft_calloc(1, sizeof(t_image));
 	map->stexture = ft_calloc(4, sizeof(t_image));
 	if (map->stexture == NULL)
-		ft_exit(ft_perror("Error Initialising Sprite", EXIT_FAILURE), vars);
+		vars->err = ft_perror("Error Initialising Sprite", EXIT_FAILURE);
 	temp->image = mlx_xpm_file_to_image(vars->mlx, \
 		path, &temp->height, &temp->width);
 	if (temp->image == NULL)
-		ft_exit(ft_perror("Sprite Remains Un-initialised", EXIT_FAILURE), vars);
+		vars->err = ft_perror("Sprite Remains Un-initialised", EXIT_FAILURE);
+	if (temp->width != T_SIZE * 2 || temp->height != T_SIZE * 2)
+		vars->err = ft_perror("Sprite Should Be 256 * 256", EXIT_FAILURE);
 	temp->addr = mlx_get_data_addr(temp->image, \
 		&temp->bpp, &temp->len, &temp->endian);
-	while (++i < 4)
+	while (++i < 4 && vars->err != 1)
 		ft_writetosprite(i, &map->stexture[i], temp, vars);
 	mlx_destroy_image(vars->mlx, temp->image);
 	free(temp);

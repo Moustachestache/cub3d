@@ -2,6 +2,8 @@ NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
+XO ./assets/tex1.xpm
+
 F 220,100,100
 C 225,30,100
         11111111111111111dds11111

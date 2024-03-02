@@ -6,13 +6,13 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 13:12:24 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/12 19:19:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/02 11:39:11 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_free_split(char **split)
+int	ft_free_split(char **split)
 {
 	int	i;
 
@@ -23,4 +23,5 @@ void	ft_free_split(char **split)
 		i++;
 	}
 	free(split);
+	return (1);
 }
