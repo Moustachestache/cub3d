@@ -44,12 +44,12 @@ Starting from player start point, move in all directions and check if sides (n, 
 ### raycasting
 > from player position, start calculating with math(tm) and once you find a '1' you have a distance. Easy.
 
-- A person that hasn't coded the raycasting algorithm. [^3]
+_A person that hasn't coded the raycasting algorithm._ [^3]
 
 ### raycasting mini
 > same but for opening doors
 
-- same idiot as above [^4]
+_same idiot as above_ [^4]
 
 ### personal bonuses, or "I never once asked if I should"
 - Frame Timer - srcs/ft_frame.c	- simple unix time where we check the difference every frame. If difference (currenttime - oldtime) is 1, increment frame counter. Save currenttime as oldtime.
@@ -66,4 +66,5 @@ This allows us to clear out the memory and to be sure all allocated buffers can 
 
 [^1]: not really but we had no hook for our readme
 [^2]: thank you, i'll be here all day.
-[^3][^4]: that would be mjochum both times.
+[^3]: that would be mjochum.
+[^4]: see [^3].
