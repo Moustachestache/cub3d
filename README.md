@@ -59,5 +59,5 @@ Turns out you cant just escape the program when you encounter an error, especial
 With that in mind, there are parts of the code where we used an int to define the error status. We increment it, and write out which error occured in the terminal, and we quit the program before initialising the mlx loop.
 This allows us to clear out the memory and to be sure all allocated buffers can be tidied up (looking at you ft_split you rat bastard).
 
-[^1] not really but we had no hook for our readme
-[^2] thank you, i'll be here all day.
+[^1]: not really but we had no hook for our readme
+[^2]: thank you, i'll be here all day.
