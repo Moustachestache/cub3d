@@ -36,12 +36,17 @@ static void	ft_rotate(t_vars *vars, t_camera *camera, int angle)
 }
 
 //	check if moveable or no
-static void	ft_moveplayer(float angle, float value, t_vars *vars)
+static void	ft_moveplayer(float angle, float value, t_vars *vars, \
+			t_map *mapdata, t_camera *camera)
 {
-	ft_transform_player(&vars->player->xpos, \
-		&vars->player->ypos, \
-		value, \
-		angle);
+	float	ymap;
+	float	xmap;
+
+	ymap = vars->player->ypos + camera->dir[0] * vars->player->step;
+	xmap = vars->player->xpos + camera->dir[1] * vars->player->step;
+	if (mapdata->map[(int)ymap][(int)xmap] == '0')
+		ft_transform_player(&vars->player->xpos, &vars->player->ypos, \
+				value, angle);
 }
 
 int	ft_mouse(int x, int y, void *param)
@@ -79,13 +84,17 @@ int	ft_keyhook(int keycode, t_vars *vars)
 	else if (keycode == 65307)
 		ft_exit(EXIT_SUCCESS, vars);
 	else if (keycode == 119 || keycode == 65362 || keycode == 122)
-		ft_moveplayer(vars->player->angle, vars->player->step, vars);
+		ft_moveplayer(vars->player->angle, vars->player->step, vars, vars->mapdata,\
+				vars->camera);
 	else if (keycode == 115 || keycode == 65364)
-		ft_moveplayer(vars->player->angle, -vars->player->step, vars);
+		ft_moveplayer(vars->player->angle, -vars->player->step, vars, vars->mapdata,\
+				vars->camera);
 	else if (keycode == 100)
-		ft_moveplayer(vars->player->angle + 90, -vars->player->step, vars);
+		ft_moveplayer(vars->player->angle + 90, -vars->player->step, vars, vars->mapdata,\
+				vars->camera);
 	else if (keycode == 97 || keycode ==  113)
-		ft_moveplayer(vars->player->angle - 90, -vars->player->step, vars);
+		ft_moveplayer(vars->player->angle - 90, -vars->player->step, vars, vars->mapdata,\
+				vars->camera);
 	else if (keycode == 65361)
 		ft_rotate(vars, vars->camera, 5);
 	else if (keycode == 65363)
