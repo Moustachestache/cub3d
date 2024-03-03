@@ -6,18 +6,30 @@
 
 - Bill Burr, on cub3d. [^1]
 
-## todos, or what we thought would be a good workflow
-### getting ready for the bonuses. (bonii ?)[^2]
+## Life saving links. Read 'em and weep, boys.
+|links||
+|:----|----:|
+|[42 mlx docs @harm-smits](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)|So far the only viable mlx documentation|
+|[Going through every mlx function](https://github.com/42Paris/minilibx-linux)|Must have a hard time to have a good time. Have a look under the hood at the functions you are using.|
+|[lodev](https://lodev.org/cgtutor/raycasting.html)|A good readthrough on what raycasting is and how it works. Has code snippets too.|
+|[3D Sage](https://www.youtube.com/watch?v=gYRrGTC7GtA&ab_channel=3DSage)|A 3 part series on raycasting on youtube. Irrelevant to mlx, since he uses directx but useful for the logic.|
+|tools||
+|:---|---:|
+|[pixilart](https://www.pixilart.com/draw)|Online drawing tool. Easier than gimp.|
+|[midjourney](https://www.midjourney.com/)|I've technically paid 10 euros to not have to draw a single texture.|
+
+# todos, or what we thought would be a good workflow
+## getting ready for the bonuses. (bonii ?)[^2]
 |easy peasy|reduce reuse recycle code|hard-ey sad-ey|forced to use neurons oowie|
 |:--:|-|:--:|:-|
 |wall collision|cast a fixed ray - or "try" to step one way - and check if player lands in a valid space.|animated sprite|Oof. First, define what a sprite is. We chose "an image with an array of images in it", "transparent" and "animated". The heavy lifting is done at initialisation: Create 4 images. fill each one with parts of the sprite. Alternate between the images depending on the current frame when rendering.|
 |doors which can open and close|same as wall collision, except triggered by a key press, and changes state of map if a door is found|minimap system|initialise an image. fill it out with little squares. Every frame, draw player position on top of it.|
 |rotate pov with mouse|change player angle on x-axis mouse movement|||
 
-### implementation of mlx
+## implementation of mlx
 Nothing fancy. Except the use of mlx_loop_hook that calls the rendering function (ft_render), allowing us to render independantly of ft_keyhooks (which is what I did in fdf). We generate frames whenever possible. Whenever we press a key, a value is changed.
 
-### defining structures
+## defining structures
 s_image		- mlx image structure.
 
 s_pixel		- pixel coordinates and pixel colour.
@@ -31,7 +43,7 @@ s_player	- player information (start point, position and angle of view)
 s_camera	- our camera for raycasting.
 initialize with error management in mind (map error, imput error, mapdata error, map validation)
 
-### map initialisation
+## map initialisation
 it goes:
 
 1 -> read the pre-map data: textures, colours etc. As you do, check they are valid.
@@ -52,13 +64,13 @@ _A person that hasn't coded the raycasting algorithm._ [^3]
 _same idiot as above_ [^4]
 
 [Contribution guidelines for this project](docs/CONTRIBUTING.md)
-### personal bonuses, or "I never once asked if I should"
+## personal bonuses, or "I never once asked if I should"
 - Frame Timer - [ft_frame.c](srcs/ft_frame.c)	- simple unix time where we check the difference every frame. If difference (currenttime - oldtime) is 1, increment frame counter. Save currenttime as oldtime.
 - FPS counter	- [ft_frame.c](srcs/ft_framce.c) - with the frame timer (ever one second, we increment a counter up to a maximum of 3, allowing us to chose which sprite to render), we can count how many frame are generated in a second. The downside being, the FPS how many frame were generated the previous second.
 - FPS graph - [ft_render_graphfps](srcs/ft_render_graphfps.c) - since the data exists, we write it in an image that rewrites on itself with a -1 offset, so it looks like it's moving left. Luckily the function that draws an image into an image works natively with a negative offset. 
 - Transparency - [ft_pix_put](srcs/ft_pix_put.c) - when you draw a pixel, return if the pixel is the defined transparency color. In our case it's `#00ff00`
 
-### pitfalls, or how problems for future me really annoyed future me
+## pitfalls, or "this *was* a problem for future me"
 Turns out you cant just escape the program when you encounter an error, especially in the "initialisation" phase.
 
 With that in mind, there are parts of the code where we used an int to define the error status. We increment it, and write out which error occured in the terminal, and we quit the program before initialising the mlx loop.
