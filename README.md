@@ -4,10 +4,10 @@
 > So, picture this: you got your C programming skills on point, you're diving deep into graphics design, and you're like, "Let's make something epic." That's cub3D, baby. It's like building your own virtual world, brick by brick, pixel by pixel. And let me tell ya, it's a wild ride from start to finish.
 > We're talking smooth window management, we're talking wall textures that'll blow your mind, and we're talking bonus features that'll make you jump outta your seat. Wall collisions? Check. Animated sprites? You betcha. Doors that open and close? Hell yeah.
 
-[^1] Bill Burr, on cub3d.
+Bill Burr, on cub3d.[^1]
 
 ## todos, or what we thought would be a good workflow
-### getting ready for the bonuses
+### getting ready for the bonuses [^2]
 The bonus can be divided in two categories. The easy ones, and the ones that require "new" code.
 |easy| |hard| |
 |:--:|-|:--:|-:|
