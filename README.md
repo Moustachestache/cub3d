@@ -7,10 +7,10 @@
 Bill Burr, on cub3d.[^1]
 
 ## todos, or what we thought would be a good workflow
-### getting ready for the bonuses [^2]
+### getting ready for the bonuses. (bonii ?)[^2]
 The bonus can be divided in two categories. The easy ones, and the ones that require "new" code.
-|easy| |hard| |
-|:--:|-|:--:|-:|
+|easy peasy| |hard-ey sad-ey| |
+|:--:|-|:--:|:-|
 |wall collision|cast a fixed ray, or, "try" to step one way and check if it's a valid space.|animated sprite|Oof. First, define what a sprite is. We focused on "images with an array of images in it", "transparency" and "animated". The ehavy lifting is done at initialisation. create 4 images. fill each one with parts of the sprite. Alternate between the images depending on the frame.|
 |doors which can open and close|same as wall collision, except triggered by a key press, and changes state of map if a door is found|minimap system|initialise an image. fill it out with little squares. Every frame, draw player position on top of it.|
 |rotate pov with mouse|change player angle on x-axis mouse movement|||
