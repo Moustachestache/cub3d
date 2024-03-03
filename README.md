@@ -4,7 +4,7 @@
 > So, picture this: you got your C programming skills on point, you're diving deep into graphics design, and you're like, "Let's make something epic." That's cub3D, baby. It's like building your own virtual world, brick by brick, pixel by pixel. And let me tell ya, it's a wild ride from start to finish.
 > We're talking smooth window management, we're talking wall textures that'll blow your mind, and we're talking bonus features that'll make you jump outta your seat. Wall collisions? Check. Animated sprites? You betcha. Doors that open and close? Hell yeah.
 
-- Bill Burr, on cub3d. [^1]
+_Bill Burr, on cub3d._ [^1]
 
 ## Life saving links. Read 'em and weep, boys.
 |links||
@@ -13,6 +13,7 @@
 |[Going through every mlx function](https://github.com/42Paris/minilibx-linux)|Must have a hard time to have a good time. Have a look under the hood at the functions you are using.|
 |[lodev](https://lodev.org/cgtutor/raycasting.html)|A good readthrough on what raycasting is and how it works. Has code snippets too.|
 |[3D Sage](https://www.youtube.com/watch?v=gYRrGTC7GtA&ab_channel=3DSage)|A 3 part series on raycasting on youtube. Irrelevant to mlx, since he uses directx but useful for the logic.|
+
 |tools||
 |:---|---:|
 |[pixilart](https://www.pixilart.com/draw)|Online drawing tool. Easier than gimp.|
