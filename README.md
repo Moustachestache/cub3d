@@ -1,4 +1,4 @@
-[cub3d](https://imgur.com/a/VIPwk9d)
+![cub3d](https://imgur.com/a/VIPwk9d)
 # cub3d project at 42Perpignan
 > Alright, listen up folks, 'cause we're diving into the world of cub3D, alright? This ain't your grandma's project. No sir. This is like Wolfenstein 3D on steroids. We're talking RayCasting, we're talking miniLibX, we're talking getting lost in a maze and loving every minute of it.
 > So, picture this: you got your C programming skills on point, you're diving deep into graphics design, and you're like, "Let's make something epic." That's cub3D, baby. It's like building your own virtual world, brick by brick, pixel by pixel. And let me tell ya, it's a wild ride from start to finish.
