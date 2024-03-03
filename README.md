@@ -51,11 +51,12 @@ _A person that hasn't coded the raycasting algorithm._ [^3]
 
 _same idiot as above_ [^4]
 
+[Contribution guidelines for this project](docs/CONTRIBUTING.md)
 ### personal bonuses, or "I never once asked if I should"
-- Frame Timer - srcs/ft_frame.c	- simple unix time where we check the difference every frame. If difference (currenttime - oldtime) is 1, increment frame counter. Save currenttime as oldtime.
-- FPS counter	- srcs/ft_frame.c - with the frame timer (ever one second, we increment a counter up to a maximum of 3, allowing us to chose which sprite to render), we can count how many frame are generated in a second. The downside being, the FPS how many frame were generated the previous second.
-- FPS graph - srcs/ft_render_graphfps.c- since the data exists, we write it in an image that rewrites on itself with a -1 offset, so it looks like it's moving left. Luckily the function that draws an image into an image works natively with a negative offset. 
-- Transparency - - when you draw a pixel, return if the pixel is the defined transparency color. In our case it's '#00ff00'
+- Frame Timer - [ft_frame.c](srcs/ft_frame.c)	- simple unix time where we check the difference every frame. If difference (currenttime - oldtime) is 1, increment frame counter. Save currenttime as oldtime.
+- FPS counter	- [ft_frame.c](srcs/ft_framce.c) - with the frame timer (ever one second, we increment a counter up to a maximum of 3, allowing us to chose which sprite to render), we can count how many frame are generated in a second. The downside being, the FPS how many frame were generated the previous second.
+- FPS graph - [ft_render_graphfps](srcs/ft_render_graphfps.c) - since the data exists, we write it in an image that rewrites on itself with a -1 offset, so it looks like it's moving left. Luckily the function that draws an image into an image works natively with a negative offset. 
+- Transparency - [ft_pix_put](srcs/ft_pix_put.c) - when you draw a pixel, return if the pixel is the defined transparency color. In our case it's `#00ff00`
 
 ### pitfalls, or how problems for future me really annoyed future me
 Turns out you cant just escape the program when you encounter an error, especially in the "initialisation" phase.
@@ -67,4 +68,4 @@ This allows us to clear out the memory and to be sure all allocated buffers can 
 [^1]: not really but we had no hook for our readme
 [^2]: thank you, i'll be here all day.
 [^3]: that would be mjochum.
-[^4]: see [^3].
+[^4]: same.
