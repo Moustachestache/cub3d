@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/02 12:21:28 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/03 11:44:31 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void			ft_init_textures(t_map *mapdata, t_vars *vars);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isspace(char c);
 void			ft_put_img(t_pixel pos, t_image *image, t_image *buffer);
-void			ft_put_img_offset(int offset, t_pixel pos, t_image *image, t_image *buffer);
+void			ft_put_img_offset(int offset, t_pixel pos, \
+	t_image *image, t_image *buffer);
 unsigned int	ft_darken(unsigned int colour, char id);
 unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
 void			ft_drawslice(int x, t_camera *camera, \

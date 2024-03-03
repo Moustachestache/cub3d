@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:47:36 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/04 19:58:41 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/03 12:18:32 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,16 @@ void	ft_write_toscreen(t_pixel position, char *str, t_vars *vars)
 	split = ft_split(str, '.');
 	while (split[i])
 	{
+		mlx_string_put(vars->mlx, vars->mlx_win, position.x - 1, \
+			position.y + (i * 15), 0x0, split[i]);
+		mlx_string_put(vars->mlx, vars->mlx_win, position.x + 1, \
+			position.y + (i * 15), 0x0, split[i]);
 		mlx_string_put(vars->mlx, vars->mlx_win, position.x, \
-			position.y + 2 + (i * 15), 0x0, split[i]);
+			position.y - 1 + (i * 15), 0x0, split[i]);
 		mlx_string_put(vars->mlx, vars->mlx_win, position.x, \
-			position.y + (i * 15), 0xffffff, split[i]);
+			position.y + 1 + (i * 15), 0x0, split[i]);
+		mlx_string_put(vars->mlx, vars->mlx_win, position.x, \
+			position.y + (i * 15), 0xefefef, split[i]);
 		i++;
 	}
 	ft_free_split(split);

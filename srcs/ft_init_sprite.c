@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:31:23 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/02 13:02:30 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/03 12:17:37 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	ft_writetosprite(int counter, t_image *target, \
 	target->width = T_SIZE;
 	target->height = T_SIZE;
 	target->image = mlx_new_image(vars->mlx, target->width, target->height);
+	if (!target->image)
+		ft_exit(ft_perror("Sprite Creation Failure", EXIT_FAILURE), vars);
 	target->addr = mlx_get_data_addr(target->image, \
 		&target->bpp, &target->len, &target->endian);
 	offset = (t_pixel){0, 0, 0};
@@ -71,10 +73,12 @@ void	ft_init_sprite(char *path, t_vars *vars)
 		vars->err = ft_perror("Sprite Remains Un-initialised", EXIT_FAILURE);
 	if (temp->width != T_SIZE * 2 || temp->height != T_SIZE * 2)
 		vars->err = ft_perror("Sprite Should Be 256 * 256", EXIT_FAILURE);
-	temp->addr = mlx_get_data_addr(temp->image, \
-		&temp->bpp, &temp->len, &temp->endian);
+	if (vars->err != 1)
+		temp->addr = mlx_get_data_addr(temp->image, \
+			&temp->bpp, &temp->len, &temp->endian);
 	while (++i < 4 && vars->err != 1)
 		ft_writetosprite(i, &map->stexture[i], temp, vars);
-	mlx_destroy_image(vars->mlx, temp->image);
+	if (temp->image)
+		mlx_destroy_image(vars->mlx, temp->image);
 	free(temp);
 }

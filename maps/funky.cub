@@ -1,7 +1,9 @@
 NO ./assets/north.xpm
 SO ./assets/south.xpm
+EA ./assets/west.xpm
+XO ./assets/medpack.xpm
+DO ./assets/door.xpm
 WE ./assets/west.xpm
-EA ./assets/east.xpm
 C 222,0,10
 F 220,100,0
 

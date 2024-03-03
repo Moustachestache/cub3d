@@ -6,7 +6,7 @@
 /*   By: odiachen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:00:38 by odiachen          #+#    #+#             */
-/*   Updated: 2024/03/02 13:41:37 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/03 11:43:35 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ static int	ft_validate(int x, int y, char **map, t_vars *vars)
 	if ((x < 0) || (y < 0) || (x > vars->mapdata->width) \
 				|| (y > vars->mapdata->height))
 		return (1);
-	if (!map[y][x] || map[y][x] == '\0')
 	if (map[y][x] == ' ' || map[y][x] == '\n')
 		retval = ft_hasnull(x, y, map, vars);
 	if (map[y][x] == 's' && !vars->mapdata->stexture)
-		return (ft_perror("Calling Sprite With No Sprite Texture" , 1));
+		return (ft_perror("Calling Sprite With No Sprite Texture", 1));
 	if ((map[y][x] == 'D' || map[y][x] == 'd') && !vars->mapdata->stexture)
 		return (ft_perror("Calling Door With No Door Texture", 1));
 	if (map[y][x] == '1' || map[y][x] == '2')
