@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:37:40 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 16:14:27 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 12:31:25 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_vars	*ft_init_vars(int ac, char *av[])
 {
 	t_vars	*vars;
 
+	if (ac != 2)
+		exit(ft_perror("Incorrect Number Of Arguments", EXIT_FAILURE));
 	vars = ft_calloc(1, sizeof(t_vars));
 	vars->player = ft_calloc(1, sizeof(t_player));
 	vars->camera = ft_calloc(1, sizeof(t_camera));
@@ -46,5 +48,6 @@ t_vars	*ft_init_vars(int ac, char *av[])
 	vars->fd_map = ft_validate(ac, av, vars);
 	time(&vars->time);
 	time(&vars->oldtime);
+	vars->fps[0] = 30;
 	return (vars);
 }

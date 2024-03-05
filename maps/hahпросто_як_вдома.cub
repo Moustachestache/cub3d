@@ -1,0 +1,15 @@
+SO ./assets/wallpaper.xpm
+EA ./assets/brick.xpm
+WE ./assets/teacup.xpm
+NO ./assets/carpet.xpm
+DO ./assets/doordoor.xpm
+XO ./assets/animation.xpm
+
+C 14,14,14
+F 115,93,62
+
+1111111111
+100000D001
+100E00s001
+1000001111
+1111111111

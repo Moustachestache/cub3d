@@ -1,0 +1,16 @@
+
+  NO		./assets/tex1.xpm
+SO ./assets/tex2.xpm
+F 252, 244, 3
+
+  WE	./assets/tex3.xpm
+
+EA ./assets/tex4.xpm
+
+C		 3, 132, 252
+  DO	./assets/door.xpm
+  XO	./assets/animated_sprite.xpm
+
+
+1
+N

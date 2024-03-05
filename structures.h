@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/27 17:44:09 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/02 12:32:41 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,23 @@ typedef struct s_image
 
 typedef struct s_vars
 {
+	int					err;
 	int					fd_map;
 	int					interface_toggle;
 	int					frame;
+	int					fps[2];
 	time_t				time;
 	time_t				oldtime;
 	void				*mlx;
 	void				*mlx_win;
-	t_image				*buffer;
 	t_map				*mapdata;
 	t_player			*player;
+	t_image				tdefault;
 	t_image				background;
 	t_image				logo;
+	t_image				graphfps;
 	t_image				minimap;
+	t_image				*buffer;
 	t_camera			*camera;
 }						t_vars;
 

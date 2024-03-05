@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 15:01:45 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/03 11:44:31 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_image			*ft_init_image(t_vars *vars);
 int				ft_isposixfile(char c);
 int				ft_atoi(const char *nptr);
 char			**ft_split(char const *s, char c);
-void			ft_free_split(char **split);
+int				ft_free_split(char **split);
 int				ft_keyhook(int keycode, t_vars *vars);
 int				ft_validate_mapinfo(t_map *mapdata, t_vars *vars);
 void			ft_img_pix_put(t_pixel pixel, t_image *image);
@@ -66,14 +66,18 @@ void			ft_update_angle(int *angle, int add, t_vars *vars);
 t_pixel			ft_transform_pixel(t_pixel pixel, \
 	float increase, float vector);
 float			ft_deg_to_rad(float a);
-void			ft_transform_player(float *x, float *y, \
-	float increase, float vector);
+//float                   ft_turn_x(float angle, t_camera *camera);
+//float                   ft_turn_y(float angle, t_camera *camera);
+void			ft_check_square(float *x, float *y, \
+	float increase, float angle, t_map *mapdata, int key);
 void			ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 void			ft_write_toscreen(t_pixel position, char *str, t_vars *vars);
 void			ft_init_textures(t_map *mapdata, t_vars *vars);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isspace(char c);
 void			ft_put_img(t_pixel pos, t_image *image, t_image *buffer);
+void			ft_put_img_offset(int offset, t_pixel pos, \
+	t_image *image, t_image *buffer);
 unsigned int	ft_darken(unsigned int colour, char id);
 unsigned int	ft_fetch_imgcolour(t_image *image, int x, int y);
 void			ft_drawslice(int x, t_camera *camera, \
@@ -88,5 +92,8 @@ int				ft_mouse(int x, int y, void *vars);
 int				ft_frame(t_vars *vars);
 int				ft_getframe(t_vars *vars);
 void			ft_init_sprite(char *path, t_vars *vars);
+char			*ft_itoa(int n);
+void			ft_render_graphfps(t_vars *vars);
+void			ft_update_graphfps(t_vars *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/28 16:31:51 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/01 10:14:51 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,27 @@ t_image	*ft_set_texture(t_vars *vars, t_camera *camera)
 {
 	t_image	*texture;
 
+	camera->sprite = vars->mapdata->map[camera->mapy][camera->mapx];
 	texture = NULL;
-	if (camera->side == 'N')
-		texture = &vars->mapdata->texture[0];
-	else if (camera->side == 'E')
-		texture = &vars->mapdata->texture[1];
-	else if (camera->side == 'S')
-		texture = &vars->mapdata->texture[2];
-	else if (camera->side == 'W')
-		texture = &vars->mapdata->texture[3];
-	else if (camera->side == 'd')
-		texture = &vars->mapdata->texture[4];
-	else if (camera->side == 'D')
-		texture = &vars->mapdata->texture[4];
-	else if (camera->side == 's')
+	/*if (camera->sprite == '0')
+		return (&vars->mapdata->texture[6]);*/
+	if (camera->sprite == 's')
 		texture = &vars->mapdata->stexture[vars->frame];
+	/*else if (camera->sprite == 'd')
+		texture = NULL;*/
+	else if (camera->sprite == 'D')
+		texture = &vars->mapdata->texture[4];
+	else if (camera->sprite == '1')
+	{
+		if (camera->side == 'N')
+			texture = &vars->mapdata->texture[0];
+		else if (camera->side == 'E')
+			texture = &vars->mapdata->texture[1];
+		else if (camera->side == 'S')
+			texture = &vars->mapdata->texture[2];
+		else if (camera->side == 'W')
+			texture = &vars->mapdata->texture[3];
+	}
 	return (texture);
 }
 
@@ -58,23 +64,5 @@ void	ft_drawslice(int x, t_camera *camera, \
 		height--;
 		pixel.y++;
 		error[1] += error[0];
-	}
-	height = (float)W_HEIGHT / camera->depth[x];
-	texture = &vars->mapdata->stexture[vars->frame];
-	pixel = (t_pixel){x, (W_HEIGHT / 2) - (height / 2), 0xff00ff};
-	error[0] = (float)T_SIZE / (float)height;
-	error[1] = 0;
-	if (camera->sprite == 's')
-	{
-		texture = &vars->mapdata->stexture[vars->frame];
-		while (height > 0)
-		{
-			pixel.colour = ft_fetch_imgcolour(texture, \
-				(int)(T_SIZE * camera->sprite_intersect), error[1]);
-			ft_img_pix_put(pixel, vars->buffer);
-			height--;
-			pixel.y++;
-			error[1] += error[0];
-		}
 	}
 }
