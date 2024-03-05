@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 16:04:26 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/05 16:37:21 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:54:49 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	ft_fetch_map(char *buffer, t_map *mapdata, t_vars *vars)
 
 	err = 0;
 	if (!buffer)
-		ft_exit(ft_perror("No Map Information Found", 1), vars);
+		err += ft_perror("No Map Information Found", 1);
 	mapdata->map = ft_calloc(4096, sizeof(char));
 	i = -1;
 	while (buffer && err == 0)
@@ -113,8 +113,7 @@ static int	ft_fetch_map(char *buffer, t_map *mapdata, t_vars *vars)
 	if (err > 0)
 	{
 		ft_perror("Invalid Characters In Map Buffer", EXIT_FAILURE);
-		//ft_flushgnl(buffer, vars);
-		free(buffer);
+		ft_flushgnl(buffer, vars);
 	}
 	mapdata->height = i;
 	return (err);
@@ -129,6 +128,8 @@ t_map	*ft_parse_map(t_vars *vars)
 	mapdata = ft_calloc(1, sizeof(t_map));
 	buffer = get_next_line(vars->fd_map);
 	while (buffer && ft_read_line(buffer, mapdata, vars))
+		buffer = get_next_line(vars->fd_map);
+	while (buffer && buffer[0] == '\n')
 		buffer = get_next_line(vars->fd_map);
 	vars->err = ft_fetch_map(buffer, mapdata, vars);
 	return (mapdata);
