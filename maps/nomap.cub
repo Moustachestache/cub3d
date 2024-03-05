@@ -1,0 +1,10 @@
+NO		./assets/north.xpm
+SO		./assets/south.xpm
+WE		./assets/west.xpm
+EA		./assets/east.xpm
+
+DO		./assets/door.xpm
+XO		./assets/animated_sprite.xpm
+
+F		139,69,19
+C		30,144,255

@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/05 14:23:02 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:36:20 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ void			ft_init_sprite(char *path, t_vars *vars);
 char			*ft_itoa(int n);
 void			ft_render_graphfps(t_vars *vars);
 void			ft_update_graphfps(t_vars *vars);
-
+int				ft_ismapchar_re(char c);
+int				ft_validatemapbuffer(char *str);
+void			ft_flushgnl(char *str, t_vars *vars);
 #endif
