@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:27:57 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/01 10:14:51 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:31:30 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ t_image	*ft_set_texture(t_vars *vars, t_camera *camera)
 
 	camera->sprite = vars->mapdata->map[camera->mapy][camera->mapx];
 	texture = NULL;
-	/*if (camera->sprite == '0')
-		return (&vars->mapdata->texture[6]);*/
 	if (camera->sprite == 's')
 		texture = &vars->mapdata->stexture[vars->frame];
-	/*else if (camera->sprite == 'd')
-		texture = NULL;*/
 	else if (camera->sprite == 'D')
 		texture = &vars->mapdata->texture[4];
 	else if (camera->sprite == '1')

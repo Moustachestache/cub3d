@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/01 10:12:54 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:25:09 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	ft_rotate(t_vars *vars, t_camera *camera, int angle)
 
 static void	ft_move_player(float angle, float value, t_vars *vars, int key)
 {
-		ft_check_square(&vars->player->xpos, &vars->player->ypos, \
-				value, angle, vars->mapdata, key);
+	ft_check_square((t_playerinfo){&vars->player->xpos, \
+		&vars->player->ypos, value, angle}, vars->mapdata, key);
 }
 
 int	ft_mouse(int x, int y, void *param)
@@ -72,9 +72,11 @@ int	ft_keyhook(int keycode, t_vars *vars)
 	else if (keycode == 115 || keycode == 65364)
 		ft_move_player(vars->player->angle, -vars->player->step, vars, keycode);
 	else if (keycode == 100)
-		ft_move_player(vars->player->angle + 90, -vars->player->step, vars, keycode);
-	else if (keycode == 97 || keycode ==  113)
-		ft_move_player(vars->player->angle - 90, -vars->player->step, vars, keycode);
+		ft_move_player(vars->player->angle + 90, \
+				-vars->player->step, vars, keycode);
+	else if (keycode == 97 || keycode == 113)
+		ft_move_player(vars->player->angle - 90, \
+				-vars->player->step, vars, keycode);
 	else if (keycode == 65361)
 		ft_rotate(vars, vars->camera, 5);
 	else if (keycode == 65363)

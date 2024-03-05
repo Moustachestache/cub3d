@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:42:12 by mjochum           #+#    #+#             */
-/*   Updated: 2024/02/02 15:22:59 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:24:54 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,28 @@ static void	ft_step(float *x, float *y, \
 	*y = new_y;
 }
 
-void	ft_check_square(float *x, float *y, \
-	float increase, float angle, t_map *mapdata, int key)
+void	ft_check_square(t_playerinfo p, t_map *mapdata, int key)
 {
 	float	temp_x;
 	float	temp_y;
+
 	if (key == 32)
 	{
-		temp_x = ft_transform_x(*x, increase * 4, angle);
-		temp_y = ft_transform_y(*y, increase * 4, angle);
+		temp_x = ft_transform_x(*p.x, p.increase * 4, p.angle);
+		temp_y = ft_transform_y(*p.y, p.increase * 4, p.angle);
 		if (mapdata->map[(int)temp_y][(int)temp_x] == 'd')
-				mapdata->map[(int)temp_y][(int)temp_x] = 'D';
+			mapdata->map[(int)temp_y][(int)temp_x] = 'D';
 		else if (mapdata->map[(int)temp_y][(int)temp_x] == 'D')
-				mapdata->map[(int)temp_y][(int)temp_x] = 'd';
+			mapdata->map[(int)temp_y][(int)temp_x] = 'd';
 	}
 	else if (key == 119 || key == 65362 || key == 122 || key == 115 \
 		|| key == 65364 || key == 100 || key == 97 || key == 113)
 	{
-		temp_x = ft_transform_x(*x, increase, angle);
-		temp_y = ft_transform_y(*y, increase, angle);
+		temp_x = ft_transform_x(*p.x, p.increase, p.angle);
+		temp_y = ft_transform_y(*p.y, p.increase, p.angle);
 		if (mapdata->map[(int)temp_y][(int)temp_x] == '0' \
 			|| mapdata->map[(int)temp_y][(int)temp_x] == 'd')
-			ft_step(x, y, temp_x, temp_y);
+			ft_step(p.x, p.y, temp_x, temp_y);
 	}
 }
 

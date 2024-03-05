@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 12:00:55 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/02 12:32:41 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:20:35 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ typedef struct s_pixel		t_pixel;
 typedef struct s_image		t_image;
 typedef struct s_texture	t_texture;
 typedef struct s_camera		t_camera;
+typedef struct s_playerinfo	t_playerinfo;
+
+typedef struct s_playerinfo
+{
+	float				*x;
+	float				*y;
+	float				increase;
+	float				angle;
+}						t_playerinfo;
 
 typedef struct s_image
 {

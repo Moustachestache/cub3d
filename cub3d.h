@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:49:30 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/03 11:44:31 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:23:02 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ t_pixel			ft_transform_pixel(t_pixel pixel, \
 float			ft_deg_to_rad(float a);
 //float                   ft_turn_x(float angle, t_camera *camera);
 //float                   ft_turn_y(float angle, t_camera *camera);
-void			ft_check_square(float *x, float *y, \
-	float increase, float angle, t_map *mapdata, int key);
+void			ft_check_square(t_playerinfo p, t_map *mapdata, int key);
 void			ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 void			ft_write_toscreen(t_pixel position, char *str, t_vars *vars);
 void			ft_init_textures(t_map *mapdata, t_vars *vars);
