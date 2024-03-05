@@ -6,7 +6,7 @@
 /*   By: mjochum <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 14:30:38 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/01 10:12:54 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:25:24 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	ft_rotate(t_vars *vars, t_camera *camera, int angle)
 	ft_update_angle(&vars->player->angle, angle, vars);
 }
 
-//	check if moveable or no
 static void	ft_moveplayer(float angle, float value, t_vars *vars)
 {
 	ft_transform_player(&vars->player->xpos, \
