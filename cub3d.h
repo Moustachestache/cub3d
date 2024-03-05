@@ -66,8 +66,10 @@ void			ft_update_angle(int *angle, int add, t_vars *vars);
 t_pixel			ft_transform_pixel(t_pixel pixel, \
 	float increase, float vector);
 float			ft_deg_to_rad(float a);
-void			ft_transform_player(float *x, float *y, \
-	float increase, float vector);
+//float                   ft_turn_x(float angle, t_camera *camera);
+//float                   ft_turn_y(float angle, t_camera *camera);
+void			ft_check_square(float *x, float *y, \
+	float increase, float angle, t_map *mapdata, int key);
 void			ft_player_init(int x, int y, char mapinfo, t_vars *vars);
 void			ft_write_toscreen(t_pixel position, char *str, t_vars *vars);
 void			ft_init_textures(t_map *mapdata, t_vars *vars);

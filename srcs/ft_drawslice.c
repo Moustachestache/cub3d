@@ -19,19 +19,18 @@
 t_image	*ft_set_texture(t_vars *vars, t_camera *camera)
 {
 	t_image	*texture;
-	char	mapchar;
 
-	mapchar = vars->mapdata->map[camera->mapy][camera->mapx];
+	camera->sprite = vars->mapdata->map[camera->mapy][camera->mapx];
 	texture = NULL;
-	if (mapchar == '0')
-		return (&vars->mapdata->texture[6]);
-	if (mapchar == 's')
+	/*if (camera->sprite == '0')
+		return (&vars->mapdata->texture[6]);*/
+	if (camera->sprite == 's')
 		texture = &vars->mapdata->stexture[vars->frame];
-	else if (mapchar == 'd')
+	/*else if (camera->sprite == 'd')
+		texture = NULL;*/
+	else if (camera->sprite == 'D')
 		texture = &vars->mapdata->texture[4];
-	else if (mapchar == 'D')
-		texture = &vars->mapdata->texture[4];
-	else if (mapchar == '1')
+	else if (camera->sprite == '1')
 	{
 		if (camera->side == 'N')
 			texture = &vars->mapdata->texture[0];

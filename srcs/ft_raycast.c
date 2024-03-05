@@ -63,8 +63,15 @@ static int	ft_check_hit(t_vars *vars, t_camera *camera, \
 	}
 	if (mapdata->map[camera->mapy][camera->mapx] == '1' \
 			|| mapdata->map[camera->mapy][camera->mapx] == 'D'\
-			|| mapdata->map[camera->mapy][camera->mapx] == 'd'\
 			|| mapdata->map[camera->mapy][camera->mapx] == 's')
+	/*{
+		ft_sprite_depth(vars, camera, ray, i);
+		camera->sprite = mapdata->map[camera->mapy][camera->mapx];
+		printf("[%d] sprite char is %c\n",i, camera->sprite);
+		printf("char at map[%d][%d] is %c\n", camera->mapy, camera->mapx,
+			       	mapdata->map[camera->mapy][camera->mapx]);
+		return (0);
+	}*/
 		return (1);
 	else
 		return (0);
