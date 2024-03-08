@@ -6,11 +6,11 @@
 #    By: mjochum <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 09:36:26 by mjochum           #+#    #+#              #
-#    Updated: 2024/03/05 16:36:48 by mjochum          ###   ########.fr        #
+#    Updated: 2024/03/08 16:21:51 by mjochum          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3d
+NAME		=	cub3D
 SRCS		=	cub3d.c \
 srcs/ft_atoi.c srcs/ft_free_split.c srcs/ft_keyhooks.c srcs/ft_split.c \
 srcs/ft_bzero.c srcs/ft_image_management.c srcs/ft_map_validation.c srcs/ft_strdup.c \
