@@ -6,7 +6,7 @@
 /*   By: mjochum <mjochum@student.42perpignan.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:27:49 by mjochum           #+#    #+#             */
-/*   Updated: 2024/03/05 15:38:08 by mjochum          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:31:45 by mjochum          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_validatemapbuffer(char *str)
 
 	i = 0;
 	err = 0;
+	if (!str)
+		return (err);
 	while (str[i])
 	{
 		err += ft_ismapchar_re(str[i]);
